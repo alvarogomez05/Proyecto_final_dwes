@@ -1,6 +1,4 @@
 <?php
-
-
 require_once '../database/models/perrosModel.php';
 
 class PerrosService {
