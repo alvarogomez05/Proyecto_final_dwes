@@ -1,0 +1,3 @@
+#queremos que no se suba a git hub la carpeta de pruebas unitarias
+
+/pruebas/

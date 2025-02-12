@@ -18,7 +18,8 @@ function clienteRouter($method)
                 $ClientesController->getClientesDNI($_GET['dni']);
             } else {
                 // echo 'QUIERES HACER UNA PETICION PARA RECUPAR TODOS LOS CLIENTES';
-                $ClientesController->getClientes();
+                // echo 'IMPRIMIR LOS VALORES DESDE LA RUTA';
+                print_r($ClientesController->getClientes());
             }
             break;
         case 'POST':

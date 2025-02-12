@@ -28,7 +28,8 @@ class ClientesService
     public function obtenerTodosLosClientes()
     {
         // echo 'Estas en el metodo para recuperar todos los clientes desde el servicio';
-        print_r($this->clientesModel->getAll());
+        // echo 'SERVICIO';
+        // print_r($this->clientesModel->getAll());
         return $this->clientesModel->getAll();
     }
 

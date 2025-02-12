@@ -14,6 +14,8 @@ class ClientesController
     public function getClientes()
     {
         // echo 'Estas haciendo una peticion para recuperar clientes en el controller';
+        // echo 'CONTROLADOR';
+        // print_r($this->userService->obtenerTodosLosClientes());
         return   $this->userService->obtenerTodosLosClientes();
     }
     //Funcion para listar los clientes por DNI
