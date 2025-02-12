@@ -8,30 +8,60 @@ $conexion = $BD->getConexion();
 
 
 // indexRouter.php
-require_once './routes/serviciosRouter.php';
-require_once './routes/empleadosRouter.php';
+// require_once './routes/serviciosRouter.php';
+// require_once './routes/empleadosRouter.php';
 require_once './routes/clientesRouter.php';
-require_once './routes/perrosRouter.php';
+// require_once './routes/perrosRouter.php';
 
-// Obtener la ruta y el método de la solicitud
-$request_uri = $_SERVER['REQUEST_URI'];  // Puede incluir el query string
+
+//Para que nos devuelva los datos en formato json 
+header('Content-Type: application/json');
+// Obtener el método de la solicitud
 $method = $_SERVER['REQUEST_METHOD'];  // GET, POST, PUT, DELETE
 
-// Eliminar la parte del dominio en la URI
-$request_uri = parse_url($request_uri, PHP_URL_PATH);
 
-// Enrutador basado en el URI
-switch ($request_uri) {
-    case '/servicios':
+// PRUEBAS UNITARIAS PARA EL METODO     
+// echo '<br><br>';
+// switch ($method) {
+//     case 'GET':
+//         echo 'esto es una peticion GET';
+//         break;
+//     case 'POST':
+//         echo 'esto es una peticion POST';
+//         break;
+//     case 'PUT':
+//         echo 'esto es una peticion PUT';
+//         break;
+//     case 'DELETE':
+//         echo 'esto es una peticion DELETE';
+//         break;
+//     default:
+//         echo 'METODO NO PERMITIDO';
+// }
+
+// ejemplo de ruta a la que hacer la peticion
+// http://localhost/dwes/proyecto%20final/backend/?ruta=clientes
+
+// recogemos con el GET
+if (isset($_GET['ruta'])) {
+    $ruta = $_GET['ruta'];
+} else {
+    $ruta = 'none';
+}
+
+// Enrutador basado en los params que nos mandan en la peticion
+switch ($ruta) {
+    case 'servicio':
         servicioRouter($method);
         break;
-    case '/empleados':
+    case 'empleados':
         empleadoRouter($method);
         break;
-    case '/perros':
+    case 'perros':
         perroRouter($method);
         break;
-    case '/clientes':
+    case 'clientes':
+        // echo 'Estas haciendo una peticion a clientes';
         clienteRouter($method);
         break;
     default:

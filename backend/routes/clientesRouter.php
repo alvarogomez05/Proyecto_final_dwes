@@ -1,26 +1,32 @@
 <?php
 
 // clienteRoutes.php
-require_once 'controllers/ClienteController.php';
+require_once 'controllers/clientesController.php';
+
+$GLOBALS['ClientesController'] = new ClientesController();
 
 function clienteRouter($method)
 {
+
+    // echo 'Estas en el ruter de clientes';
+
+    $ClientesController = $GLOBALS['ClientesController'];
+
     switch ($method) {
         case 'GET':
             if (isset($_GET['id'])) {
-                ClienteController::getClienteById($_GET['id']);
+                $ClientesController->getClientesDNI($_GET['dni']);
             } else {
-                ClienteController::getAllClientes();
+                // echo 'QUIERES HACER UNA PETICION PARA RECUPAR TODOS LOS CLIENTES';
+                $ClientesController->getClientes();
             }
             break;
         case 'POST':
-            ClienteController::createCliente();
-            break;
-        case 'PUT':
-            ClienteController::updateCliente($_GET['id']);
+            // pasarle todos los valores por "params" con GET
+            $ClientesController->guardarCliente();
             break;
         case 'DELETE':
-            ClienteController::deleteCliente($_GET['id']);
+            $ClientesController->borrarCliente($_GET['dni']);
             break;
         default:
             echo 'Método no permitido';
