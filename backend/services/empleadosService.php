@@ -8,7 +8,7 @@ class EmpleadosService {
     private $empleadosModel;
 
     public function __construct() {
-        $this->empleadosModel = new empleadosModel();
+        $this->empleadosModel = new EmpleadosModel();
     }
 
 
@@ -25,8 +25,8 @@ class EmpleadosService {
         return $this->empleadosModel->getAll();
     }
 
-    public function borrarEmpleado($dni) {
-        return $this->empleadosModel->borrar($dni);
+    public function borrarEmpleado($id) {
+        return $this->empleadosModel->borrar($id);
     }
 }
 
