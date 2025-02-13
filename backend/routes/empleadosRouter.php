@@ -1,26 +1,31 @@
 <?php
 
 // empleadoRoutes.php
-require_once 'controllers/EmpleadoController.php';
+require_once 'controllers/empleadoController.php';
+
+$GLOBALS['EmpleadosController'] = new EmpleadosController();
 
 function empleadoRouter($method)
 {
+
+    $EmpleadosController = $GLOBALS['EmpleadosController'];
+
     switch ($method) {
         case 'GET':
             if (isset($_GET['id'])) {
-                EmpleadoController::getEmpleadoById($_GET['id']);
+                $EmpleadosController->getEmpleadoId($_GET['id']);
             } else {
-                EmpleadoController::getAllEmpleados();
+                $EmpleadosController->getAllEmpleados();
             }
             break;
         case 'POST':
-            EmpleadoController::createEmpleado();
+            $EmpleadosController->createEmpleado();
             break;
         case 'PUT':
-            EmpleadoController::updateEmpleado($_GET['id']);
+            $EmpleadosController->updateEmpleado($_GET['id']);
             break;
         case 'DELETE':
-            EmpleadoController::deleteEmpleado($_GET['id']);
+            $EmpleadosController->deleteEmpleado($_GET['id']);
             break;
         default:
             echo 'Método no permitido';

@@ -8,10 +8,10 @@ $conexion = $BD->getConexion();
 
 
 // indexRouter.php
-// require_once './routes/serviciosRouter.php';
-// require_once './routes/empleadosRouter.php';
+require_once './routes/serviciosRouter.php';
+require_once './routes/empleadosRouter.php';
 require_once './routes/clientesRouter.php';
-// require_once './routes/perrosRouter.php';
+require_once './routes/perrosRouter.php';
 
 
 //Para que nos devuelva los datos en formato json 
