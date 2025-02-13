@@ -32,4 +32,9 @@ class ServiciosService
     {
         return $this->serviciosModel->borrar($id);
     }
+
+    public function cambiarPrecioServicio($id , $nuevoPrecio)
+    {
+        return $this->serviciosModel->cambiarPrecioServicio($id, $nuevoPrecio);
+    }
 }

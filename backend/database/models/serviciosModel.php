@@ -83,4 +83,26 @@ class ServiciosModel extends BD
             return $e->getMessage();
         }
     }
+
+    public function cambiarPrecioServicio($id, $nuevoPrecio)
+{
+    try {
+        $sql = "UPDATE servicios SET Precio = ? WHERE Id = ?";
+        $sentencia = $this->conexion->prepare($sql);
+
+        $sentencia->bindParam(1, $nuevoPrecio);
+        $sentencia->bindParam(2, $id);
+
+        $sentencia->execute();
+
+        if ($sentencia->rowCount() > 0) {
+            return "El precio del servicio se ha actualizado correctamente.";
+        } else {
+            return "No se encontró el servicio con el ID proporcionado o el precio ya es el mismo.";
+        }
+    } catch (PDOException $e) {
+        return "Error al actualizar el precio del servicio: " . $e->getMessage();
+    }
+}
+
 }
