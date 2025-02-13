@@ -13,6 +13,10 @@ class ClientesController
     //Función para listar todo los clientes
     public function getClientes()
     {
+
+
+    
+
         return   $this->userService->obtenerTodosLosClientes();
     }
     //Funcion para listar los clientes por DNI
@@ -22,11 +26,16 @@ class ClientesController
     }
 
     //Funcion para guardar el Cliente
+
     public function guardarCliente($dni, $nombre, $apellido1, $apellido2, $direccion, $tlfno){
         return $this->userService->guardarCliente($dni, $nombre, $apellido1, $apellido2, $direccion, $tlfno);
     }
     //Funcion para borrar los clientes por DNI
     public function borrarCliente($dni){
+
+    
+    
+
         return $this->userService->borrarCliente($dni);
     }
 }

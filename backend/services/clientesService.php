@@ -1,7 +1,7 @@
 <?php
 
 
-include_once 'ClientesModel.php';
+include_once './database/models/clientesModel.php';
 
 class ClientesService
 {
@@ -21,7 +21,6 @@ class ClientesService
 
     public function obtenerClientePorDni($dni)
     {
-
         return $this->clientesModel->getClienteByDni($dni);
     }
 
