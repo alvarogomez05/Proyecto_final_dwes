@@ -1,5 +1,5 @@
 <?php
-require_once '../database/models/serviciosModel.php';
+require_once 'database/models/serviciosModel.php';
 
 class ServiciosService
 {

@@ -1,6 +1,6 @@
 <?php
 // perroRoutes.php
-require_once 'controllers/PerroController.php';
+require_once 'controllers/perrosController.php';
 
 $GLOBALS['PerrosController'] = new PerrosController();
 
@@ -13,19 +13,19 @@ function perroRouter($method)
     switch ($method) {
         case 'GET':
             if (isset($_GET['id'])) {
-                $PerrosController->getPerroById($_GET['id']);
+               echo json_encode($PerrosController->getPerroId($_GET['id']));
             } else {
-                $PerrosController->getAllPerros();
+               echo json_encode($PerrosController->getPerros());
             }
             break;
         case 'POST':
-            $PerrosController->createPerro();
+            $PerrosController->guardarPerro();
             break;
         case 'PUT':
             $PerrosController->updatePerro($_GET['id']);
             break;
         case 'DELETE':
-            $PerrosController->deletePerro($_GET['id']);
+            $PerrosController->borrarPerro($_GET['id']);
             break;
         default:
             echo 'Método no permitido';

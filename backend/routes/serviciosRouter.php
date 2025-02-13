@@ -1,7 +1,7 @@
 <?php
 
 // servicioRoutes.php
-require_once 'controllers/ServicioController.php';
+require_once 'controllers/serviciosController.php';
 
 $GLOBALS['ServiciosController'] = new ServiciosController();
 
@@ -13,19 +13,19 @@ function servicioRouter($method)
     switch ($method) {
         case 'GET':
             if (isset($_GET['id'])) {
-                $ServiciosController->getServicioById($_GET['id']);
+                echo json_encode($ServiciosController->getServicioId($_GET['id']));
             } else {
-                $ServiciosController->getAllServicios();
+                echo json_encode($ServiciosController->getServicios());
             }
             break;
         case 'POST':
-            $ServiciosController->createServicio();
+            $ServiciosController->guardarServicio();
             break;
-        case 'PUT':
-            $ServiciosController->updateServicio($_GET['id']);
-            break;
+        // case 'PUT':
+        //     $ServiciosController->updateServicio($_GET['id']);
+        //     break;
         case 'DELETE':
-            $ServiciosController->deleteServicio($_GET['id']);
+            $ServiciosController->borrarServicio($_GET['id']);
             break;
         default:
             echo 'Método no permitido';

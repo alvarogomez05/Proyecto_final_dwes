@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../services/perrosService.php.php';
+require_once 'services/perrosService.php';
 
 class PerrosController{
     private $perroService;

@@ -51,7 +51,7 @@ if (isset($_GET['ruta'])) {
 
 // Enrutador basado en los params que nos mandan en la peticion
 switch ($ruta) {
-    case 'servicio':
+    case 'servicios':
         servicioRouter($method);
         break;
     case 'empleados':
