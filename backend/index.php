@@ -15,7 +15,7 @@ require_once './routes/clientesRouter.php';
 
 
 //Para que nos devuelva los datos en formato json 
-header('Content-Type: application/json');
+// header('Content-Type: application/json'); 
 // Obtener el método de la solicitud
 $method = $_SERVER['REQUEST_METHOD'];  // GET, POST, PUT, DELETE
 

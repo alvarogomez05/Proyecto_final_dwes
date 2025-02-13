@@ -3,11 +3,11 @@
 class Empleado
 {
 
-    private $id;
-    private $nombre;
-    private $apellido1;
-    private $apellido2;
-    private $cargo;
+    public $id;
+    public $nombre;
+    public $apellido1;
+    public $apellido2;
+    public $cargo;
 
     // Constructor
     public function __construct($id, $nombre, $apellido1, $apellido2, $cargo)

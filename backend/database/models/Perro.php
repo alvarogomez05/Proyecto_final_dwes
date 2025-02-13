@@ -3,11 +3,11 @@
 class Perro
 {
 
-    private $id;
-    private $nombre;
-    private $raza;
-    private $edad;
-    private $dni_cliente;
+    public $id;
+    public $nombre;
+    public $raza;
+    public $edad;
+    public $dni_cliente;
 
     // Constructor
     public function __construct($id, $nombre, $raza, $edad, $dni_cliente)

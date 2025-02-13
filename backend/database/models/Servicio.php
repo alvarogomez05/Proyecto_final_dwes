@@ -3,9 +3,9 @@
 class Servicio
 {
 
-    private $id;
-    private $nombre;
-    private $precio;
+    public $id;
+    public $nombre;
+    public $precio;
 
     // Constructor
     public function __construct($id, $nombre, $precio)

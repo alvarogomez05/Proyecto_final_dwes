@@ -3,12 +3,12 @@
 class Cliente
 {
 
-    private $dni;
-    private $nombre;
-    private $apellido1;
-    private $apellido2;
-    private $direccion;
-    private $tlfno;
+    public $dni;
+    public $nombre;
+    public $apellido1;
+    public $apellido2;
+    public $direccion;
+    public $tlfno;
 
     // Constructor
     public function __construct($dni, $nombre, $apellido1, $apellido2, $direccion, $tlfno)
