@@ -1,31 +1,40 @@
 <?php
 require_once '../database/models/perrosModel.php';
 
-class PerrosService {
+class PerrosService
+{
 
     private $perrosModel;
 
-    public function __construct() {
+    public function __construct()
+    {
+
         $this->perrosModel = new PerrosModel();
     }
 
 
-    public function guardarPerro($id, $nombre, $raza, $edad, $dni_cliente) {
+    public function guardarPerro($id, $nombre, $raza, $edad, $dni_cliente)
+    {
         return $this->perrosModel->save($id, $nombre, $raza, $edad, $dni_cliente);
     }
 
-    public function obtenerPerroPorId($id) {
+    public function obtenerPerroPorId($id)
+    {
+
         return $this->perrosModel->getPerroById($id);
     }
 
 
-    public function obtenerTodosLosPerros() {
+
+
+    public function obtenerTodosLosPerros()
+    {
         return $this->perrosModel->getAll();
     }
 
-    public function borrarPerro($id) {
+    public function borrarPerro($id)
+    {
         return $this->perrosModel->borrar($id);
     }
 }
 
-?>
