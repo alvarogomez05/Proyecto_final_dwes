@@ -54,10 +54,10 @@
         </nav>
     </footer>
 </body>
-<?php
-//USAR file_get_contents QUE NUESTRA API SI NOS DEJA
-
-
-?>
+    <?php
+    //USAR file_get_contents QUE NUESTRA API SI NOS DEJA
+    require_once __DIR__ . '/controllers/loginController.php';
+    
+    ?>
 
 </html>
