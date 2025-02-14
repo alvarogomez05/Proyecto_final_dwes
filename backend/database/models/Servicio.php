@@ -3,14 +3,14 @@
 class Servicio
 {
 
-    public $id;
+    public $codigo;
     public $nombre;
     public $precio;
 
     // Constructor
-    public function __construct($id, $nombre, $precio)
+    public function __construct($codigo, $nombre, $precio)
     {
-        $this->id = $id;
+        $this->codigo = $codigo;
         $this->nombre = $nombre;
         $this->precio = $precio;
     }
@@ -18,7 +18,7 @@ class Servicio
     // Métodos getter para acceder a las propiedades
     public function getId()
     {
-        return $this->id;
+        return $this->codigo;
     }
 
     public function getNombre()

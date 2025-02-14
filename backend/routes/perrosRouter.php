@@ -21,9 +21,6 @@ function perroRouter($method)
         case 'POST':
             $PerrosController->guardarPerro();
             break;
-        case 'PUT':
-            $PerrosController->updatePerro($_GET['id']);
-            break;
         case 'DELETE':
             $PerrosController->borrarPerro($_GET['id']);
             break;
