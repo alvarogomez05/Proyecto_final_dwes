@@ -3,7 +3,6 @@ require_once 'database/models/empleadosModel.php';
 
 class EmpleadosService
 {
-
     private $empleadosModel;
 
     public function __construct()
@@ -11,25 +10,33 @@ class EmpleadosService
         $this->empleadosModel = new EmpleadosModel();
     }
 
-
-    public function guardarEmpleado($id, $nombre, $apellido1, $apellido2, $cargo)
+    // Método para guardar un nuevo empleado
+    public function guardarEmpleado($dni, $email, $password, $rol, $nombre, $apellido1, $apellido2, $calle, $numero, $cp, $poblacion, $provincia, $tlfno, $profesion)
     {
-        return $this->empleadosModel->save($id, $nombre, $apellido1, $apellido2, $cargo);
+        // Llamada al modelo con todos los parámetros actualizados
+        return $this->empleadosModel->save(
+            $dni, $email, $password, $rol, $nombre, 
+            $apellido1, $apellido2, $calle, $numero, 
+            $cp, $poblacion, $provincia, $tlfno, $profesion
+        );
     }
 
+    // Obtener un empleado por ID
     public function obtenerEmpleadoPorId($id)
     {
         return $this->empleadosModel->getEmpleadoById($id);
     }
 
-
+    // Obtener todos los empleados
     public function obtenerTodosLosEmpleados()
     {
         return $this->empleadosModel->getAll();
     }
 
+    // Borrar un empleado
     public function borrarEmpleado($id)
     {
         return $this->empleadosModel->borrar($id);
     }
 }
+?>
