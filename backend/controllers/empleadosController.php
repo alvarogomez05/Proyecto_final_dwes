@@ -2,26 +2,39 @@
 
 require_once __DIR__ . '/../services/empleadosService.php';
 
-class EmpleadosController{
+class EmpleadosController {
     private $empleadoService;
+
     public function __construct()
     {
-      $this->empleadoService=new EmpleadosService();
+        $this->empleadoService = new EmpleadosService();
     }
 
-    public function getEmpleados(){
+    // Método para obtener todos los empleados
+    public function getEmpleados()
+    {
         return $this->empleadoService->obtenerTodosLosEmpleados();
     }
 
-    public function getEmpleadoId($id){
+    // Método para obtener un empleado por su ID
+    public function getEmpleadoId($id)
+    {
         return $this->empleadoService->obtenerEmpleadoPorId($id);
     }
 
-    public function guardarEmpleado($id, $nombre, $apellido1, $apellido2, $cargo){
-        return $this->empleadoService->guardarEmpleado($id, $nombre, $apellido1, $apellido2, $cargo);
+    // Método para guardar un nuevo empleado
+    public function guardarEmpleado($dni, $email, $password, $rol, $nombre, $apellido1, $apellido2, $calle, $numero, $cp, $poblacion, $provincia, $tlfno, $profesion)
+    {
+        return $this->empleadoService->guardarEmpleado(
+            $dni, $email, $password, $rol, $nombre, 
+            $apellido1, $apellido2, $calle, $numero, 
+            $cp, $poblacion, $provincia, $tlfno, $profesion
+        );
     }
 
-    public function borrarEmpleado($id){
-         return $this->empleadoService->borrarEmpleado($id);
+    // Método para borrar un empleado
+    public function borrarEmpleado($id)
+    {
+        return $this->empleadoService->borrarEmpleado($id);
     }
 }
