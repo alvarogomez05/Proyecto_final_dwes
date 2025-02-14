@@ -53,5 +53,9 @@
         </nav>
     </footer>
 </body>
-
+<?php
+        //USAR file_get_contents QUE NUESTRA API SI NOS DEJA
+        
+        
+?>
 </html>
