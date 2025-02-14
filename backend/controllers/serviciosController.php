@@ -25,4 +25,8 @@
         public function guardarServicio($id,$nombre,$precio){
             return $this->servicioService->guardarServicio($id,$nombre,$precio);
         }
+
+        public function actualizarServicio($id,$nuevoPrecio){
+            return $this->servicioService->cambiarPrecioServicio($id, $nuevoPrecio);
+        }
     }

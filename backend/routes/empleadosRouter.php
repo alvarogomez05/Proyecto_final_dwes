@@ -21,9 +21,6 @@ function empleadoRouter($method)
         case 'POST':
             $EmpleadosController->createEmpleado();
             break;
-        case 'PUT':
-            $EmpleadosController->updateEmpleado($_GET['id']);
-            break;
         case 'DELETE':
             $EmpleadosController->deleteEmpleado($_GET['id']);
             break;

@@ -21,9 +21,9 @@ function servicioRouter($method)
         case 'POST':
             $ServiciosController->guardarServicio();
             break;
-        // case 'PUT':
-        //     $ServiciosController->updateServicio($_GET['id']);
-        //     break;
+        case 'PUT':
+            $ServiciosController->actualizarServicio($_GET['id'], $_GET['precio']);
+            break;
         case 'DELETE':
             $ServiciosController->borrarServicio($_GET['id']);
             break;
