@@ -39,7 +39,7 @@
                     <input type="password" class="w-full p-2 border rounded" placeholder="********" />
                 </div>
                 <button class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Entrar</button>
-                <button class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 mt-2">Registrarse</button>
+                <button class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 mt-2">Registrarsee</button>
             </form>
         </div>
     </main>
