@@ -39,8 +39,9 @@
                     <input type="password" class="w-full p-2 border rounded" placeholder="********" name="password" />
                 </div>
                 <button class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Entrar</button>
-                <a href="./pages/register.php">
-                    <button class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 mt-2">Registrarsee</button>
+                <a href="./pages/register.php" class=" w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 mt-2">
+                    Registrarse
+
                 </a>
 
             </form>
@@ -48,7 +49,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-sky-700 text-white text-center p-4 mt-4">
+    <footer class=" bg-sky-700 text-white text-center p-4 mt-4">
         <p>&copy; 2025 PetVet - Todos los derechos reservados.</p>
         <nav class="mt-2">
             <a href="#" class="mx-2 hover:underline">Aviso Legal</a>
