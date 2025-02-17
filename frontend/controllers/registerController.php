@@ -18,15 +18,13 @@ $provincia = $_POST['provincia'] ?? '';
 $tlfno = $_POST['tlfno'] ?? '';
 $profesion = $_POST['profesion'] ?? '';
 
-echo "DNI: $dni, Email: $email, Password: $password, Rol: $rol, Nombre: $nombre, Apellido1: $apellido1, Apellido2: $apellido2, Calle: $calle, Numero: $numero, CP: $cp, Poblacion: $poblacion, Provincia: $provincia, Tlfno: $tlfno, Profesion: $profesion";
-
 // Validar que todos los campos requeridos estén completos
 if ($dni && $email && $password && $rol && $nombre && $apellido1 && $calle && $numero && $cp && $poblacion && $provincia && $tlfno) {
     // Datos del nuevo empleado
     $newUser = [
         'dni' => $dni,
         'email' => $email,
-        'password' => password_hash($password, PASSWORD_DEFAULT), // Hashear la contraseña antes de enviar
+        'password' => password_hash($password, PASSWORD_DEFAULT),
         'rol' => $rol,
         'nombre' => $nombre,
         'apellido1' => $apellido1,
@@ -43,27 +41,29 @@ if ($dni && $email && $password && $rol && $nombre && $apellido1 && $calle && $n
     // Convertir los datos a JSON
     $data = json_encode($newUser);
 
-    // Configurar opciones de la petición
-    $options = [
-        'http' => [
-            'header'  => "Content-Type: application/json\r\n",
-            'method'  => 'POST',
-            'content' => $data,
-        ],
-    ];
+    // Inicializar cURL
+    $conexion = curl_init();
+    curl_setopt($conexion, CURLOPT_URL, $url);
+    curl_setopt($conexion, CURLOPT_HTTPHEADER, [
+        'Content-Type: application/json',
+        'Content-Length: ' . strlen($data)
+    ]);
+    curl_setopt($conexion, CURLOPT_POST, true);
+    curl_setopt($conexion, CURLOPT_POSTFIELDS, $data);
+    curl_setopt($conexion, CURLOPT_RETURNTRANSFER, true);
 
-    $context  = stream_context_create($options);
-
-    // Enviar petición a la API
-    $result = file_get_contents($url, false, $context);
-
-    if ($result === FALSE) {
-        echo "Error al registrar el usuario.";
+    // Ejecutar petición y obtener respuesta
+    $response = curl_exec($conexion);
+    
+    // Verificar si hubo error en la petición
+    if (curl_errno($conexion)) {
+        echo "Error en la petición: " . curl_error($conexion);
     } else {
         echo "Registro exitoso. ¡Bienvenido, $nombre!";
-        // Redirigir a otra página después del registro
-        // header("Location: dashboard.php");
     }
+    
+    // Cerrar conexión cURL
+    curl_close($conexion);
 } else {
     echo "Error: Todos los campos requeridos deben estar completos.";
 }
