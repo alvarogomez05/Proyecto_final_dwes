@@ -7,7 +7,6 @@ $GLOBALS['EmpleadosController'] = new EmpleadosController();
 
 function empleadoRouter($method)
 {
-
     $EmpleadosController = $GLOBALS['EmpleadosController'];
 
     switch ($method) {
@@ -19,7 +18,22 @@ function empleadoRouter($method)
             }
             break;
         case 'POST':
-            $EmpleadosController->createEmpleado();
+            $EmpleadosController->createEmpleado(
+                $_GET['dni'], 
+                $_GET['email'], 
+                $_GET['password'], 
+                $_GET['rol'], 
+                $_GET['nombre'], 
+                $_GET['apellido1'], 
+                $_GET['apellido2'], 
+                $_GET['calle'], 
+                $_GET['numero'], 
+                $_GET['cp'], 
+                $_GET['poblacion'], 
+                $_GET['provincia'], 
+                $_GET['tlfno'], 
+                $_GET['profesion']
+            );
             break;
         case 'DELETE':
             $EmpleadosController->deleteEmpleado($_GET['id']);

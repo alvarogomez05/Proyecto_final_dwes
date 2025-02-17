@@ -23,7 +23,7 @@ class EmpleadosController {
     }
 
     // Método para guardar un nuevo empleado
-    public function guardarEmpleado($dni, $email, $password, $rol, $nombre, $apellido1, $apellido2, $calle, $numero, $cp, $poblacion, $provincia, $tlfno, $profesion)
+    public function createEmpleado($dni, $email, $password, $rol, $nombre, $apellido1, $apellido2, $calle, $numero, $cp, $poblacion, $provincia, $tlfno, $profesion)
     {
         return $this->empleadoService->guardarEmpleado(
             $dni, $email, $password, $rol, $nombre, 
