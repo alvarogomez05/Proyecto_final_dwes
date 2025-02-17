@@ -29,18 +29,18 @@
     <main class="flex flex-1 items-center justify-center">
         <div class="bg-white p-8 rounded-lg shadow-lg w-96">
             <h2 class="text-2xl font-bold text-center mb-6">Registro</h2>
-            <form method="POST" action="../controllers/registerController.php">
+            <form method="GET" action="">
                 <div class="mb-4">
                     <label class="block text-gray-700">DNI</label>
-                    <input type="text" class="w-full p-2 border rounded" placeholder="12345678A" name="dni" required/>
+                    <input type="text" class="w-full p-2 border rounded" placeholder="12345678A" name="dni" required />
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700">Correo Electrónico</label>
-                    <input type="email" class="w-full p-2 border rounded" placeholder="email@email.com" name="email" required/>
+                    <input type="email" class="w-full p-2 border rounded" placeholder="email@email.com" name="email" required />
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700">Contraseña</label>
-                    <input type="password" class="w-full p-2 border rounded" placeholder="********" name="password" required/>
+                    <input type="password" class="w-full p-2 border rounded" placeholder="********" name="password" required />
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700">Rol</label>
@@ -52,39 +52,39 @@
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700">Nombre</label>
-                    <input type="text" class="w-full p-2 border rounded" placeholder="Nombre" name="nombre" required/>
+                    <input type="text" class="w-full p-2 border rounded" placeholder="Nombre" name="nombre" required />
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700">Apellido 1</label>
-                    <input type="text" class="w-full p-2 border rounded" placeholder="Apellido 1" name="apellido1" required/>
+                    <input type="text" class="w-full p-2 border rounded" placeholder="Apellido 1" name="apellido1" required />
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700">Apellido 2</label>
-                    <input type="text" class="w-full p-2 border rounded" placeholder="Apellido 2" name="apellido2"/>
+                    <input type="text" class="w-full p-2 border rounded" placeholder="Apellido 2" name="apellido2" />
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700">Calle</label>
-                    <input type="text" class="w-full p-2 border rounded" placeholder="Calle" name="calle" required/>
+                    <input type="text" class="w-full p-2 border rounded" placeholder="Calle" name="calle" required />
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700">Número</label>
-                    <input type="text" class="w-full p-2 border rounded" placeholder="Número" name="numero" required/>
+                    <input type="text" class="w-full p-2 border rounded" placeholder="Número" name="numero" required />
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700">CP</label>
-                    <input type="text" class="w-full p-2 border rounded" placeholder="Código Postal" name="cp" required/>
+                    <input type="text" class="w-full p-2 border rounded" placeholder="Código Postal" name="cp" required />
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700">Población</label>
-                    <input type="text" class="w-full p-2 border rounded" placeholder="Población" name="poblacion" required/>
+                    <input type="text" class="w-full p-2 border rounded" placeholder="Población" name="poblacion" required />
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700">Provincia</label>
-                    <input type="text" class="w-full p-2 border rounded" placeholder="Provincia" name="provincia" required/>
+                    <input type="text" class="w-full p-2 border rounded" placeholder="Provincia" name="provincia" required />
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700">Teléfono</label>
-                    <input type="text" class="w-full p-2 border rounded" placeholder="Teléfono" name="tlfno" required/>
+                    <input type="text" class="w-full p-2 border rounded" placeholder="Teléfono" name="tlfno" required />
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700">Profesión</label>
@@ -113,4 +113,5 @@
     require_once  '../controllers/registerController.php';
     ?>
 </body>
+
 </html>
