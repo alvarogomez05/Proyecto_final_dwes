@@ -19,6 +19,7 @@ function perroRouter($method)
             }
             break;
         case 'POST':
+            // $id, $nombre, $raza, $edad, $dni_cliente
             $PerrosController->guardarPerro();
             break;
         case 'DELETE':
