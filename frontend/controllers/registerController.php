@@ -1,8 +1,6 @@
 <?php
-
 // URL de la API donde se registrarán los empleados
 $url = 'http://localhost/Proyecto%20APIS/backend/?ruta=empleados';
-
 
 // Recibir datos del formulario
 $dni = $_GET['dni'] ?? '';
@@ -84,6 +82,4 @@ if ($dni && $email && $password && $rol && $nombre && $apellido1 && $calle && $n
 } else {
     echo "Error: Todos los campos requeridos deben estar completos.";
 }
-
 ?>
-

@@ -27,7 +27,7 @@ if (isset($_POST['submit'])) {
             $_SESSION['user'] = $email; // Guardar sesión del usuario
             echo "Inicio de sesión exitoso. ¡Bienvenido, $email!";
             // Redirigir a un dashboard u otra página
-            // header("Location: dashboard.php");
+             header("Location: ../pages/main.php");
         } else {
             echo "Error: Contraseña incorrecta.";
         }
