@@ -1,6 +1,8 @@
 <?php
+
+if (isset($_GET['submit'])) {
 // URL base
-$url = 'http://localhost/Proyecto%20APIS/backend/?ruta=empleados';
+$url = 'http://localhost/perros/backend/?ruta=empleados';
 // Recibir datos del formulario
 $dni =$_GET['dni'] ?? '';
 $email =$_GET['email'] ?? '';
@@ -53,5 +55,7 @@ if (curl_errno($conexion)) {
 
 // Cerrar conexión
 curl_close($conexion);
+
+}
 
 ?>
