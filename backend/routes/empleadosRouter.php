@@ -19,6 +19,7 @@ function empleadoRouter($method)
             }
             break;
         case 'POST':
+            // $dni, $email, $password, $rol, $nombre, $apellido1, $apellido2, $calle, $numero, $cp, $poblacion, $provincia, $tlfno, $profesion
             $EmpleadosController->createEmpleado();
             break;
         case 'DELETE':

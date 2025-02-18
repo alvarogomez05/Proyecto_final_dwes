@@ -19,6 +19,7 @@ function servicioRouter($method)
             }
             break;
         case 'POST':
+            // $id,$nombre,$precio
             $ServiciosController->guardarServicio();
             break;
         case 'PUT':
