@@ -28,7 +28,7 @@
     <main class="flex flex-1 items-center justify-center p-6">
         <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-4xl"> <!-- Increased max-width -->
             <h2 class="text-3xl font-bold text-center text-sky-700 mb-6">Registro</h2>
-            <form method="POST" action="" class="space-y-4">
+            <form method="GET" action="" class="space-y-4">
                 <div class="grid grid-cols-2 gap-4">
                     <div>
                         <label class="block text-gray-700 font-medium">DNI</label>
