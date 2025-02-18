@@ -1,5 +1,5 @@
 <?php
-require_once '../database/models/serviciosModel.php';
+require_once 'database/models/serviciosModel.php';
 
 class ServiciosService
 {
@@ -12,9 +12,9 @@ class ServiciosService
     }
 
 
-    public function guardarServicio($id, $nombre, $precio)
+    public function guardarServicio($id, $nombre, $precio, $descripcion)
     {
-        return $this->serviciosModel->save($id, $nombre, $precio);
+        return $this->serviciosModel->save($id, $nombre, $precio, $descripcion);
     }
 
     public function obtenerServicioPorId($id)
@@ -31,5 +31,10 @@ class ServiciosService
     public function borrarServicio($id)
     {
         return $this->serviciosModel->borrar($id);
+    }
+
+    public function cambiarPrecioServicio($id , $nuevoPrecio)
+    {
+        return $this->serviciosModel->cambiarPrecioServicio($id, $nuevoPrecio);
     }
 }

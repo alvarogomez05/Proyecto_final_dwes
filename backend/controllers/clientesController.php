@@ -13,9 +13,10 @@ class ClientesController
     //Función para listar todo los clientes
     public function getClientes()
     {
-        // echo 'Estas haciendo una peticion para recuperar clientes en el controller';
-        // echo 'CONTROLADOR';
-        // print_r($this->userService->obtenerTodosLosClientes());
+
+
+    
+
         return   $this->userService->obtenerTodosLosClientes();
     }
     //Funcion para listar los clientes por DNI
@@ -25,13 +26,16 @@ class ClientesController
     }
 
     //Funcion para guardar el Cliente
-    public function guardarCliente($dni, $nombre, $apellido1, $apellido2, $direccion, $tlfno)
-    {
+
+    public function guardarCliente($dni, $nombre, $apellido1, $apellido2, $direccion, $tlfno){
         return $this->userService->guardarCliente($dni, $nombre, $apellido1, $apellido2, $direccion, $tlfno);
     }
     //Funcion para borrar los clientes por DNI
-    public function borrarCliente($dni)
-    {
+    public function borrarCliente($dni){
+
+    
+    
+
         return $this->userService->borrarCliente($dni);
     }
 }

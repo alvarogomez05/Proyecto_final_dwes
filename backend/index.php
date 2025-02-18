@@ -8,10 +8,10 @@ $conexion = $BD->getConexion();
 
 
 // indexRouter.php
-// require_once './routes/serviciosRouter.php';
-// require_once './routes/empleadosRouter.php';
+require_once './routes/serviciosRouter.php';
+require_once './routes/empleadosRouter.php';
 require_once './routes/clientesRouter.php';
-// require_once './routes/perrosRouter.php';
+require_once './routes/perrosRouter.php';
 
 
 //Para que nos devuelva los datos en formato json 
@@ -51,7 +51,7 @@ if (isset($_GET['ruta'])) {
 
 // Enrutador basado en los params que nos mandan en la peticion
 switch ($ruta) {
-    case 'servicio':
+    case 'servicios':
         servicioRouter($method);
         break;
     case 'empleados':
