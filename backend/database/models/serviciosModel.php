@@ -4,7 +4,6 @@ include_once 'Servicio.php';
 
 class ServiciosModel extends BD
 {
-
     private $table;
     private $conexion;
 
@@ -14,14 +13,16 @@ class ServiciosModel extends BD
         $this->conexion = $this->getConexion();
     }
 
-    public function save($id, $nombre, $precio)
+    // Método para guardar un nuevo servicio, ahora con el campo descripcion
+    public function save($codigo, $nombre, $precio, $descripcion)
     {
         try {
-            $sql = "INSERT INTO servicios (Codigo, Nombre, Precio) VALUES (?, ?, ?)";
+            $sql = "INSERT INTO servicios (Codigo, Nombre, Precio, Descripcion) VALUES (?, ?, ?, ?)";
             $sentencia = $this->conexion->prepare($sql);
-            $sentencia->bindParam(1, $id);
+            $sentencia->bindParam(1, $codigo);
             $sentencia->bindParam(2, $nombre);
             $sentencia->bindParam(3, $precio);
+            $sentencia->bindParam(4, $descripcion);  // Bind para descripcion
             $num = $sentencia->execute();
             return $num;
         } catch (PDOException $e) {
@@ -29,16 +30,18 @@ class ServiciosModel extends BD
         }
     }
 
-    public function getServicioById($id)
+    // Obtener un servicio por su ID, ahora con el campo descripcion
+    public function getServicioById($codigo)
     {
         try {
             $sql = "SELECT * FROM servicios WHERE Codigo=?";
             $sentencia = $this->conexion->prepare($sql);
-            $sentencia->bindParam(1, $id);
+            $sentencia->bindParam(1, $codigo);
             $sentencia->execute();
             $row = $sentencia->fetch();
             if ($row) {
-                $servicio = new Servicio($row['Codigo'], $row['Nombre'], $row['Precio']);
+                // Incluyendo descripcion al crear el objeto Servicio
+                $servicio = new Servicio($row['Codigo'], $row['Nombre'], $row['Precio'], $row['Descripcion']);
                 return $servicio;
             }
             return null;
@@ -47,6 +50,7 @@ class ServiciosModel extends BD
         }
     }
 
+    // Obtener todos los servicios, ahora incluyendo descripcion
     public function getAll()
     {
         if ($this->conexion) {
@@ -57,7 +61,8 @@ class ServiciosModel extends BD
                 $registros = $statement->fetchAll();
                 $statement = null;
                 foreach ($registros as $row) {
-                    array_push($servicios, new Servicio($row['Codigo'], $row['Nombre'], $row['Precio']));
+                    // Creación de objetos Servicio con descripcion
+                    array_push($servicios, new Servicio($row['Codigo'], $row['Nombre'], $row['Precio'], $row['Descripcion']));
                 }
                 return $servicios;
             } catch (PDOException $e) {
@@ -68,29 +73,31 @@ class ServiciosModel extends BD
         }
     }
 
-    public function borrar($id)
+    // Borrar un servicio por su código
+    public function borrar($codigo)
     {
         try {
             $sql = "DELETE FROM servicios WHERE Codigo=?";
             $sentencia = $this->conexion->prepare($sql);
-            $sentencia->bindParam(1, $id);
+            $sentencia->bindParam(1, $codigo);
             $num = $sentencia->execute();
             if ($sentencia->rowCount() == 1) {
-                return $id;
+                return $codigo;
             }
-            return "NO EXISTE EL ID A BORRAR: " . $id;
+            return "NO EXISTE EL ID A BORRAR: " . $codigo;
         } catch (PDOException $e) {
             return $e->getMessage();
         }
     }
 
-    public function cambiarPrecioServicio($id, $nuevoPrecio)
+    // Cambiar el precio de un servicio
+    public function cambiarPrecioServicio($codigo, $nuevoPrecio)
     {
         try {
             $sql = "UPDATE servicios SET Precio = ? WHERE Codigo = ?";
             $sentencia = $this->conexion->prepare($sql);
             $sentencia->bindParam(1, $nuevoPrecio);
-            $sentencia->bindParam(2, $id);
+            $sentencia->bindParam(2, $codigo);
             $sentencia->execute();
             if ($sentencia->rowCount() > 0) {
                 return "El precio del servicio se ha actualizado correctamente.";
@@ -102,3 +109,5 @@ class ServiciosModel extends BD
         }
     }
 }
+
+?>

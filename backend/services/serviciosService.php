@@ -12,9 +12,9 @@ class ServiciosService
     }
 
 
-    public function guardarServicio($id, $nombre, $precio)
+    public function guardarServicio($id, $nombre, $precio, $descripcion)
     {
-        return $this->serviciosModel->save($id, $nombre, $precio);
+        return $this->serviciosModel->save($id, $nombre, $precio, $descripcion);
     }
 
     public function obtenerServicioPorId($id)
