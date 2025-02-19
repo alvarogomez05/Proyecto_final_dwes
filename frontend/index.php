@@ -29,7 +29,7 @@
     <main class="flex flex-1 items-center justify-center">
         <div class="bg-white p-8 rounded-lg shadow-lg w-96">
             <h2 class="text-2xl font-bold text-center mb-6">Iniciar Sesión</h2>
-            <form method="POST">
+            <form method="POST" action="">
                 <div class="mb-4">
                     <label class="block text-gray-700">Correo Electrónico</label>
                     <input type="email" class="w-full p-2 border rounded" placeholder="email@email.com" name="email" />
@@ -62,6 +62,6 @@
 //USAR file_get_contents QUE NUESTRA API SI NOS DEJA
 require_once __DIR__ . '/controllers/loginController.php';
 
-?>
+// ?>
 
 </html>

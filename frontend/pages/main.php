@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Veterinaria</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="bg-sky-700 text-white h-screen flex flex-col">
     <header class="bg-sky-800 p-5 flex items-center justify-between">
         <div class="flex items-center space-x-4">
@@ -20,7 +22,7 @@
         <!-- Columna Insertar -->
         <div class="bg-white p-6 rounded-lg shadow-lg text-sky-800 text-center">
             <h2 class="text-2xl font-bold mb-4">Insertar</h2>
-            <a href="insertar-cliente.html" class="block bg-sky-700 text-white font-bold py-2 px-4 rounded mb-3 transition transform hover:bg-sky-600 hover:scale-105">Insertar Cliente</a>
+            <a href="./Clientes/insertarClienteView.php" class="block bg-sky-700 text-white font-bold py-2 px-4 rounded mb-3 transition transform hover:bg-sky-600 hover:scale-105">Insertar Cliente</a>
             <a href="insertar-perro.html" class="block bg-sky-700 text-white font-bold py-2 px-4 rounded mb-3 transition transform hover:bg-sky-600 hover:scale-105">Insertar Perro</a>
             <a href="insertar-empleado.html" class="block bg-sky-700 text-white font-bold py-2 px-4 rounded mb-3 transition transform hover:bg-sky-600 hover:scale-105">Insertar Empleado</a>
             <a href="./Servicios/PostServicios.php" class="block bg-sky-700 text-white font-bold py-2 px-4 rounded mb-3 transition transform hover:bg-sky-600 hover:scale-105">Insertar Servicio</a>
@@ -29,7 +31,7 @@
         <!-- Columna Borrar -->
         <div class="bg-white p-6 rounded-lg shadow-lg text-sky-800 text-center">
             <h2 class="text-2xl font-bold mb-4">Borrar</h2>
-            <a href="borrar-cliente.html" class="block bg-red-600 text-white font-bold py-2 px-4 rounded mb-3 transition transform hover:bg-red-500 hover:scale-105">Borrar Cliente</a>
+            <a href="./Clientes/borrarView.php" class="block bg-red-600 text-white font-bold py-2 px-4 rounded mb-3 transition transform hover:bg-red-500 hover:scale-105">Borrar Cliente</a>
             <a href="borrar-perro.html" class="block bg-red-600 text-white font-bold py-2 px-4 rounded mb-3 transition transform hover:bg-red-500 hover:scale-105">Borrar Perro</a>
             <a href="./Servicios/DeleteServicios.php" class="block bg-red-600 text-white font-bold py-2 px-4 rounded mb-3 transition transform hover:bg-red-500 hover:scale-105">Borrar Servicio</a>
         </div>
@@ -42,6 +44,5 @@
         </div>
     </main>
 </body>
+
 </html>
-
-

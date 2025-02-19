@@ -7,21 +7,21 @@ if (isset($_POST['submit'])) {
     foreach ($data as $user) {
         $users[$user['email']] = $user['password']; // Guardamos en formato [email => password]
     }
-    
+
     //Guardamos en la sesion el usuario que se ha metido
     session_start();
     $_SESSION['users'] = $users;
-    
-    
+
+
     //Comprobamos el usuario y contraseña
     // Recibir datos del formulario
     $email = $_POST['email'] ?? '';
     $password = $_POST['password'] ?? '';
-    
+
+    echo "COntraseña de ese usuario es: " . $password;
     // Validar si el usuario existe
     if (isset($users[$email])) {
         $storedPassword = $users[$email]; // Obtener la contraseña guardada
-    
         // Comparar contraseña (Si está en texto plano, usa ===. Si está hasheada, usa password_verify)
         if (password_verify($password, $storedPassword)) {
             $_SESSION['user'] = $email; // Guardar sesión del usuario
@@ -32,7 +32,6 @@ if (isset($_POST['submit'])) {
             echo "Error: Contraseña incorrecta.";
         }
     } else {
-        echo "Error: Usuario no encontrado."; 
+        echo "Error: Usuario no encontrado.";
     }
-    
 }
