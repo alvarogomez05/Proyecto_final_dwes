@@ -31,7 +31,7 @@
         <!-- Columna Borrar -->
         <div class="bg-white p-6 rounded-lg shadow-lg text-sky-800 text-center">
             <h2 class="text-2xl font-bold mb-4">Borrar</h2>
-            <a href="./Servicios/borrarClientes.php" class="block bg-red-600 text-white font-bold py-2 px-4 rounded mb-3 transition transform hover:bg-red-500 hover:scale-105">Borrar Cliente</a>
+            <a href="borrarView.php" class="block bg-red-600 text-white font-bold py-2 px-4 rounded mb-3 transition transform hover:bg-red-500 hover:scale-105">Borrar Cliente</a>
             <a href="borrar-perro.html" class="block bg-red-600 text-white font-bold py-2 px-4 rounded mb-3 transition transform hover:bg-red-500 hover:scale-105">Borrar Perro</a>
             <a href="borrar-servicio.html" class="block bg-red-600 text-white font-bold py-2 px-4 rounded mb-3 transition transform hover:bg-red-500 hover:scale-105">Borrar Servicio</a>
         </div>
