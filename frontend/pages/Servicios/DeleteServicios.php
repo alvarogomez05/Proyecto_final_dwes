@@ -52,7 +52,7 @@ if (isset($_GET['codigo'])) {
             </button>
         </form>
     </div>
-    <a href="<?php if(isset($_SERVER['HTTP_REFERER'])){echo $_SERVER['HTTP_REFERER'];}?>"
+    <a href="./../main.php"
         class=" fixed right-10 bottom-10 w-36 bg-yellow-500 hover:bg-yellow-700 text-center text-white font-bold py-2 px-4 rounded-lg">
         volver
     </a>
