@@ -1,6 +1,6 @@
 <?php
 
-require_once './../services/prsService.php';
+require_once 'services/prsService.php';
 
 class prsController{
     private $prsService;

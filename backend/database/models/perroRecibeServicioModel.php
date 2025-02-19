@@ -15,7 +15,7 @@ class PerroRecibeServicioModel extends BD{
     // Crear un nuevo registro
     public function save($srCod, $codServicio, $idPerro, $fecha, $incidencias, $precioFinal, $dni) {
         try {
-            $sql = "INSERT INTO PerroRecibeServicio (Sr_Cod, Cod_Servicio, ID_Perro, Fecha, Incidencias, Precio_Final, Dni) 
+            $sql = "INSERT INTO perro_recibe_servicio (Sr_Cod, Cod_Servicio, ID_Perro, Fecha, Incidencias, Precio_Final, Dni) 
                     VALUES (?, ?, ?, ?, ?, ?, ?)";
             $sentencia = $this->conexion->prepare($sql);
             $sentencia->bindParam(1, $srCod);
@@ -35,7 +35,7 @@ class PerroRecibeServicioModel extends BD{
     // Obtener los registros segun el dni del empleado
     public function getByDni($dni) {
         try {
-            $sql = "SELECT * FROM PerroRecibeServicio WHERE Dni = ?";
+            $sql = "SELECT * FROM perro_recibe_servicio WHERE Dni = ?";
             $sentencia = $this->conexion->prepare($sql);
             $sentencia->bindParam(1, $dni);
             $sentencia->execute();
@@ -48,7 +48,7 @@ class PerroRecibeServicioModel extends BD{
     // Obtener todos los registros para ver desde el admin
     public function getAll() {
         try {
-            $sql = "SELECT * FROM PerroRecibeServicio";
+            $sql = "SELECT * FROM perro_recibe_servicio";
             $sentencia = $this->conexion->prepare($sql);
             $sentencia->execute();
             return $sentencia->fetchAll(PDO::FETCH_OBJ);
@@ -60,7 +60,7 @@ class PerroRecibeServicioModel extends BD{
     // Eliminar un registro
     public function delete($srCod) {
         try {
-            $sql = "DELETE FROM PerroRecibeServicio WHERE Sr_Cod = ?";
+            $sql = "DELETE FROM perro_recibe_servicio WHERE Sr_Cod = ?";
             $sentencia = $this->conexion->prepare($sql);
             $sentencia->bindParam(1, $srCod);
             return $sentencia->execute();
