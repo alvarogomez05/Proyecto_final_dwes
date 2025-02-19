@@ -28,7 +28,7 @@
                 </thead>
                 <tbody class="divide-y divide-gray-200">
                     <?php
-                    $url = 'http://localhost/Proyecto%20APIS/backend/?ruta=clientes';
+                    $url = 'http://localhost/dwes/proyecto%20final/backend/?ruta=clientes';
                     $response = file_get_contents($url);
                     $data = json_decode($response, true);
                     if (!empty($data)) {
@@ -40,7 +40,7 @@
                             echo "<td class='py-4 px-6 border'>{$datos['apellido2']}</td>";
                             echo "<td class='py-4 px-6 border'>{$datos['direccion']}</td>";
                             echo "<td class='py-4 px-6 border'>{$datos['tlfno']}</td>";
-                            echo "<td><form class='py-4 px-6 border' action='./Servicios/borrarClientes.php'><button type='text' name='borrar' value='{$datos['dni']}'>Borrar</button></form></td> ";
+                            echo "<td><form class='py-4 px-6 border' action='./../../controllers/Clientes/borrarClientes.php'><button type='text' name='borrar' value='{$datos['dni']}'>Borrar</button></form></td> ";
                             echo "</tr>";
                         }
                     } else {
@@ -51,7 +51,10 @@
             </table>
         </div>
     </div>
-
+    <a href="./../main.php"
+        class=" fixed right-10 bottom-10 w-36 bg-yellow-500 hover:bg-yellow-700 text-center text-white font-bold py-2 px-4 rounded-lg">
+        volver
+    </a>
 </body>
 
 </html>

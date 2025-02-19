@@ -1,6 +1,6 @@
 <?php
 if (isset($_POST['submit'])) {
-    $url = 'http://localhost/Proyecto%20APIS/backend/?ruta=empleados';
+    $url = 'http://localhost/dwes/proyecto%20final/backend/?ruta=empleados';
     $response = file_get_contents($url);
     $data = json_decode($response, true);
     $users = [];

@@ -1,5 +1,5 @@
 <?php
-$url = "http://localhost/Proyecto%20APIS/backend/?ruta=clientes";
+$url = "http://localhost/dwes/proyecto%20final/backend/?ruta=clientes";
 // Recibir datos del formulario
 $dni = $_GET['dni'] ?? '';
 
@@ -7,7 +7,7 @@ $nombre = $_GET['nombre'] ?? '';
 $apellido1 = $_GET['apellido1'] ?? '';
 $apellido2 = $_GET['apellido2'] ?? '';
 $tlfno = $_GET['tlfno'] ?? '';
-$direccion= $_GET['tlfno'] ?? '';
+$direccion= $_GET['direccion'] ?? '';
 // Construir la URL con los parámetros
 $url .= '&dni=' . urlencode($dni);
 

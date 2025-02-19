@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 
 // URL de la API donde se registrarán los empleados
 $url = 'http://localhost/dwes/proyecto%20final/backend/?ruta=servicios';
@@ -94,6 +94,10 @@ if ($codigo && $nombre && $precio && $desc ) {
         <!-- feedback para el usuario -->
          <!-- <p class="text-xl mt-4 <?php if(isset($color)){ echo $color;} ?>"> <?php if(isset($feedback)){ echo $feedback;}?></p> -->
     </div>
+    <a href="./../main.php"
+        class=" fixed right-10 bottom-10 w-36 bg-yellow-500 hover:bg-yellow-700 text-center text-white font-bold py-2 px-4 rounded-lg">
+        volver
+    </a>
 </body>
 
 </html>
