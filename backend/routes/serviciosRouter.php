@@ -20,7 +20,7 @@ function servicioRouter($method)
             break;
         case 'POST':
             // $id,$nombre,$precio
-            $ServiciosController->guardarServicio();
+            $ServiciosController->guardarServicio($_GET['id'],$_GET['nombre'],$_GET['precio'],$_GET['desc']);
             break;
         case 'PUT':
             $ServiciosController->actualizarServicio($_GET['id'], $_GET['precio']);
