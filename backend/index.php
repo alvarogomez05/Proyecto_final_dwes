@@ -12,6 +12,7 @@ require_once './routes/serviciosRouter.php';
 require_once './routes/empleadosRouter.php';
 require_once './routes/clientesRouter.php';
 require_once './routes/perrosRouter.php';
+require_once './routes/prsRouter.php';
 
 
 //Para que nos devuelva los datos en formato json 
@@ -63,6 +64,9 @@ switch ($ruta) {
     case 'clientes':
         // echo 'Estas haciendo una peticion a clientes';
         clienteRouter($method);
+        break;
+    case 'prs':
+        prsRouter($method);
         break;
     default:
         echo '404 Not Found';

@@ -33,7 +33,7 @@ class PerroRecibeServicioModel extends BD{
     }
 
     // Obtener los registros segun el dni del empleado
-    public function getById($dni) {
+    public function getByDni($dni) {
         try {
             $sql = "SELECT * FROM PerroRecibeServicio WHERE Dni = ?";
             $sentencia = $this->conexion->prepare($sql);
