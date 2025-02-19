@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 $url = 'http://localhost/dwes/proyecto%20final/backend/?ruta=servicios';
 $response = file_get_contents($url);
@@ -49,6 +50,9 @@ $data = json_decode($response, true);
         </table>
     </div>
 </div>
-
+<a href="<?php if(isset($_SERVER['HTTP_REFERER'])){echo $_SERVER['HTTP_REFERER'];}?>"
+        class=" fixed right-10 bottom-10 w-36 bg-yellow-500 hover:bg-yellow-700 text-center text-white font-bold py-2 px-4 rounded-lg">
+        volver
+    </a>
 </body>
 </html>
