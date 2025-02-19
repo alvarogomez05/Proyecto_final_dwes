@@ -1,7 +1,7 @@
 <?php
 
 // URL de la API donde se registrarán los empleados
-$url = 'http://localhost/Proyecto%20APIS/backend/?ruta=empleados';
+$url = 'http://localhost/dwes/proyecto%20final/backend/?ruta=empleados';
 
 
 // Recibir datos del formulario
