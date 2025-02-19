@@ -69,7 +69,7 @@ if ($codigo && $nombre && $precio && $desc ) {
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-gray-100 flex items-center justify-center h-screen bg-cover bg-center" style="background-image: url('./../../assets/img/bg2.jpg');">
+<body class="bg-gray-100 bg-blend-overlay flex items-center justify-center h-screen bg-cover bg-center" style="background-image: url('./../../assets/img/bg2.jpg');">
     <div class="bg-white p-6 rounded-lg shadow-lg w-96">
         <h2 class="text-sky-700 text-xl font-bold mb-4">Crear Servicio</h2>
         <form action="" method="GET" class="space-y-4">
