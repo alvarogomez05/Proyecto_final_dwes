@@ -22,7 +22,7 @@
         <!-- Columna Insertar -->
         <div class="bg-white p-6 rounded-lg shadow-lg text-sky-800 text-center">
             <h2 class="text-2xl font-bold mb-4">Insertar</h2>
-            <a href="./Servicios/insertarClientes.php" class="block bg-sky-700 text-white font-bold py-2 px-4 rounded mb-3 transition transform hover:bg-sky-600 hover:scale-105">Insertar Cliente</a>
+            <a href="insertarClienteView.php" class="block bg-sky-700 text-white font-bold py-2 px-4 rounded mb-3 transition transform hover:bg-sky-600 hover:scale-105">Insertar Cliente</a>
             <a href="insertar-perro.html" class="block bg-sky-700 text-white font-bold py-2 px-4 rounded mb-3 transition transform hover:bg-sky-600 hover:scale-105">Insertar Perro</a>
             <a href="insertar-empleado.html" class="block bg-sky-700 text-white font-bold py-2 px-4 rounded mb-3 transition transform hover:bg-sky-600 hover:scale-105">Insertar Empleado</a>
             <a href="insertar-servicio.html" class="block bg-sky-700 text-white font-bold py-2 px-4 rounded mb-3 transition transform hover:bg-sky-600 hover:scale-105">Insertar Servicio</a>
