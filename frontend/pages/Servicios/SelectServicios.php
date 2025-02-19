@@ -15,7 +15,7 @@ $data = json_decode($response, true);
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-gray-100 p-10">
+<body class="bg-gray-100 p-10 bg-cover bg-center" style="background-image: url('./../../assets/img/bg2.jpg');">
 
 <div class="container mx-auto">
     <h1 class="text-3xl font-bold text-center text-sky-700 mb-6">Lista de Servicios</h1>

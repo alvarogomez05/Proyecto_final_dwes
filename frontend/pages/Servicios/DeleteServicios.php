@@ -35,7 +35,7 @@ $url = 'http://localhost/dwes/proyecto%20final/backend/?ruta=servicios&id=' . $_
     <title>Eliminar Servicio</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 flex justify-center items-center h-screen">
+<body class="bg-gray-100 flex justify-center items-center h-screen bg-cover bg-center" style="background-image: url('./../../assets/img/bg2.jpg');">
 
 <div class="bg-white p-8 rounded-lg shadow-md w-96">
     <h2 class="text-2xl font-bold text-center text-red-600 mb-4">Eliminar Servicio</h2>
