@@ -1,6 +1,6 @@
 <?php
 if (isset($_POST['submit'])) {
-    $url = 'http://localhost/perros/backend/?ruta=empleados';
+    $url = 'http://localhost/dwes/proyecto%20final/backend/?ruta=empleados';
     $response = file_get_contents($url);
     $data = json_decode($response, true);
     $users = [];
@@ -27,7 +27,7 @@ if (isset($_POST['submit'])) {
             $_SESSION['user'] = $email; // Guardar sesión del usuario
             echo "Inicio de sesión exitoso. ¡Bienvenido, $email!";
             // Redirigir a un dashboard u otra página
-            // header("Location: dashboard.php");
+            header("Location: ./pages/main.php");
         } else {
             echo "Error: Contraseña incorrecta.";
         }

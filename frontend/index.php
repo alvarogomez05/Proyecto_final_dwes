@@ -38,7 +38,7 @@
                     <label class="block text-gray-700">Contraseña</label>
                     <input type="password" class="w-full p-2 border rounded" placeholder="********" name="password" />
                 </div>
-                <button class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Entrar</button>
+                <button class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700" name="submit">Entrar</button>
                 <a href="./pages/register.php" class=" w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 mt-2">
                     Registrarse
 
