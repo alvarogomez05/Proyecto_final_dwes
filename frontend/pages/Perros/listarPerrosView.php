@@ -44,7 +44,7 @@
                                 echo "<td class='py-4 px-6 border'>{$datos['edad']}</td>";
                                 echo "<td class='py-4 px-6 border'>{$datos['dni_cliente']}</td>";
                                 echo "<td class='py-4 px-6 border'>
-                                        <form action='./deletePerrosView.php' method='POST'>
+                                        <form action='./../../controllers/Perros/deletePerrosController.php' method='POST'>
                                             <input type='hidden' name='id' value='{$datos['id']}'>
                                             <button type='submit' class='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'>
                                                 Borrar

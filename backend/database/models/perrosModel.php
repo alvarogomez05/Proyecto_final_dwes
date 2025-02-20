@@ -4,7 +4,6 @@ include_once 'Perro.php';
 
 class PerrosModel extends BD
 {
-
     private $table;
     private $conexion;
 
@@ -14,60 +13,57 @@ class PerrosModel extends BD
         $this->conexion = $this->getConexion();
     }
 
-    public function save($id, $nombre, $raza, $edad, $dni_duenio)
+    public function save($nombre, $raza, $fechaNto, $dni_duenio)
     {
         try {
-            $sql = "INSERT INTO perros (Id, Nombre, Raza, Fecha_Nto, Dni_Cliente) VALUES (?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO perros (Nombre, Raza, Fecha_Nto, Dni_Cliente) VALUES (?, ?, ?, ?)";
             $sentencia = $this->conexion->prepare($sql);
-            $sentencia->bindParam(1, $id);
-            $sentencia->bindParam(2, $nombre);
-            $sentencia->bindParam(3, $raza);
-            $sentencia->bindParam(4, $edad);
-            $sentencia->bindParam(5, $dni_duenio);
-            $num = $sentencia->execute();
-            return $num;
+            $sentencia->bindParam(1, $nombre);
+            $sentencia->bindParam(2, $raza);
+            $sentencia->bindParam(3, $fechaNto); // Cambiar a fecha de nacimiento
+            $sentencia->bindParam(4, $dni_duenio);
+            $sentencia->execute();
+            return $this->conexion->lastInsertId(); // Retorna el ID del nuevo registro
         } catch (PDOException $e) {
-            return $e->getMessage();
+            // Aquí podrías loguear el error en un archivo
+            return "Error al guardar el perro: " . $e->getMessage();
         }
     }
 
     public function getPerroById($id)
     {
         try {
-            $sql = "SELECT * FROM perros WHERE ID_perro=?";
+            $sql = "SELECT * FROM perros WHERE Id=? LIMIT 1"; // Agregando LIMIT 1
             $sentencia = $this->conexion->prepare($sql);
             $sentencia->bindParam(1, $id);
             $sentencia->execute();
             $row = $sentencia->fetch();
             if ($row) {
-                $perro = new Perro($row['Id'], $row['Nombre'], $row['Raza'], $row['Fecha_Nto'], $row['Dni_Cliente']);
-                return $perro;
+                return new Perro($row['Id'], $row['Nombre'], $row['Raza'], $row['Fecha_Nto'], $row['Dni_Cliente']);
             }
-            return null;
+            return null; // Si no hay resultado
         } catch (PDOException $e) {
-            return "ERROR AL CARGAR .<br>" . $e->getMessage();
+            return "Error al cargar el perro: " . $e->getMessage();
         }
     }
 
     public function getAll()
     {
         if ($this->conexion) {
-            $perros = array();
             try {
                 $sql = "SELECT * FROM perros";
                 $statement = $this->conexion->query($sql);
-                $registros = $statement->fetchAll();
-                $statement = null;
+                $registros = $statement->fetchAll(PDO::FETCH_ASSOC);
+                $perros = [];
                 foreach ($registros as $row) {
-                    array_push($perros, new Perro($row['Id'], $row['Nombre'], $row['Raza'], $row['Fecha_Nto'], $row['Dni_Cliente']));
+                    $perros[] = new Perro($row['Id'], $row['Nombre'], $row['Raza'], $row['Fecha_Nto'], $row['Dni_Cliente']);
                 }
-                return $perros;
+                return $perros; // Retorna un array vacío si no hay registros
             } catch (PDOException $e) {
-                return $e->getMessage();
+                return "Error al obtener los perros: " . $e->getMessage();
             }
-        } else {
-            return $this->getMensajeError();
         }
+        return []; // Retorna un array vacío si la conexión falla
     }
 
     public function borrar($id)
@@ -76,13 +72,15 @@ class PerrosModel extends BD
             $sql = "DELETE FROM perros WHERE Id=?";
             $sentencia = $this->conexion->prepare($sql);
             $sentencia->bindParam(1, $id);
-            $num = $sentencia->execute();
-            if ($sentencia->rowCount() == 1) {
-                return $id;
+            $sentencia->execute();
+            if ($sentencia->rowCount() === 1) {
+                return $id; // Retorna el ID del perro borrado
             }
-            return "NO EXISTE EL ID A BORRAR: " . $id;
+            return "No existe el ID a borrar: " . $id;
         } catch (PDOException $e) {
-            return $e->getMessage();
+            return "Error al borrar el perro: " . $e->getMessage();
         }
     }
 }
+?>
+
