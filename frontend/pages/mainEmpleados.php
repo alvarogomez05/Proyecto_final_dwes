@@ -35,7 +35,7 @@
         </div>
     </header>
     <main class="flex-1 p-10 flex justify-center items-center">
-        <div class="grid grid-cols-5 gap-8 w-full max-w-6xl">
+        <div class="grid grid-cols-4 gap-8 w-full max-w-6xl">
             <!-- Botón Servicios -->
             <a href="./Servicios/SelectServicios.php" class="flex flex-col items-center box">
                 <img src="../assets/img/main7.png" alt="Servicios" class="w-48 h-48 object-cover rounded-lg shadow-md">
@@ -56,11 +56,7 @@
                 <img src="../assets/img/mainsv.jpg" alt="Servicios Realizados" class="w-48 h-48 object-cover rounded-lg shadow-md">
                 <h2 class="text-xl font-bold mt-3 text-center">Servicios Realizados</h2>
             </a>
-            <!-- Botón Empleados -->
-            <a href="./Empleados/ListarEmpleados.php" class="flex flex-col items-center box">
-                <img src="../assets/img/main3.jpg" alt="Empleados" class="w-48 h-48 object-cover rounded-lg shadow-md">
-                <h2 class="text-xl font-bold mt-3">Empleados</h2>
-            </a>
+            
         </div>
     </main>
 
