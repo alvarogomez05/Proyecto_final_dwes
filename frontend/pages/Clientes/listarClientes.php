@@ -2,6 +2,7 @@
 $url = 'http://localhost/Proyecto%20APIS/backend/?ruta=clientes';
 $response = file_get_contents($url);
 $data = json_decode($response, true);
+
 ?>
 
 <!DOCTYPE html>
