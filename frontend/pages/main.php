@@ -42,7 +42,7 @@
                 <h2 class="text-xl font-bold mt-3">Servicios</h2>
             </a>
             <!-- Botón Clientes -->
-            <a href="listar-clientes-perros.html" class="flex flex-col items-center box">
+            <a href="./Clientes/listarClientes.php" class="flex flex-col items-center box">
                 <img src="../assets/img/main2.jpg" alt="Clientes" class="w-48 h-48 object-cover rounded-lg shadow-md">
                 <h2 class="text-xl font-bold mt-3">Clientes</h2>
             </a>
