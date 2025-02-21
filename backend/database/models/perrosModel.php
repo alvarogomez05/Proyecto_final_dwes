@@ -13,22 +13,28 @@ class PerrosModel extends BD
         $this->conexion = $this->getConexion();
     }
 
-    public function save($nombre, $raza, $fechaNto, $dni_duenio)
+    public function save($Dni_Cliente, $Nombre, $Fecha_Nto, $Raza, $Peso, $Altura, $Observaciones, $Numero_Chip, $Sexo)
     {
         try {
-            $sql = "INSERT INTO perros (Nombre, Raza, Fecha_Nto, Dni_Cliente) VALUES (?, ?, ?, ?)";
+            $sql = "INSERT INTO perros (Dni_Cliente, Nombre, Fecha_Nto, Raza, Peso, Altura, Observaciones, Numero_Chip, Sexo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $sentencia = $this->conexion->prepare($sql);
-            $sentencia->bindParam(1, $nombre);
-            $sentencia->bindParam(2, $raza);
-            $sentencia->bindParam(3, $fechaNto); // Cambiar a fecha de nacimiento
-            $sentencia->bindParam(4, $dni_duenio);
+            $sentencia->bindParam(1, $Dni_Cliente);
+            $sentencia->bindParam(2, $Nombre);
+            $sentencia->bindParam(3, $Fecha_Nto); 
+            $sentencia->bindParam(4, $Raza);
+            $sentencia->bindParam(5, $Peso);
+            $sentencia->bindParam(6, $Altura);
+            $sentencia->bindParam(7, $Observaciones);
+            $sentencia->bindParam(8, $Numero_Chip);
+            $sentencia->bindParam(9, $Sexo);
             $sentencia->execute();
-            return $this->conexion->lastInsertId(); // Retorna el ID del nuevo registro
+            return $this->conexion->lastInsertId();
+            
         } catch (PDOException $e) {
-            // Aquí podrías loguear el error en un archivo
             return "Error al guardar el perro: " . $e->getMessage();
         }
     }
+    
 
     public function getPerroById($id)
     {
@@ -39,9 +45,18 @@ class PerrosModel extends BD
             $sentencia->execute();
             $row = $sentencia->fetch();
             if ($row) {
-                return new Perro($row['Id'], $row['Nombre'], $row['Raza'], $row['Fecha_Nto'], $row['Dni_Cliente']);
+                return new Perro($row['Id'], 
+                $row['Dni_Cliente'], 
+                $row['Nombre'], 
+                $row['Fecha_Nto'], 
+                $row['Raza'], 
+                $row['Peso'],
+                $row['Altura'], 
+                $row['Observaciones'], 
+                $row['Numero_Chip'], 
+                $row['Sexo']);
             }
-            return null; // Si no hay resultado
+            return null; 
         } catch (PDOException $e) {
             return "Error al cargar el perro: " . $e->getMessage();
         }
@@ -56,7 +71,16 @@ class PerrosModel extends BD
                 $registros = $statement->fetchAll(PDO::FETCH_ASSOC);
                 $perros = [];
                 foreach ($registros as $row) {
-                    $perros[] = new Perro($row['Id'], $row['Nombre'], $row['Raza'], $row['Fecha_Nto'], $row['Dni_Cliente']);
+                    $perros[] = new Perro($row['Id'], 
+                    $row['Dni_Cliente'], 
+                    $row['Nombre'], 
+                    $row['Fecha_Nto'], 
+                    $row['Raza'], 
+                    $row['Peso'], 
+                    $row['Altura'], 
+                    $row['Observaciones'], 
+                    $row['Numero_Chip'], 
+                    $row['Sexo']);
                 }
                 return $perros; // Retorna un array vacío si no hay registros
             } catch (PDOException $e) {

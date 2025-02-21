@@ -42,11 +42,7 @@
                 <h2 class="text-xl font-bold mt-3">Servicios</h2>
             </a>
             <!-- Botón Clientes -->
-<<<<<<< HEAD
-            <a href="./Clientes/borrarView.php" class="flex flex-col items-center box">
-=======
             <a href="./Clientes/listarClientes.php" class="flex flex-col items-center box">
->>>>>>> 451593d44a626b6f808170fe7505bb901e2486e5
                 <img src="../assets/img/main2.jpg" alt="Clientes" class="w-48 h-48 object-cover rounded-lg shadow-md">
                 <h2 class="text-xl font-bold mt-3">Clientes</h2>
             </a>

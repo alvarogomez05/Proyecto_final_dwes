@@ -36,7 +36,7 @@
                 </div>
             <?php endif; ?>
 
-            <form method="POST" action="./../../controllers/Perros/insertarPerroController.php" class="space-y-4">
+            <form method="GET" action="./../../controllers/Perros/insertarPerroController.php" class="space-y-4">
                 <div class="grid grid-cols-2 gap-4">
                     <div>
                         <label class="block text-gray-700 font-medium">DNI Cliente</label>

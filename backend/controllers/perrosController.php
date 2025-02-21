@@ -22,7 +22,7 @@ class PerrosController{
          return $this->perroService->borrarPerro($id);
     }
 
-    public function guardarPerro( $nombre, $raza, $edad, $dni_cliente){
-         return $this->perroService->guardarPerro( $nombre, $raza, $edad, $dni_cliente);
+    public function guardarPerro( $nombre, $raza, $fechaNto, $dni_cliente, $peso, $altura, $observaciones, $numero_chip, $sexo){
+         return $this->perroService->guardarPerro($nombre, $raza, $fechaNto, $dni_cliente, $peso, $altura, $observaciones, $numero_chip, $sexo);
     }
 }

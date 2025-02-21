@@ -2,15 +2,15 @@
 $url = "http://localhost/perros/backend/?ruta=perros";
 
 // Recibir datos del formulario
-$dni_cliente = $_POST['dni_cliente'] ?? '';
-$nombre = $_POST['nombre'] ?? '';
-$fecha_nto = $_POST['fecha_nto'] ?? '';
-$raza = $_POST['raza'] ?? '';
-$peso = $_POST['peso'] ?? '';
-$altura = $_POST['altura'] ?? '';
-$observaciones = $_POST['observaciones'] ?? '';
-$numero_chip = $_POST['numero_chip'] ?? '';
-$sexo = $_POST['sexo'] ?? '';
+$dni_cliente = $_GET['dni_cliente'] ?? '';
+$nombre = $_GET['nombre'] ?? '';
+$fecha_nto = $_GET['fecha_nto'] ?? '';
+$raza = $_GET['raza'] ?? '';
+$peso = $_GET['peso'] ?? '';
+$altura = $_GET['altura'] ?? '';
+$observaciones = $_GET['observaciones'] ?? '';
+$numero_chip = $_GET['numero_chip'] ?? '';
+$sexo = $_GET['sexo'] ?? '';
 
 // Construir la URL con los parámetros
 $url .= '&dni_cliente=' . urlencode($dni_cliente);
