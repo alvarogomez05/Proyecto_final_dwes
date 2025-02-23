@@ -27,7 +27,7 @@ class prsController
         return $this->prsService->delete($srCod);
     }
 
-    public function save($srCod, $codServicio, $idPerro, $fecha, $incidencias, $dni)
+    public function save($codServicio, $idPerro, $fecha, $incidencias, $dni)
     {
 
         // variable
@@ -70,6 +70,17 @@ class prsController
                 $valida2 = true;
             }
         }
+
+        // establecemos el proximo codigo
+
+        $url = 'http://localhost/dwes/proyecto%20final/backend/?ruta=prs';
+        $response = file_get_contents($url);
+        $data = json_decode($response, true);
+
+        $datos = $data[array_key_last($data)];
+        $srCod = $datos['Sr_Cod'] + 1;
+
+
 
         if($valida == true && $valida1 == true && $valida2 == true){
             return $this->prsService->save($srCod, $codServicio, $idPerro, $fecha, $incidencias, $precioFinal, $dni);
