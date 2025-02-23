@@ -27,7 +27,7 @@ class prsController
         return $this->prsService->delete($srCod);
     }
 
-    public function save($srCod, $codServicio, $idPerro, $fecha, $incidencias, $precioFinal, $dni)
+    public function save($srCod, $codServicio, $idPerro, $fecha, $incidencias, $dni)
     {
 
         // variable
@@ -42,6 +42,7 @@ class prsController
 
         foreach( $data as $servicios){
             if($servicios['codigo'] == $codServicio){
+                $precioFinal = $servicios['precio'];
                 $valida = true;
             }
         }

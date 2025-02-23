@@ -20,7 +20,7 @@ function prsRouter($method)
             break;
         case 'POST':
             // $id, $nombre, $raza, $edad, $dni_cliente
-            $PrsController->save($_GET['srCod'], $_GET['codServicio'], $_GET['idPerro'], $_GET['fecha'], $_GET['incidencias'], $_GET['precioFinal'], $_GET['dni']);
+            $PrsController->save($_GET['srCod'], $_GET['codServicio'], $_GET['idPerro'], $_GET['fecha'], $_GET['incidencias'], $_GET['dni']);
             break;
         case 'DELETE':
             $PrsController->delete($_GET['srCod']);
