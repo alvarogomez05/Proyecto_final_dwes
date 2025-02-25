@@ -8,7 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-gray-100 p-10 bg-cover bg-center bg-blend-overlay" style="background-image: url('./../../assets/img/bg2.jpg');">
+<body class="bg-gray-100 p-10 bg-cover bg-center bg-blend-overlay">
 
     <div class="container mx-auto">
         <h1 class="text-3xl font-bold text-center text-sky-700 mb-6">Listar Perros</h1>
@@ -71,6 +71,10 @@
         </tbody>
     </table>
 </div>
+
+<a href="./insertarPerrosView.php" class="fixed left-10 bottom-10 w-36 bg-purple-500 hover:bg-purple-600 text-center text-white font-bold py-2 px-4 rounded-lg shadow-md transition">
+        Insertar Perro
+    </a>
 
 
     <a href="./../main.php" class="fixed right-10 bottom-10 w-36 bg-yellow-500 hover:bg-yellow-700 text-center text-white font-bold py-2 px-4 rounded-lg">

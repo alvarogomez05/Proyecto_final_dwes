@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id'])) {
     // Validar respuesta
     if ($httpCode == 200) {
         //poner ifs de roles
-        echo "<script>alert('Perro eliminado correctamente.'); window.location.href='../../main.php';</script>";
+        echo "<script>alert('Perro eliminado correctamente.'); window.location.href='./../../pages/Perros/listarPerrosView.php';</script>";
     } else {
         echo "<script>alert('Error al eliminar el perro.');</script>";
     }

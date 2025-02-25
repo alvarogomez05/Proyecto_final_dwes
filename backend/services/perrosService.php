@@ -14,9 +14,11 @@ class PerrosService
     public function guardarPerro($perrosCod,$nombre, $raza, $fechaNto, $dni_cliente, $peso, $altura, $observaciones, $numero_chip, $sexo)
     {
     // Validación: Verificar que ningún campo esté vacío
-    if (empty($nombre) || empty($raza) || empty($fechaNto) || empty($dni_cliente) || empty($peso) || empty($altura) || empty($observaciones) || empty($numero_chip) || empty($sexo)) {
-        return "Error: Todos los campos son obligatorios.";
-    }
+    // if (empty($nombre) || empty($raza) || empty($fechaNto) || empty($dni_cliente) || empty($peso) || empty($altura) || empty($observaciones) || empty($numero_chip) || empty($sexo)) {
+    //     return "Error: Todos los campos son obligatorios.";
+    // }
+
+    // echo 'yrdduftdffydufftyy';
 
     return $this->perrosModel->save($perrosCod,$nombre, $raza, $fechaNto, $dni_cliente, $peso, $altura, $observaciones, $numero_chip, $sexo);
     }

@@ -36,15 +36,17 @@ function perroRouter($method)
                     $_GET['numero_chip'],
                     $_GET['sexo'] );
                 
-                echo json_encode(["message" => $_GET['nombre'],
-                $_GET['raza'],
-                $_GET['fechaNto'],
-                $_GET['dni_cliente'],
-                $_GET['peso'],
-                $_GET['altura'],
-                $_GET['observaciones'],
-                $_GET['numero_chip'],
-                $_GET['sexo']  ]);
+                    // echo json_encode([
+                    //     "nombre" => $_GET['nombre'],
+                    //     "raza" => $_GET['raza'],
+                    //     "fechaNto" => $_GET['fechaNto'],
+                    //     "dni_cliente" => $_GET['dni_cliente'],
+                    //     "peso" => $_GET['peso'],
+                    //     "altura" => $_GET['altura'],
+                    //     "observaciones" => $_GET['observaciones'],
+                    //     "numero_chip" => $_GET['numero_chip'],
+                    //     "sexo" => $_GET['sexo']
+                    // ]);
             } else {
                 echo json_encode(["error" => "Faltan datos obligatorios"]);
             }
