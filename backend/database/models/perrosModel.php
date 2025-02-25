@@ -17,7 +17,7 @@ class PerrosModel extends BD
     public function save($id, $nombre, $raza, $edad, $dni_duenio)
     {
         try {
-            $sql = "INSERT INTO perros (ID_Perro, Nombre, Raza, Fecha_Nto, Dni_duenio) VALUES (?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO perros (Id, Nombre, Raza, Fecha_Nto, Dni_Cliente) VALUES (?, ?, ?, ?, ?)";
             $sentencia = $this->conexion->prepare($sql);
             $sentencia->bindParam(1, $id);
             $sentencia->bindParam(2, $nombre);
@@ -40,7 +40,7 @@ class PerrosModel extends BD
             $sentencia->execute();
             $row = $sentencia->fetch();
             if ($row) {
-                $perro = new Perro($row['ID_Perro'], $row['Nombre'], $row['Raza'], $row['Fecha_Nto'], $row['Dni_duenio']);
+                $perro = new Perro($row['Id'], $row['Nombre'], $row['Raza'], $row['Fecha_Nto'], $row['Dni_Cliente']);
                 return $perro;
             }
             return null;
@@ -59,7 +59,7 @@ class PerrosModel extends BD
                 $registros = $statement->fetchAll();
                 $statement = null;
                 foreach ($registros as $row) {
-                    array_push($perros, new Perro($row['ID_Perro'], $row['Nombre'], $row['Raza'], $row['Fecha_Nto'], $row['Dni_duenio']));
+                    array_push($perros, new Perro($row['Id'], $row['Nombre'], $row['Raza'], $row['Fecha_Nto'], $row['Dni_Cliente']));
                 }
                 return $perros;
             } catch (PDOException $e) {
@@ -73,7 +73,7 @@ class PerrosModel extends BD
     public function borrar($id)
     {
         try {
-            $sql = "DELETE FROM perros WHERE ID_Perro=?";
+            $sql = "DELETE FROM perros WHERE Id=?";
             $sentencia = $this->conexion->prepare($sql);
             $sentencia->bindParam(1, $id);
             $num = $sentencia->execute();

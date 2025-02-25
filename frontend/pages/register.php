@@ -49,7 +49,7 @@
                         <select class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" name="rol" required>
                             <option value="AUXILIAR">AUXILIAR</option>
                             <option value="EMPLEADO">EMPLEADO</option>
-                            <option value="ADMINISTRADOR">ADMINISTRADOR</option>
+                            <option value="ADMIN">ADMIN</option>
                         </select>
                     </div>
                     <div>

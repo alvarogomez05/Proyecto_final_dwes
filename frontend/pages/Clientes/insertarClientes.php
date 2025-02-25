@@ -1,55 +1,37 @@
 <?php
-// URL de la API donde se registrarán los empleados
-$url = 'http://localhost/Proyecto%20APIS/backend/?ruta=empleados';
+$url = "http://localhost/Proyecto%20APIS/backend/?ruta=clientes";
 // Recibir datos del formulario
 $dni = $_GET['dni'] ?? '';
-$email = $_GET['email'] ?? '';
-$password = password_hash($_GET['password'] ?? '', PASSWORD_DEFAULT);
-$rol = $_GET['rol'] ?? '';
+
 $nombre = $_GET['nombre'] ?? '';
 $apellido1 = $_GET['apellido1'] ?? '';
 $apellido2 = $_GET['apellido2'] ?? '';
-$calle = $_GET['calle'] ?? '';
-$numero = $_GET['numero'] ?? '';
-$cp = $_GET['cp'] ?? '';
-$poblacion = $_GET['poblacion'] ?? '';
-$provincia = $_GET['provincia'] ?? '';
 $tlfno = $_GET['tlfno'] ?? '';
-$profesion = $_GET['profesion'] ?? '';
+$direccion = $_GET['tlfno'] ?? '';
 // Construir la URL con los parámetros
 $url .= '&dni=' . urlencode($dni);
-$url .= '&email=' . urlencode($email);
-$url .= '&password=' . urlencode($password);
-$url .= '&rol=' . urlencode($rol);
+
+
 $url .= '&nombre=' . urlencode($nombre);
 $url .= '&apellido1=' . urlencode($apellido1);
 $url .= '&apellido2=' . urlencode($apellido2);
-$url .= '&calle=' . urlencode($calle);
-$url .= '&numero=' . urlencode($numero);
-$url .= '&cp=' . urlencode($cp);
-$url .= '&poblacion=' . urlencode($poblacion);
-$url .= '&provincia=' . urlencode($provincia);
+$url .= '&direccion=' . urlencode($direccion);
 $url .= '&tlfno=' . urlencode($tlfno);
-$url .= '&profesion=' . urlencode($profesion);
 
 // Validar que todos los campos requeridos estén completos
-if ($dni && $email && $password && $rol && $nombre && $apellido1 && $calle && $numero && $cp && $poblacion && $provincia && $tlfno) {
+if ($dni  && $nombre && $apellido1 && $apellido2   && $tlfno) {
     // Datos del nuevo empleado
     $newUser = [
         'dni' => $dni,
-        'email' => $email,
-        'password' => password_hash($password, PASSWORD_DEFAULT),
-        'rol' => $rol,
+
+
+
         'nombre' => $nombre,
         'apellido1' => $apellido1,
         'apellido2' => $apellido2,
-        'calle' => $calle,
-        'numero' => $numero,
-        'cp' => $cp,
-        'poblacion' => $poblacion,
-        'provincia' => $provincia,
+
         'tlfno' => $tlfno,
-        'profesion' => $profesion,
+
     ];
 
     // Convertir los datos a JSON
