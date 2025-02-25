@@ -16,6 +16,7 @@ $poblacion = $_GET['poblacion'] ?? '';
 $provincia = $_GET['provincia'] ?? '';
 $tlfno = $_GET['tlfno'] ?? '';
 $profesion = $_GET['profesion'] ?? '';
+
 // Construir la URL con los parámetros
 $url .= '&dni=' . urlencode($dni);
 $url .= '&email=' . urlencode($email);

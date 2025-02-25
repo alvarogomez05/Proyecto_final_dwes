@@ -46,13 +46,13 @@
                         echo "<td class='py-4 px-6 border'>{$datos['id']}</td>";
                         echo "<td class='py-4 px-6 border'>{$datos['Nombre']}</td>";
                         echo "<td class='py-4 px-6 border'>{$datos['Raza']}</td>";
-                        echo "<td class='py-4 px-6 border'>{$datos['Fecha_Nto']}</td>"; // Cambié 'edad' por 'fecha_nto'
+                        echo "<td class='py-4 px-6 border'>{$datos['Fecha_Nto']}</td>"; 
                         echo "<td class='py-4 px-6 border'>{$datos['Dni_Cliente']}</td>";
-                        echo "<td class='py-4 px-6 border'>{$datos['Peso']}</td>"; // Campo Peso
-                        echo "<td class='py-4 px-6 border'>{$datos['Altura']}</td>"; // Campo Altura
-                        echo "<td class='py-4 px-6 border'>{$datos['Observaciones']}</td>"; // Campo Observaciones
-                        echo "<td class='py-4 px-6 border'>{$datos['Numero_Chip']}</td>"; // Campo Número de Chip
-                        echo "<td class='py-4 px-6 border'>{$datos['Sexo']}</td>"; // Campo Sexo
+                        echo "<td class='py-4 px-6 border'>{$datos['Peso']}</td>"; 
+                        echo "<td class='py-4 px-6 border'>{$datos['Altura']}</td>"; 
+                        echo "<td class='py-4 px-6 border'>{$datos['Observaciones']}</td>"; 
+                        echo "<td class='py-4 px-6 border'>{$datos['Numero_Chip']}</td>"; 
+                        echo "<td class='py-4 px-6 border'>{$datos['Sexo']}</td>"; 
                         echo "<td class='py-4 px-6 border'>
                                 <form action='./../../controllers/Perros/deletePerrosController.php' method='POST'>
                                     <input type='hidden' name='id' value='{$datos['id']}'>
