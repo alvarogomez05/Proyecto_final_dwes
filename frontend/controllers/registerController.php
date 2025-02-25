@@ -1,4 +1,7 @@
 <?php
+
+if (isset($_POST['submit'])) {
+   
 // URL de la API donde se registrarán los empleados
 $url = 'http://localhost/Proyecto%20APIS/backend/?ruta=empleados';
 // Recibir datos del formulario
@@ -75,10 +78,13 @@ if ($dni && $email && $password && $rol && $nombre && $apellido1 && $calle && $n
         echo "Error en la petición: " . curl_error($conexion);
     } else {
         echo "Registro exitoso. ¡Bienvenido, $nombre!";
+        header('Location: index.php');
     }
 
     // Cerrar conexión cURL
     curl_close($conexion);
 } else {
     echo "Error: Todos los campos requeridos deben estar completos.";
+}
+ 
 }

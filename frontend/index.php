@@ -13,10 +13,9 @@
     <!-- Header -->
     <header class="bg-sky-700 text-white p-4 shadow-md">
         <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-bold  ">PetVet</h1>
-
+            <h1 class="text-2xl font-bold">PetVet</h1>
             <nav>
-                <ul class="flex space-x-4">
+                <ul class="flex space-x-6 text-lg">
                     <li><a href="#" class="hover:underline">Inicio</a></li>
                     <li><a href="#" class="hover:underline">Servicios</a></li>
                     <li><a href="#" class="hover:underline">Contacto</a></li>
@@ -27,26 +26,32 @@
 
     <!-- Main Content -->
     <main class="flex flex-1 items-center justify-center">
-        <div class="bg-white p-8 rounded-lg shadow-lg w-96">
-            <h2 class="text-2xl font-bold text-center mb-6">Iniciar Sesión</h2>
+        <div class="bg-white p-10 rounded-xl shadow-lg w-96">
+            <h2 class="text-3xl font-bold text-center mb-6 text-gray-700">Iniciar Sesión</h2>
             <form method="POST" action="">
-                <div class="mb-4">
-                    <label class="block text-gray-700">Correo Electrónico</label>
-                    <input type="email" class="w-full p-2 border rounded" placeholder="email@email.com" name="email" />
+                <div class="mb-5">
+                    <label class="block text-gray-700 font-semibold mb-2">Correo Electrónico</label>
+                    <input type="email" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none" placeholder="email@email.com" name="email" required />
                 </div>
-                <div class="mb-4">
-                    <label class="block text-gray-700">Contraseña</label>
-                    <input type="password" class="w-full p-2 border rounded" placeholder="********" name="password" />
+                <div class="mb-5">
+                    <label class="block text-gray-700 font-semibold mb-2">Contraseña</label>
+                    <input type="password" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none" placeholder="********" name="password" required />
                 </div>
-                <button class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700" name="submit">Entrar</button>
-                <a href="./pages/register.php" class=" w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 mt-2">
-                    Registrarse
-
-                </a>
-
+                <button class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-300" name="submit">Entrar</button>
+                <div class="text-center mt-4">
+                    <a href="#" class="text-blue-600 hover:underline text-sm">¿Olvidaste tu contraseña?</a>
+                </div>
+                <div class="mt-4 text-center">
+                    <p class="text-gray-600">¿No tienes una cuenta? <a href="./pages/register.php" class="text-blue-600 font-semibold hover:underline">Regístrate</a></p>
+                </div>
             </form>
         </div>
     </main>
+
+   
+
+</html>
+
 
     <!-- Footer -->
     <footer class=" bg-sky-700 text-white text-center p-4 mt-4">
