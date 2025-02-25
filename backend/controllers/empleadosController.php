@@ -33,8 +33,8 @@ class EmpleadosController {
     }
 
     // Método para borrar un empleado
-    public function borrarEmpleado($id)
+    public function deleteEmpleado($id)
     {
-        return $this->empleadoService->borrarEmpleado($id);
+        return $this->empleadoService->deleteEmpleado($id);
     }
 }
