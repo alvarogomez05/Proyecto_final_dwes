@@ -44,7 +44,7 @@ $data = json_decode($response, true);
                     //Recojo el rol
                     $rol = $_SESSION['rol'];
                     if ($rol === 'ADMIN') {
-                        echo $rol;
+                     
                         foreach ($data as $fila) {
                             echo "<tr class='odd:bg-gray-100 even:bg-white hover:bg-sky-100'>";
                             echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["Sr_Cod"]) . "</td>";
@@ -56,8 +56,34 @@ $data = json_decode($response, true);
                             echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["Dni"]) . "</td>";
                             echo "</tr>";
                         }
+        
+
+                        echo "
+                                <div class='flex justify-left gap-8 mt-8'>
+       
+        <a href='./insert.php' class='w-36 bg-blue-500 hover:bg-blue-700 text-center text-white font-bold py-2 px-4 rounded-lg'>
+            Insertar un servicio
+        </a>";
+                echo "  </div>";
+     
+
+        $_SESSION['rol'] = 'ADMIN';
+
+        if (isset($_SESSION['rol'])) {
+            if ($_SESSION['rol'] === 'ADMIN') {
+                echo "<a href='./delete.php' class='w-36 bg-red-500 hover:bg-red-700 text-center text-white font-bold py-2 px-4 rounded-lg'>Borrar un servicio</a>";
+            }
+        }
+
+    
+
+    echo "  </div>";
+       
+
+  
+                        
                     } else {
-                        echo $rol;
+                    
                         foreach ($data as $fila) {
                             //Filtro del DNI donde mostramos los servicios realizados solo de quien coincide con el DNI de quien se ha logueado
                             if ($fila['Dni'] === $dni) {
