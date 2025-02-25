@@ -64,7 +64,7 @@
                 <h2 class="text-xl font-bold mt-3 text-center">Servicios Realizados</h2>
             </a>
             <!-- Botón Empleados -->
-            <a href="./Empleados/ListarEmpleados.php" class="flex flex-col items-center box">
+            <a href="./Empleados/viewListarEmpleado.php" class="flex flex-col items-center box">
                 <img src="../assets/img/main3.jpg" alt="Empleados" class="w-48 h-48 object-cover rounded-lg shadow-md">
                 <h2 class="text-xl font-bold mt-3">Empleados</h2>
             </a>

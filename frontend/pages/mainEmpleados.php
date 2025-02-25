@@ -14,10 +14,12 @@
             background-color: white;
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
+
         .box:hover {
             transform: scale(1.05);
             box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
         }
+
         .box h2 {
             color: #1E3A8A;
         }
@@ -42,7 +44,7 @@
                 <h2 class="text-xl font-bold mt-3">Servicios</h2>
             </a>
             <!-- Botón Clientes -->
-            <a href="listar-clientes-perros.html" class="flex flex-col items-center box">
+            <a href="./Clientes/listarClientes.php" class="flex flex-col items-center box">
                 <img src="../assets/img/main2.jpg" alt="Clientes" class="w-48 h-48 object-cover rounded-lg shadow-md">
                 <h2 class="text-xl font-bold mt-3">Clientes</h2>
             </a>
@@ -56,13 +58,13 @@
                 <img src="../assets/img/mainsv.jpg" alt="Servicios Realizados" class="w-48 h-48 object-cover rounded-lg shadow-md">
                 <h2 class="text-xl font-bold mt-3 text-center">Servicios Realizados</h2>
             </a>
-            
+
         </div>
     </main>
 
 
-     <!-- Footer -->
-     <footer class=" bg-sky-600 text-white text-center p-4 mt-4">
+    <!-- Footer -->
+    <footer class=" bg-sky-600 text-white text-center p-4 mt-4">
         <p>&copy; 2025 PetVet - Todos los derechos reservados.</p>
         <nav class="mt-2">
             <a href="#" class="mx-2 hover:underline">Aviso Legal</a>

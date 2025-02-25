@@ -36,7 +36,7 @@ function empleadoRouter($method)
             );
             break;
         case 'DELETE':
-            $EmpleadosController->deleteEmpleado($_GET['id']);
+            $EmpleadosController->deleteEmpleado($_GET['dni']);
             break;
         default:
             echo 'Método no permitido';
