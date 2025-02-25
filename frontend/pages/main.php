@@ -14,10 +14,12 @@
             background-color: white;
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
+
         .box:hover {
             transform: scale(1.05);
             box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
         }
+
         .box h2 {
             color: #1E3A8A;
         }
@@ -30,6 +32,11 @@
             <img src="../assets/img/PRqH.gif" alt="Foto de usuario" class="w-12 h-12 rounded-full border-2 border-white">
             <div>
                 <h3 class="text-lg font-bold">Nombre Usuario</h3>
+                <!-- <?php
+                session_start();
+                $dni = $_SESSION['dni'];
+                echo "<p>$dni</p>";
+                ?> -->
                 <p class="text-sm text-gray-300">Profesión</p>
             </div>
         </div>
@@ -52,16 +59,12 @@
                 <h2 class="text-xl font-bold mt-3">Perros</h2>
             </a>
             <!-- Botón Servicios Realizados -->
-            <a href="#" class="flex flex-col items-center box">
+            <a href="./Servicios Realizados/select.php" class="flex flex-col items-center box">
                 <img src="../assets/img/mainsv.jpg" alt="Servicios Realizados" class="w-48 h-48 object-cover rounded-lg shadow-md">
                 <h2 class="text-xl font-bold mt-3 text-center">Servicios Realizados</h2>
             </a>
             <!-- Botón Empleados -->
-<<<<<<< HEAD
-            <a href="#" class="flex flex-col items-center box">
-=======
             <a href="./Empleados/viewListarEmpleado.php" class="flex flex-col items-center box">
->>>>>>> 4bded4ab093be24f4b0d17a8cd8a6bee7463497a
                 <img src="../assets/img/main3.jpg" alt="Empleados" class="w-48 h-48 object-cover rounded-lg shadow-md">
                 <h2 class="text-xl font-bold mt-3">Empleados</h2>
             </a>
@@ -69,8 +72,8 @@
     </main>
 
 
-     <!-- Footer -->
-     <footer class=" bg-sky-600 text-white text-center p-4 mt-4">
+    <!-- Footer -->
+    <footer class=" bg-sky-600 text-white text-center p-4 mt-4">
         <p>&copy; 2025 PetVet - Todos los derechos reservados.</p>
         <nav class="mt-2">
             <a href="#" class="mx-2 hover:underline">Aviso Legal</a>

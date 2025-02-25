@@ -1,6 +1,6 @@
 <?php
 
-$url = 'http://localhost/dwes/proyecto%20final/backend/?ruta=prs';
+$url = 'http://localhost/Proyecto%20APIS/backend/?ruta=prs';
 $response = file_get_contents($url);
 $data = json_decode($response, true);
 
@@ -34,27 +34,73 @@ $data = json_decode($response, true);
                         <th class="border border-sky-600 px-4 py-2">Incidencias</th>
                         <th class="border border-sky-600 px-4 py-2">Precio Final</th>
                         <th class="border border-sky-600 px-4 py-2">DNI</th>
-                        <th class="border border-sky-600 px-4 py-2">acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                    foreach ($data as $fila) {
-                        echo "<tr class='odd:bg-gray-100 even:bg-white hover:bg-sky-100'>";
-                        echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["Sr_Cod"]) . "</td>";
-                        echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["Cod_Servicio"]) . "</td>";
-                        echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["ID_Perro"]) . "</td>";
-                        echo "<td class='border border-sky-600 px-18 py-2 text-center'>" . htmlspecialchars($fila["Fecha"]) . "</td>";
-                        echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["Incidencias"]) . "</td>";
-                        echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["Precio_Final"]) . "</td>";
-                        echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["Dni"]) . "</td>";
-                        echo "<td class='border border-sky-600 px-4 py-2 text-center'>
-            <button class='p-1 text-white bg-red-500 rounded' name='submit' value='" . $fila["Sr_Cod"] . "'>
-                BORRAR
-            </button>
-          </td>";
-                        echo "</tr>";
+                    session_start();
+                    //Recojo el dni
+                    $dni = $_SESSION['dni'];
+                    //Recojo el rol
+                    $rol = $_SESSION['rol'];
+                    if ($rol === 'ADMIN') {
+                     
+                        foreach ($data as $fila) {
+                            echo "<tr class='odd:bg-gray-100 even:bg-white hover:bg-sky-100'>";
+                            echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["Sr_Cod"]) . "</td>";
+                            echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["Cod_Servicio"]) . "</td>";
+                            echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["ID_Perro"]) . "</td>";
+                            echo "<td class='border border-sky-600 px-18 py-2 text-center'>" . htmlspecialchars($fila["Fecha"]) . "</td>";
+                            echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["Incidencias"]) . "</td>";
+                            echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["Precio_Final"]) . "</td>";
+                            echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["Dni"]) . "</td>";
+                            echo "</tr>";
+                        }
+        
+
+                        echo "
+                                <div class='flex justify-left gap-8 mt-8'>
+       
+        <a href='./insert.php' class='w-36 bg-blue-500 hover:bg-blue-700 text-center text-white font-bold py-2 px-4 rounded-lg'>
+            Insertar un servicio
+        </a>";
+                echo "  </div>";
+     
+
+        $_SESSION['rol'] = 'ADMIN';
+
+        if (isset($_SESSION['rol'])) {
+            if ($_SESSION['rol'] === 'ADMIN') {
+                echo "<a href='./delete.php' class='w-36 bg-red-500 hover:bg-red-700 text-center text-white font-bold py-2 px-4 rounded-lg'>Borrar un servicio</a>";
+            }
+        }
+
+    
+
+    echo "  </div>";
+       
+
+  
+                        
+                    } else {
+                    
+                        foreach ($data as $fila) {
+                            //Filtro del DNI donde mostramos los servicios realizados solo de quien coincide con el DNI de quien se ha logueado
+                            if ($fila['Dni'] === $dni) {
+
+                                echo "<tr class='odd:bg-gray-100 even:bg-white hover:bg-sky-100'>";
+                                echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["Sr_Cod"]) . "</td>";
+                                echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["Cod_Servicio"]) . "</td>";
+                                echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["ID_Perro"]) . "</td>";
+                                echo "<td class='border border-sky-600 px-18 py-2 text-center'>" . htmlspecialchars($fila["Fecha"]) . "</td>";
+                                echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["Incidencias"]) . "</td>";
+                                echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["Precio_Final"]) . "</td>";
+                                echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["Dni"]) . "</td>";
+                                echo "</tr>";
+                            }
+                        }
                     }
+
                     ?>
 
                 </tbody>
