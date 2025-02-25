@@ -28,6 +28,7 @@ if (isset($_POST['submit'])) {
     $password = $_POST['password'] ?? '';
     //Recojo el DNI para poder usarlo posteriormente
     $_SESSION['dni'] = $users[$email]['dni'];
+    $_SESSION['rol'] = $users[$email]['rol'];
     echo "COntraseña de ese usuario es: " . $password;
     // Validar si el usuario existe
     if (isset($users[$email])) {

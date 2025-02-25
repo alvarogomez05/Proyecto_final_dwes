@@ -54,7 +54,7 @@
                 <h2 class="text-xl font-bold mt-3">Perros</h2>
             </a>
             <!-- Botón Servicios Realizados -->
-            <a href="./Servicios/ServiciosRealizados.php" class="flex flex-col items-center box">
+            <a href="./Servicios Realizados/select.php" class="flex flex-col items-center box">
                 <img src="../assets/img/mainsv.jpg" alt="Servicios Realizados" class="w-48 h-48 object-cover rounded-lg shadow-md">
                 <h2 class="text-xl font-bold mt-3 text-center">Servicios Realizados</h2>
             </a>

@@ -1,6 +1,6 @@
 <?php
 
-$url = 'http://localhost/dwes/proyecto%20final/backend/?ruta=prs';
+$url = 'http://localhost/Proyecto%20APIS/backend/?ruta=prs';
 $response = file_get_contents($url);
 $data = json_decode($response, true);
 
@@ -38,18 +38,43 @@ $data = json_decode($response, true);
                 </thead>
                 <tbody>
                     <?php
-                    foreach ($data as $fila) {
-                        // if del dni
-                        echo "<tr class='odd:bg-gray-100 even:bg-white hover:bg-sky-100'>";
-                        echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["Sr_Cod"]) . "</td>";
-                        echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["Cod_Servicio"]) . "</td>";
-                        echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["ID_Perro"]) . "</td>";
-                        echo "<td class='border border-sky-600 px-18 py-2 text-center'>" . htmlspecialchars($fila["Fecha"]) . "</td>";
-                        echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["Incidencias"]) . "</td>";
-                        echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["Precio_Final"]) . "</td>";
-                        echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["Dni"]) . "</td>";
-                        echo "</tr>";
+                    session_start();
+                    //Recojo el dni
+                    $dni = $_SESSION['dni'];
+                    //Recojo el rol
+                    $rol = $_SESSION['rol'];
+                    if ($rol === 'ADMIN') {
+                        echo $rol;
+                        foreach ($data as $fila) {
+                            echo "<tr class='odd:bg-gray-100 even:bg-white hover:bg-sky-100'>";
+                            echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["Sr_Cod"]) . "</td>";
+                            echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["Cod_Servicio"]) . "</td>";
+                            echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["ID_Perro"]) . "</td>";
+                            echo "<td class='border border-sky-600 px-18 py-2 text-center'>" . htmlspecialchars($fila["Fecha"]) . "</td>";
+                            echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["Incidencias"]) . "</td>";
+                            echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["Precio_Final"]) . "</td>";
+                            echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["Dni"]) . "</td>";
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo $rol;
+                        foreach ($data as $fila) {
+                            //Filtro del DNI donde mostramos los servicios realizados solo de quien coincide con el DNI de quien se ha logueado
+                            if ($fila['Dni'] === $dni) {
+
+                                echo "<tr class='odd:bg-gray-100 even:bg-white hover:bg-sky-100'>";
+                                echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["Sr_Cod"]) . "</td>";
+                                echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["Cod_Servicio"]) . "</td>";
+                                echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["ID_Perro"]) . "</td>";
+                                echo "<td class='border border-sky-600 px-18 py-2 text-center'>" . htmlspecialchars($fila["Fecha"]) . "</td>";
+                                echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["Incidencias"]) . "</td>";
+                                echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["Precio_Final"]) . "</td>";
+                                echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["Dni"]) . "</td>";
+                                echo "</tr>";
+                            }
+                        }
                     }
+
                     ?>
 
                 </tbody>
