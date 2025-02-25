@@ -129,6 +129,11 @@ if ($codServicio && $idPerro && $fecha && $incidencias && $dni) {
             Enviar
         </button>
     </form>
+
+    <a href="./select.php"
+        class=" fixed right-10 bottom-10 w-36 bg-yellow-500 hover:bg-yellow-700 text-center text-white font-bold py-2 px-4 rounded-lg">
+        volver
+    </a>
 </body>
 
 </html>

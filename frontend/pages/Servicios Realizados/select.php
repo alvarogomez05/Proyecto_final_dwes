@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 $url = 'http://localhost/dwes/proyecto%20final/backend/?ruta=prs';
 $response = file_get_contents($url);
 $data = json_decode($response, true);
@@ -57,6 +59,36 @@ $data = json_decode($response, true);
         </div>
     </div>
 
+    <!-- BOTONES -->
+
+    <div class="flex justify-left gap-8 mt-8">
+        <!-- todos pueden llegar a insertar un servicio -->
+        <a href="./insert.php" class="w-36 bg-blue-500 hover:bg-blue-700 text-center text-white font-bold py-2 px-4 rounded-lg">
+            Insertar un servicio
+        </a>
+
+        <!-- solo el admin puede borrar-->
+        <?php
+
+        $_SESSION['rol'] = 'ADMIN';
+
+        if (isset($_SESSION['rol'])) {
+            if ($_SESSION['rol'] === 'ADMIN') {
+                echo "<a href='./delete.php' class='w-36 bg-red-500 hover:bg-red-700 text-center text-white font-bold py-2 px-4 rounded-lg'>Borrar un servicio</a>";
+            }
+        }
+
+        ?>
+
+    </div>
+
+
+
+
+    <a href="./../main.php"
+        class=" fixed right-10 bottom-10 w-36 bg-yellow-500 hover:bg-yellow-700 text-center text-white font-bold py-2 px-4 rounded-lg">
+        volver
+    </a>
 </body>
 
 </html>
