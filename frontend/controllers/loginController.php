@@ -5,14 +5,15 @@ if (isset($_POST['submit'])) {
     $response = file_get_contents($url);
     $data = json_decode($response, true);
     $users = [];
-    
+
     foreach ($data as $user) {
         // $users[$user['email']] = $user['password'] ;
         // Guardamos en formato [email => password]
 
         $users[$user['email']] = [
             'password' => $user['password'],
-            'rol' => $user['rol']  // Guardamos también el rol
+            'rol' => $user['rol'],  // Guardamos también el rol
+            'dni'=>$user['dni']//Guardamos el DNI
         ];
     }
 
@@ -25,12 +26,13 @@ if (isset($_POST['submit'])) {
     // Recibir datos del formulario
     $email = $_POST['email'] ?? '';
     $password = $_POST['password'] ?? '';
-
+    //Recojo el DNI para poder usarlo posteriormente
+    $_SESSION['dni'] = $users[$email]['dni'];
     echo "COntraseña de ese usuario es: " . $password;
     // Validar si el usuario existe
     if (isset($users[$email])) {
         // $storedPassword = $users[$email]; // Obtener la contraseña guardada
-         $storedPassword = $users[$email]['password'];
+        $storedPassword = $users[$email]['password'];
         $rol = $users[$email]['rol'];
         // Comparar contraseña (Si está en texto plano, usa ===. Si está hasheada, usa password_verify)
         if (password_verify($password, $storedPassword)) {
