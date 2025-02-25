@@ -13,20 +13,21 @@ class PerrosModel extends BD
         $this->conexion = $this->getConexion();
     }
 
-    public function save($Dni_Cliente, $Nombre, $Fecha_Nto, $Raza, $Peso, $Altura, $Observaciones, $Numero_Chip, $Sexo)
+    public function save( $perrosCod,$Dni_Cliente, $Nombre, $Fecha_Nto, $Raza, $Peso, $Altura, $Observaciones, $Numero_Chip, $Sexo)
     {
         try {
-            $sql = "INSERT INTO perros (Dni_Cliente, Nombre, Fecha_Nto, Raza, Peso, Altura, Observaciones, Numero_Chip, Sexo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO perros (id, Dni_Cliente, Nombre, Fecha_Nto, Raza, Peso, Altura, Observaciones, Numero_Chip, Sexo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $sentencia = $this->conexion->prepare($sql);
-            $sentencia->bindParam(1, $Dni_Cliente);
-            $sentencia->bindParam(2, $Nombre);
-            $sentencia->bindParam(3, $Fecha_Nto); 
-            $sentencia->bindParam(4, $Raza);
-            $sentencia->bindParam(5, $Peso);
-            $sentencia->bindParam(6, $Altura);
-            $sentencia->bindParam(7, $Observaciones);
-            $sentencia->bindParam(8, $Numero_Chip);
-            $sentencia->bindParam(9, $Sexo);
+            $sentencia->bindparam(1, $perrosCod);
+            $sentencia->bindParam(2, $Dni_Cliente);
+            $sentencia->bindParam(3, $Nombre);
+            $sentencia->bindParam(4, $Fecha_Nto); 
+            $sentencia->bindParam(5, $Raza);
+            $sentencia->bindParam(6, $Peso);
+            $sentencia->bindParam(7, $Altura);
+            $sentencia->bindParam(8, $Observaciones);
+            $sentencia->bindParam(9, $Numero_Chip);
+            $sentencia->bindParam(10, $Sexo);
             $sentencia->execute();
             return $this->conexion->lastInsertId();
             

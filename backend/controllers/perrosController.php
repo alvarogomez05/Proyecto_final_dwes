@@ -23,6 +23,14 @@ class PerrosController{
     }
 
     public function guardarPerro( $nombre, $raza, $fechaNto, $dni_cliente, $peso, $altura, $observaciones, $numero_chip, $sexo){
-         return $this->perroService->guardarPerro($nombre, $raza, $fechaNto, $dni_cliente, $peso, $altura, $observaciones, $numero_chip, $sexo);
+
+        $url = 'http://localhost/perros/backend/?ruta=perros';
+        $response = file_get_contents($url);
+        $data = json_decode($response, true);
+
+        $datos = $data[array_key_last($data)];
+        $perrosCod = $datos['id'] + 1;
+
+         return $this->perroService->guardarPerro($perrosCod,$nombre, $raza, $fechaNto, $dni_cliente, $peso, $altura, $observaciones, $numero_chip, $sexo);
     }
 }
