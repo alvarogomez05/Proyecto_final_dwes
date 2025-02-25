@@ -1,4 +1,30 @@
 <?php
+if (isset($_GET['submit'])) {
+
+    $url = 'http://localhost/dwes/proyecto%20final/backend/?ruta=prs&srCod=' . $_GET['submit'];
+
+    // Inicializar cURL
+    $ch = curl_init();
+
+    // Configurar opciones de cURL
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE"); // Método DELETE
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        "Content-Type: application/json",
+    ]);
+
+    // Ejecutar petición y obtener respuesta
+    $response = curl_exec($ch);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+    // Cerrar cURL
+    curl_close($ch);
+}
+
+?>
+
+<?php
 
 $url = 'http://localhost/dwes/proyecto%20final/backend/?ruta=prs';
 $response = file_get_contents($url);
@@ -34,12 +60,12 @@ $data = json_decode($response, true);
                         <th class="border border-sky-600 px-4 py-2">Incidencias</th>
                         <th class="border border-sky-600 px-4 py-2">Precio Final</th>
                         <th class="border border-sky-600 px-4 py-2">DNI</th>
+                        <th class="border border-sky-600 px-4 py-2">acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                     foreach ($data as $fila) {
-                        // if del dni
                         echo "<tr class='odd:bg-gray-100 even:bg-white hover:bg-sky-100'>";
                         echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["Sr_Cod"]) . "</td>";
                         echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["Cod_Servicio"]) . "</td>";
@@ -48,6 +74,11 @@ $data = json_decode($response, true);
                         echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["Incidencias"]) . "</td>";
                         echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["Precio_Final"]) . "</td>";
                         echo "<td class='border border-sky-600 px-4 py-2 text-center'>" . htmlspecialchars($fila["Dni"]) . "</td>";
+                        echo "<td class='border border-sky-600 px-4 py-2 text-center'>
+            <form><button class='p-1 text-white bg-red-500 rounded' name='submit' value='" . $fila["Sr_Cod"] . "'>
+                BORRAR
+            </button></form>
+          </td>";
                         echo "</tr>";
                     }
                     ?>
