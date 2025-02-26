@@ -1,72 +1,70 @@
 <?php
+$url = 'http://localhost/perros/backend/?ruta=perros';
 
-// Depuración: Mostrar variables
-echo "<pre>";
-var_dump($_GET);
-echo "</pre>";
+// Recibir datos del formulario
+$dni_cliente = $_GET['dni_cliente'] ?? '';
+$nombre = $_GET['nombre'] ?? '';
+$FechaNto = $_GET['FechaNto'] ?? '';
+$raza = $_GET['raza'] ?? '';
+$peso = $_GET['peso'] ?? '';
+$altura = $_GET['altura'] ?? '';
+$observaciones = $_GET['observaciones'] ?? '';
+$numero_chip = $_GET['numero_chip'] ?? '';
+$sexo = $_GET['sexo'] ?? '';
 
-if (isset($_GET['submit'])) {
-    $url = "http://localhost/perros/backend/?ruta=perros";
+// Construir la URL con los parámetros
+$url .= '&dni_cliente=' . urlencode($dni_cliente);
+$url .= '&nombre=' . urlencode($nombre);
+$url .= '&FechaNto=' . urlencode($fecha_nto);
+$url .= '&raza=' . urlencode($raza);
+$url .= '&peso=' . urlencode($peso);
+$url .= '&altura=' . urlencode($altura);
+$url .= '&observaciones=' . urlencode($observaciones);
+$url .= '&numero_chip=' . urlencode($numero_chip);
+$url .= '&sexo=' . urlencode($sexo);
 
-    // Recibir datos del formulario
-    $params = [
-        'dni_cliente' => trim($_GET['dni_cliente'] ?? ''),
-        'nombre' => trim($_GET['nombre'] ?? ''),
-        'FechaNto' => trim($_GET['FechaNto'] ?? ''),
-        'raza' => trim($_GET['raza'] ?? ''),
-        'peso' => trim($_GET['peso'] ?? ''),
-        'altura' => trim($_GET['altura'] ?? ''),
-        'observaciones' => trim($_GET['observaciones'] ?? ''),
-        'numero_chip' => trim($_GET['numero_chip'] ?? ''),
-        'sexo' => trim($_GET['sexo'] ?? '')
+// Validamos que los campos requeridos estén completos
+if ($dni_cliente && $nombre && $FechaNto && $raza && $peso && $altura && $numero_chip && $sexo) {
+    // Datos del nuevo perro
+    $newDog = [
+        'dni_cliente' => $dni_cliente,
+        'nombre' => $nombre,
+        'FechaNto' => $FechaNto,
+        'raza' => $raza,
+        'peso' => $peso,
+        'altura' => $altura,
+        'observaciones' => $observaciones,
+        'numero_chip' => $numero_chip,
+        'sexo' => $sexo,
     ];
 
-    // Validar datos
-    foreach ($params as $key => $value) {
-        if (empty($value) && $key !== 'observaciones') {
-            echo "<script>alert('Error: Todos los campos requeridos deben estar completos.'); window.history.back();</script>";
-            exit;
-        }
-    }
-
-    if (!is_numeric($params['peso']) || !is_numeric($params['altura'])) {
-        echo "<script>alert('Error: Peso y altura deben ser valores numéricos.'); window.history.back();</script>";
-        exit;
-    }
-
-    // Convertir datos a JSON
-    $data = json_encode($params);
+    // Convertir los datos a JSON
+    $data = json_encode($newDog);
 
     // Inicializar cURL
     $conexion = curl_init();
     curl_setopt($conexion, CURLOPT_URL, $url);
-    curl_setopt($conexion, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+    curl_setopt($conexion, CURLOPT_HTTPHEADER, [
+        'Content-Type: application/json',
+        'Content-Length: ' . strlen($data)
+    ]);
     curl_setopt($conexion, CURLOPT_POST, true);
     curl_setopt($conexion, CURLOPT_POSTFIELDS, $data);
     curl_setopt($conexion, CURLOPT_RETURNTRANSFER, true);
 
-    // Ejecutar la petición y obtener respuesta
+    // Ejecutar petición y obtener respuesta
     $response = curl_exec($conexion);
-    $http_code = curl_getinfo($conexion, CURLINFO_HTTP_CODE);
-
-    if ($response === false || curl_errno($conexion)) {
-        $error = curl_error($conexion);
-        curl_close($conexion);
-        echo "<script>alert('Error en la petición: $error'); window.location.href = '../../pages/main.php';</script>";
-        exit;
-    }
-
-    curl_close($conexion);
-
-    // Depuración: Ver respuesta del backend
-    echo "<pre>Respuesta del servidor: ";
-    var_dump($response);
-    echo "</pre>";
-
-    // Verificar si el servidor respondió correctamente
-    if ($http_code == 200) {
-        echo "<script>alert('Registro exitoso. ¡El perro {$params['nombre']} ha sido registrado!'); window.location.href = '../../pages/main.php';</script>";
+    
+    // Verificar si hubo error en la petición
+    if (curl_errno($conexion)) {
+        echo "<script>alert('Error en la petición: " . curl_error($conexion) . "'); window.history.back();</script>";
     } else {
-        echo "<script>alert('Error en el registro. Código HTTP: $http_code'); window.history.back();</script>";
+        echo "<script>alert('Registro exitoso. ¡El perro {$nombre} ha sido registrado!'); window.location.href = '../../pages/main.php';</script>";
     }
+    
+    // Cerrar conexión cURL
+    curl_close($conexion);
+} else {
+    echo "<script>alert('Error: Todos los campos requeridos deben estar completos.'); window.history.back();</script>";
 }
+?>
