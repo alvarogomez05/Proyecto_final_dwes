@@ -17,7 +17,7 @@ $url .= '&precio=' . urlencode($precio);
 $url .= '&desc=' . urlencode($desc);
 
 // Validar que todos los campos requeridos estén completos
-if ($codigo && $nombre && $precio && $desc ) {
+if ($codigo && $nombre && $precio && $desc) {
     // Datos del nuevo empleado
     $newUser = [
         'id' => $codigo,
@@ -42,17 +42,42 @@ if ($codigo && $nombre && $precio && $desc ) {
 
     // Ejecutar petición y obtener respuesta
     $response = curl_exec($conexion);
-    
-    // Verificar si hubo error en la petición
-    if (curl_errno($conexion)) {
-        // $feedback = '¡EL REGISTRO NO SE HA PODIDO REALIZAR!';
-        // $color =  'text-red-500';
+
+    // Obtener el código de estado HTTP
+    $http_code = curl_getinfo($conexion, CURLINFO_HTTP_CODE);
+
+    // Verificar el código de estado HTTP y la respuesta
+    if ($http_code == 200) {
+        // Si la respuesta es exitosa, puedes procesar la respuesta
+        echo "<script type='text/javascript'>
+        alert('Insercion realizada con exito!');
+        </script>";
     } else {
-        // echo "Registro exitoso. ¡Bienvenido, $codigo!";
-        // $feedback = '¡REGISTRO REALIZADO CON EXISTO!';
-        // $color = 'text-green-500';
+        // Si hubo un error, procesamos el mensaje de error
+
+        echo "<script type='text/javascript'>
+        alert('ERROR: El codigo del servicio ya se encuentra en la base de datos!');
+        </script>";
     }
-    
+
+
+
+    // Verificar si hubo error en la petición
+    // if (curl_errno($conexion)) {
+
+    //     $mensaje = 'EL REGISTRO NO SE HA PODIDO REALIZAR!!';
+
+    // echo "<script type='text/javascript'>
+    // alert('$mensaje');
+    // </script>";
+    // } else {
+    //     $mensaje = 'EL REGISTRO SE HA REALIZADO CON EXITO!!';
+
+    //     echo "<script type='text/javascript'>
+    //     alert('$mensaje');
+    //     </script>";
+    // }
+
     // Cerrar conexión cURL
     curl_close($conexion);
 }
@@ -92,7 +117,11 @@ if ($codigo && $nombre && $precio && $desc ) {
             <button type="submit" class="w-full bg-sky-700 text-white py-2 px-4 rounded-lg hover:bg-sky-800 transition">Enviar</button>
         </form>
         <!-- feedback para el usuario -->
-         <!-- <p class="text-xl mt-4 <?php if(isset($color)){ echo $color;} ?>"> <?php if(isset($feedback)){ echo $feedback;}?></p> -->
+        <!-- <p class="text-xl mt-4 <?php if (isset($color)) {
+                                        echo $color;
+                                    } ?>"> <?php if (isset($feedback)) {
+                                                echo $feedback;
+                                            } ?></p> -->
     </div>
     <a href="./../main.php"
         class=" fixed right-10 bottom-10 w-36 bg-yellow-500 hover:bg-yellow-700 text-center text-white font-bold py-2 px-4 rounded-lg">
