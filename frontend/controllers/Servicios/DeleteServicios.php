@@ -24,10 +24,12 @@ if (isset($_GET['codigo'])) {
     curl_close($ch);
 }
 
+header('location: ./../../pages/Servicios/SelectServicios.php')
+
 ?>
 
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -58,4 +60,4 @@ if (isset($_GET['codigo'])) {
     </a>
 </body>
 
-</html>
+</html> -->

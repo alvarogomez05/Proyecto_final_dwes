@@ -36,7 +36,7 @@ class prsController
         $valida2 = false;
         // comprobar los datos 
 
-        $url = 'http://localhost/dwes/proyecto%20final/backend/?ruta=servicios';
+        $url = 'http://localhost/perros/backend/?ruta=servicios';
         $response = file_get_contents($url);
         $data = json_decode($response, true);
 
@@ -49,7 +49,7 @@ class prsController
 
         // comprobamos el perro
 
-        $url = 'http://localhost/dwes/proyecto%20final/backend/?ruta=perros';
+        $url = 'http://localhost/perros/backend/?ruta=perros';
         $response = file_get_contents($url);
         $data = json_decode($response, true);
 
@@ -61,7 +61,7 @@ class prsController
 
         // comprobamos el empleado
 
-        $url = 'http://localhost/dwes/proyecto%20final/backend/?ruta=empleados';
+        $url = 'http://localhost/perros/backend/?ruta=empleados';
         $response = file_get_contents($url);
         $data = json_decode($response, true);
 
@@ -73,7 +73,7 @@ class prsController
 
         // establecemos el proximo codigo
 
-        $url = 'http://localhost/dwes/proyecto%20final/backend/?ruta=prs';
+        $url = 'http://localhost/perros/backend/?ruta=prs';
         $response = file_get_contents($url);
         $data = json_decode($response, true);
 
@@ -85,8 +85,8 @@ class prsController
         if($valida == true && $valida1 == true && $valida2 == true){
             return $this->prsService->save($srCod, $codServicio, $idPerro, $fecha, $incidencias, $precioFinal, $dni);
         }else{
-            
-            return "ERROR AL INSERTAR, LOS DATOS NO SON VALIDOS";
+            http_response_code(400);
+            return;
         }
 
 

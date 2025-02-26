@@ -28,6 +28,18 @@ class ClientesController
     //Funcion para guardar el Cliente
 
     public function guardarCliente($dni, $nombre, $apellido1, $apellido2, $direccion, $tlfno){
+
+        $url = 'http://localhost/perros/backend/?ruta=clientes';
+        $response = file_get_contents($url);
+        $data = json_decode($response, true);
+
+        foreach ($data as $clientes) {
+            if ($clientes['dni'] == $dni) {
+                http_response_code(400);
+                return;
+            }
+        }
+
         return $this->userService->guardarCliente($dni, $nombre, $apellido1, $apellido2, $direccion, $tlfno);
     }
     //Funcion para borrar los clientes por DNI

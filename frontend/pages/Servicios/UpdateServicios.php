@@ -53,7 +53,11 @@ if( $codigo && $precio){
         <form action="" method="GET" class="space-y-4">
             <div>
                 <label for="codigo" class="block text-gray-700">Código:</label>
-                <input type="text" id="codigo" name="codigo" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-700">
+                <input type="text" id="codigo" name="codigo" 
+                value = 
+                <?php echo $codigo; ?>
+                readonly
+                required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-700">
             </div>
             
             <div>
@@ -64,7 +68,7 @@ if( $codigo && $precio){
             <button type="submit" class="w-full bg-sky-700 text-white py-2 px-4 rounded-lg hover:bg-sky-800 transition">Enviar</button>
         </form>
     </div>
-    <a href="./../main.php"
+    <a href="./SelectServicios.php"
         class=" fixed right-10 bottom-10 w-36 bg-yellow-500 hover:bg-yellow-700 text-center text-white font-bold py-2 px-4 rounded-lg">
         volver
     </a>
