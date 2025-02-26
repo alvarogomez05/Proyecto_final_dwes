@@ -35,6 +35,7 @@ $data = json_decode($response, true);
                         <th class="py-3 px-6 text-left">Direccion</th>
                         <th class="py-3 px-6 text-left">Teléfono</th>
                         <th class="py-3 px-6 text-left">Borrar</th>
+                        <th class="py-3 px-6 text-left">Ver Perro</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
@@ -49,7 +50,7 @@ $data = json_decode($response, true);
                             echo "<td class='py-4 px-6 border'>{$datos['direccion']}</td>";
                             echo "<td class='py-4 px-6 border'>{$datos['tlfno']}</td>";
                             echo "<td><form class='py-4 px-6 border' action='borrarClientes.php'><button type='text' name='borrar' value='{$datos['dni']}'>Borrar</button></form></td> ";
-
+                            echo "<td><form class='py-4 px-6 border' action='verPerroCliente.php'><button type='text' name='verPerro' value='{$datos['dni']}'>Ver Perro</button></form></td> ";
                             echo "</tr>";
                         }
                     } else {
