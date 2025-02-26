@@ -1,7 +1,9 @@
 <?php
+
+if (isset($_GET['submit'])) {
+
 // URL de la API donde se registrarán los empleados
 $url = 'http://localhost/perros/backend/?ruta=empleados';
-
 // Recibir datos del formulario
 $dni = $_GET['dni'] ?? '';
 $email = $_GET['email'] ?? '';
@@ -17,6 +19,7 @@ $poblacion = $_GET['poblacion'] ?? '';
 $provincia = $_GET['provincia'] ?? '';
 $tlfno = $_GET['tlfno'] ?? '';
 $profesion = $_GET['profesion'] ?? '';
+
 // Construir la URL con los parámetros
 $url .= '&dni=' . urlencode($dni);
 $url .= '&email=' . urlencode($email);
@@ -69,17 +72,18 @@ if ($dni && $email && $password && $rol && $nombre && $apellido1 && $calle && $n
 
     // Ejecutar petición y obtener respuesta
     $response = curl_exec($conexion);
-    
+
     // Verificar si hubo error en la petición
     if (curl_errno($conexion)) {
         echo "Error en la petición: " . curl_error($conexion);
     } else {
         echo "Registro exitoso. ¡Bienvenido, $nombre!";
+        header('Location: index.php');
     }
-    
+
     // Cerrar conexión cURL
     curl_close($conexion);
 } else {
     echo "Error: Todos los campos requeridos deben estar completos.";
 }
-?>
+}

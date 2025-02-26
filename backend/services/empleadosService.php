@@ -36,7 +36,7 @@ class EmpleadosService
     }
 
     // Borrar un empleado
-    public function borrarEmpleado($id)
+    public function deleteEmpleado($id)
     {
         return $this->empleadosModel->borrar($id);
     }

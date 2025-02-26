@@ -14,10 +14,12 @@
             background-color: white;
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
+
         .box:hover {
             transform: scale(1.05);
             box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
         }
+
         .box h2 {
             color: #1E3A8A;
         }
@@ -25,15 +27,25 @@
 </head>
 
 <body class="bg-sky-100 text-white h-screen flex flex-col">
-    <header class="bg-sky-600 p-5 flex items-center justify-between shadow-md">
-        <div class="flex items-center space-x-4">
-            <img src="../assets/img/PRqH.gif" alt="Foto de usuario" class="w-12 h-12 rounded-full border-2 border-white">
-            <div>
-                <h3 class="text-lg font-bold">Nombre Usuario</h3>
-                <p class="text-sm text-gray-300">Profesión</p>
-            </div>
+<header class="bg-sky-600 p-5 flex items-center justify-between shadow-md">
+    <div class="flex items-center space-x-4">
+        <img src="../assets/img/PRqH.gif" alt="Foto de usuario" class="w-12 h-12 rounded-full border-2 border-white">
+        <div>
+            <h3 class="text-lg font-bold">Nombre Usuario</h3>
+            <!-- <?php
+            session_start();
+            $dni = $_SESSION['dni'];
+            echo "<p>$dni</p>";
+            ?> -->
+            <p class="text-sm text-gray-300">Profesión</p>
         </div>
-    </header>
+    </div>
+    <div>
+        <a href="logout.php" class="bg-white text-sky-600 hover:bg-gray-200 px-4 py-2 rounded transition duration-200">Logout</a>
+    </div>
+</header>
+
+
     <main class="flex-1 p-10 flex justify-center items-center">
         <div class="grid grid-cols-5 gap-8 w-full max-w-6xl">
             <!-- Botón Servicios -->
@@ -42,22 +54,22 @@
                 <h2 class="text-xl font-bold mt-3">Servicios</h2>
             </a>
             <!-- Botón Clientes -->
-            <a href="listar-clientes-perros.html" class="flex flex-col items-center box">
+            <a href="./Clientes/listarClientes.php" class="flex flex-col items-center box">
                 <img src="../assets/img/main2.jpg" alt="Clientes" class="w-48 h-48 object-cover rounded-lg shadow-md">
                 <h2 class="text-xl font-bold mt-3">Clientes</h2>
             </a>
             <!-- Botón Perros -->
-            <a href="listar-perros.html" class="flex flex-col items-center box">
+            <a href="./Perros/listarPerrosView.php" class="flex flex-col items-center box">
                 <img src="../assets/img/main4.webp" alt="Perros" class="w-48 h-48 object-cover rounded-lg shadow-md">
                 <h2 class="text-xl font-bold mt-3">Perros</h2>
             </a>
             <!-- Botón Servicios Realizados -->
-            <a href="./Servicios/ServiciosRealizados.php" class="flex flex-col items-center box">
+            <a href="./Servicios Realizados/LlistarServiciosRealizadosView.php" class="flex flex-col items-center box">
                 <img src="../assets/img/mainsv.jpg" alt="Servicios Realizados" class="w-48 h-48 object-cover rounded-lg shadow-md">
                 <h2 class="text-xl font-bold mt-3 text-center">Servicios Realizados</h2>
             </a>
             <!-- Botón Empleados -->
-            <a href="./Empleados/ListarEmpleados.php" class="flex flex-col items-center box">
+            <a href="./Empleados/viewListarEmpleado.php" class="flex flex-col items-center box">
                 <img src="../assets/img/main3.jpg" alt="Empleados" class="w-48 h-48 object-cover rounded-lg shadow-md">
                 <h2 class="text-xl font-bold mt-3">Empleados</h2>
             </a>
@@ -65,8 +77,8 @@
     </main>
 
 
-     <!-- Footer -->
-     <footer class=" bg-sky-600 text-white text-center p-4 mt-4">
+    <!-- Footer -->
+    <footer class=" bg-sky-600 text-white text-center p-4 mt-4">
         <p>&copy; 2025 PetVet - Todos los derechos reservados.</p>
         <nav class="mt-2">
             <a href="#" class="mx-2 hover:underline">Aviso Legal</a>

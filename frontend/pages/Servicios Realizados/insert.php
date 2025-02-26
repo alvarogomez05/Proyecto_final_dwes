@@ -2,24 +2,24 @@
 
 // RELLENAR LOS OPTIONS 
 // servicios
-$url = 'http://localhost/dwes/proyecto%20final/backend/?ruta=servicios';
+$url = 'http://localhost/perros/backend/?ruta=servicios';
 $response = file_get_contents($url);
 $servicios = json_decode($response, true);
 
 // perros
-$url = 'http://localhost/dwes/proyecto%20final/backend/?ruta=perros';
+$url = 'http://localhost/perros/backend/?ruta=perros';
 $response = file_get_contents($url);
 $perros = json_decode($response, true);
 
 // empleados
-$url = 'http://localhost/dwes/proyecto%20final/backend/?ruta=empleados';
+$url = 'http://localhost/perros/backend/?ruta=empleados';
 $response = file_get_contents($url);
 $empleados = json_decode($response, true);
 
 // HACER UN POST AL ENVIAR EL FORMULARIO
 // $_GET['codServicio'], $_GET['idPerro'], $_GET['fecha'], $_GET['incidencias'], $_GET['dni']
 
-$url2 = 'http://localhost/dwes/proyecto%20final/backend/?ruta=prs';
+$url2 = 'http://localhost/perros/backend/?ruta=prs';
 
 // Recibir datos del formulario
 $codServicio = $_GET['codServicio'] ?? '';

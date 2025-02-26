@@ -2,7 +2,7 @@
 session_start();
 
 // URL de la API donde se registrarán los empleados
-$url = 'http://localhost/dwes/proyecto%20final/backend/?ruta=servicios';
+$url = 'http://localhost/perros/backend/?ruta=servicios';
 
 // Recibir datos del formulario
 $codigo = $_GET['codigo'] ?? '';

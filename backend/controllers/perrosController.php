@@ -22,7 +22,20 @@ class PerrosController{
          return $this->perroService->borrarPerro($id);
     }
 
-    public function guardarPerro($id, $nombre, $raza, $edad, $dni_cliente){
-         return $this->perroService->guardarPerro($id, $nombre, $raza, $edad, $dni_cliente);
+    public function guardarPerro( $nombre, $raza, $fechaNto, $dni_cliente, $peso, $altura, $observaciones, $numero_chip, $sexo){
+
+        // $url = 'http://localhost/perros/backend/?ruta=perros';
+        // $response = file_get_contents($url);
+        // $data = json_decode($response, true);
+
+        // $datos = $data[array_key_last($data)];
+        // $perrosCod = $datos['id'] + 1;
+
+        // echo 'aaaaaaaaaaaaa';
+
+
+        $perrosCod=null;
+
+         return $this->perroService->guardarPerro($perrosCod,$nombre, $raza, $fechaNto, $dni_cliente, $peso, $altura, $observaciones, $numero_chip, $sexo);
     }
 }

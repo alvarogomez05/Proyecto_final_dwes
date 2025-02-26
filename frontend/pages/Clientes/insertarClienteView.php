@@ -78,7 +78,7 @@
     </footer>
 
     <?php
-    require_once './../../controllers/Clientes/insertarClientes.php';
+    require_once 'insertarClientes.php';
     ?>
     <a href="./../main.php"
         class=" fixed right-10 bottom-10 w-36 bg-yellow-500 hover:bg-yellow-700 text-center text-white font-bold py-2 px-4 rounded-lg">

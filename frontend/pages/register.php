@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="./assets/img/favi.jpg" type="image/x-icon">
 </head>
 
-<body class="flex flex-col min-h-screen bg-gray-100 bg-[url('../assets/img/bg2.jpg')] bg-blend-overlay bg-cover bg-center">
+<body class="flex flex-col min-h-screen bg-gray-100 bg-[url('./../assets/img/bg2.jpg')] bg-blend-overlay bg-center">
     <!-- Header -->
     <header class="bg-sky-700 text-white p-4 shadow-lg">
         <div class="container mx-auto flex justify-between items-center">
@@ -49,7 +49,7 @@
                         <select class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" name="rol" required>
                             <option value="AUXILIAR">AUXILIAR</option>
                             <option value="EMPLEADO">EMPLEADO</option>
-                            <option value="ADMINISTRADOR">ADMINISTRADOR</option>
+                            <option value="ADMIN">ADMIN</option>
                         </select>
                     </div>
                     <div>
