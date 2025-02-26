@@ -9,7 +9,7 @@ $precio = $_GET['precio'] ?? '';
 $url .= '&id=' . urlencode($codigo);
 $url .= '&precio=' . urlencode($precio);
 
-if( $codigo && $precio){
+if ($codigo && $precio) {
 
     $data = [
         'id' => $codigo,
@@ -33,8 +33,15 @@ if( $codigo && $precio){
     $response = curl_exec($ch);
     $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);
-
 }
+
+
+
+// servicios
+$url = 'http://localhost/dwes/proyecto%20final/backend/?ruta=servicios';
+$response = file_get_contents($url);
+$servicios = json_decode($response, true);
+
 ?>
 
 <!DOCTYPE html>
@@ -51,16 +58,18 @@ if( $codigo && $precio){
     <div class="bg-white p-6 rounded-lg shadow-lg w-96">
         <h2 class="text-sky-700 text-xl font-bold mb-4">Actualizar Servicio</h2>
         <form action="" method="GET" class="space-y-4">
+            <label class="block text-gray-700 font-bold mb-2">Código:</label>
+            <select required type="text" name="codServicio" class="border border-sky-600 px-4 py-2 w-full rounded focus:outline-none focus:ring-2 focus:ring-sky-700">
+                <?php foreach ($servicios as $servicio) {
+                    echo "<option value='" . $servicio['codigo'] . "'>" . $servicio['codigo'] . ' - ' . $servicio['nombre'] . ' - ' . $servicio['precio'] . "</option>";
+                } ?>
+            </select>
+
             <div>
-                <label for="codigo" class="block text-gray-700">Código:</label>
-                <input type="text" id="codigo" name="codigo" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-700">
-            </div>
-            
-            <div>
-                <label for="precio" class="block text-gray-700">Precio:</label>
+                <label for="precio" class="block text-gray-700">Nuevo Precio:</label>
                 <input type="number" id="precio" name="precio" step="0.01" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-700">
             </div>
-            
+
             <button type="submit" class="w-full bg-sky-700 text-white py-2 px-4 rounded-lg hover:bg-sky-800 transition">Enviar</button>
         </form>
     </div>
