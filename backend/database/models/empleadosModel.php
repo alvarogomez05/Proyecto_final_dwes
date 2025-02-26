@@ -94,7 +94,7 @@ class EmpleadosModel extends BD
     public function borrar($id)
     {
         try {
-            $sql = "DELETE FROM empleados WHERE Id=?";
+            $sql = "DELETE FROM empleados WHERE Dni=?";
             $sentencia = $this->conexion->prepare($sql);
             $sentencia->bindParam(1, $id);
             $num = $sentencia->execute();
