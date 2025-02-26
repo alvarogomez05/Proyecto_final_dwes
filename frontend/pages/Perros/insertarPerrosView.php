@@ -37,47 +37,47 @@
             <?php endif; ?>
 
             <form method="GET" action="" class="space-y-4">
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-2 gap-4 text-center">
                     <div>
-                        <label class="block text-gray-700 font-medium">DNI Cliente</label>
+                        <label class="text-center block text-gray-700 font-medium">DNI Cliente</label>
                         <input type="text" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" placeholder="DNI del Cliente" name="dni_cliente" required aria-label="DNI del Cliente" />
                     </div>
                     <div>
-                        <label class="block text-gray-700 font-medium">Nombre</label>
+                        <label class="text-center block text-gray-700 font-medium">Nombre</label>
                         <input type="text" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" placeholder="Nombre del perro" name="nombre" required aria-label="Nombre del perro" />
                     </div>
                 </div>
                 <div class="grid grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-gray-700 font-medium">Fecha de Nacimiento</label>
+                        <label class="text-center block text-gray-700 font-medium">Fecha de Nacimiento</label>
                         <input type="date" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" name="FechaNto" required aria-label="Fecha de Nacimiento" />
                     </div>
                     <div>
-                        <label class="block text-gray-700 font-medium">Raza</label>
+                        <label class="text-center block text-gray-700 font-medium">Raza</label>
                         <input type="text" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" placeholder="Raza del perro" name="raza" required aria-label="Raza del perro" />
                     </div>
                 </div>
                 <div class="grid grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-gray-700 font-medium">Peso (kg)</label>
+                        <label class="text-center block text-gray-700 font-medium">Peso (kg)</label>
                         <input type="number" step="0.1" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" placeholder="Peso" name="peso" required aria-label="Peso" />
                     </div>
                     <div>
-                        <label class="block text-gray-700 font-medium">Altura (cm)</label>
+                        <label class="text-center block text-gray-700 font-medium">Altura (cm)</label>
                         <input type="number" step="0.1" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" placeholder="Altura" name="altura" required aria-label="Altura" />
                     </div>
                 </div>
                 <div>
-                    <label class="block text-gray-700 font-medium">Observaciones</label>
+                    <label class="text-center block text-gray-700 font-medium">Observaciones</label>
                     <textarea class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" placeholder="Observaciones" name="observaciones" aria-label="Observaciones"></textarea>
                 </div>
                 <div class="grid grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-gray-700 font-medium">Número de Chip</label>
+                        <label class=" text-center block text-gray-700 font-medium">Número de Chip</label>
                         <input type="text" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" placeholder="Número de chip" name="numero_chip" required aria-label="Número de Chip" />
                     </div>
                     <div>
-                        <label class="block text-gray-700 font-medium">Sexo</label>
+                        <label class=" text-center block text-gray-700 font-medium">Sexo</label>
                         <select name="sexo" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" required aria-label="Sexo">
                             <option value="Macho">Macho</option>
                             <option value="Hembra">Hembra</option>
