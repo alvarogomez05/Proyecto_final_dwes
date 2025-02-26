@@ -1,5 +1,5 @@
 <?php
-$url = "http://localhost/dwes/proyecto%20final/backend/?ruta=clientes";
+$url = "http://localhost/perros/backend/?ruta=clientes";
 // Recibir datos del formulario
 $dni = $_GET['dni'] ?? '';
 

@@ -1,6 +1,6 @@
 <?php
 if (isset($_GET['dni'])) {
-    $url = 'http://localhost/Proyecto_final_dwes/backend/?ruta=empleados&dni=' .$_GET['dni'];
+    $url = 'http://localhost/perros/backend/?ruta=empleados&dni=' .$_GET['dni'];
 
     // Inicializar curl
     $ch = curl_init();

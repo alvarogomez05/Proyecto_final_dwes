@@ -1,5 +1,5 @@
 <?php
-$url = 'http://localhost/Proyecto%20APIS/backend/?ruta=empleados';
+$url = 'http://localhost/perros/backend/?ruta=empleados';
 $response = file_get_contents($url);
 $data = json_decode($response, true);
 

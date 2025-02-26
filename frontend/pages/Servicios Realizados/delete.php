@@ -1,7 +1,7 @@
 <?php
 if (isset($_GET['submit'])) {
 
-    $url = 'http://localhost/dwes/proyecto%20final/backend/?ruta=prs&srCod=' . $_GET['submit'];
+    $url = 'http://localhost/perros/backend/?ruta=prs&srCod=' . $_GET['submit'];
 
     // Inicializar cURL
     $ch = curl_init();
@@ -26,7 +26,7 @@ if (isset($_GET['submit'])) {
 
 <?php
 
-$url = 'http://localhost/dwes/proyecto%20final/backend/?ruta=prs';
+$url = 'http://localhost/perros/backend/?ruta=prs';
 $response = file_get_contents($url);
 $data = json_decode($response, true);
 

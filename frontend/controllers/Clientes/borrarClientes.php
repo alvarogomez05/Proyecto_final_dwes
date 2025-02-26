@@ -1,5 +1,5 @@
 <?php
-$url = 'http://localhost/dwes/proyecto%20final/backend/?ruta=clientes&dni='.$_GET['borrar'];
+$url = 'http://localhost/perros/backend/?ruta=clientes&dni='.$_GET['borrar'];
 // Inicializar cURL
 $ch = curl_init();
 

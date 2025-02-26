@@ -1,5 +1,5 @@
 <?php
-$url = 'http://localhost/dwes/proyecto%20final//backend/?ruta=clientes';
+$url = 'http://localhost/perros//backend/?ruta=clientes';
 $response = file_get_contents($url);
 $data = json_decode($response, true);
 ?>

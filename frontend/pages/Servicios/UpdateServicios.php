@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$url = 'http://localhost/dwes/proyecto%20final/backend/?ruta=servicios';
+$url = 'http://localhost/perros/backend/?ruta=servicios';
 
 $codigo = $_GET['codigo'] ?? '';
 $precio = $_GET['precio'] ?? '';

@@ -3,7 +3,7 @@
 if (isset($_GET['submit'])) {
 
 // URL de la API donde se registrarán los empleados
-$url = 'http://localhost/Proyecto%20APIS/backend/?ruta=empleados';
+$url = 'http://localhost/perros/backend/?ruta=empleados';
 // Recibir datos del formulario
 $dni = $_GET['dni'] ?? '';
 $email = $_GET['email'] ?? '';

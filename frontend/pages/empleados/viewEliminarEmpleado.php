@@ -39,7 +39,7 @@
                 </thead>
                 <tbody class="divide-y divide-gray-200">
                     <?php
-                    $url = 'http://localhost/Proyecto_final_dwes/backend/?ruta=empleados';
+                    $url = 'http://localhost/perros/backend/?ruta=empleados';
                     $response = file_get_contents($url);
                     $data = json_decode($response, true);
                     if (!empty($data)) {
