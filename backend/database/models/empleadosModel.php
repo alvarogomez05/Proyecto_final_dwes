@@ -2,13 +2,12 @@
 
 require_once 'Empleado.php';
 
-class EmpleadosModel extends BD
-{
+class EmpleadosModel extends BD {
+
     private $table;
     private $conexion;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->table = "empleados";
         $this->conexion = $this->getConexion();
     }
@@ -40,8 +39,7 @@ class EmpleadosModel extends BD
         }
     }
 
-    public function getEmpleadoById($id)
-    {
+    public function getEmpleadoById($id) {
         try {
             $sql = "SELECT * FROM empleados WHERE Id=?";
             $sentencia = $this->conexion->prepare($sql);
@@ -107,4 +105,3 @@ class EmpleadosModel extends BD
         }
     }
 }
-

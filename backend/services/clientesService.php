@@ -10,6 +10,7 @@ class ClientesService
 
     public function __construct()
     {
+
         $this->clientesModel = new ClientesModel();
     }
 
@@ -25,6 +26,7 @@ class ClientesService
     }
 
 
+
     public function obtenerTodosLosClientes()
     {
         return $this->clientesModel->getAll();
@@ -35,3 +37,4 @@ class ClientesService
         return $this->clientesModel->borrar($dni);
     }
 }
+

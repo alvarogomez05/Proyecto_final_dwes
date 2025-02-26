@@ -8,6 +8,7 @@ class ServiciosService
 
     public function __construct()
     {
+
         $this->serviciosModel = new ServiciosModel();
     }
 
@@ -19,6 +20,7 @@ class ServiciosService
 
     public function obtenerServicioPorId($id)
     {
+
         return $this->serviciosModel->getServicioById($id);
     }
 
@@ -38,3 +40,4 @@ class ServiciosService
         return $this->serviciosModel->cambiarPrecioServicio($id, $nuevoPrecio);
     }
 }
+

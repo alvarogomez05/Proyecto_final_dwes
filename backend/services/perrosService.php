@@ -8,6 +8,7 @@ class PerrosService
 
     public function __construct()
     {
+
         $this->perrosModel = new PerrosModel();
     }
 
@@ -19,8 +20,11 @@ class PerrosService
 
     public function obtenerPerroPorId($id)
     {
+
         return $this->perrosModel->getPerroById($id);
     }
+
+
 
 
     public function obtenerTodosLosPerros()
@@ -33,3 +37,4 @@ class PerrosService
         return $this->perrosModel->borrar($id);
     }
 }
+

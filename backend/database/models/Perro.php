@@ -1,17 +1,15 @@
 <?php
 
-class Perro
-{
+class Perro {
 
-    public $id;
-    public $nombre;
-    public $raza;
-    public $edad;
-    public $dni_cliente;
+    private $id;
+    private $nombre;
+    private $raza;
+    private $edad;
+    private $dni_cliente;
 
     // Constructor
-    public function __construct($id, $nombre, $raza, $edad, $dni_cliente)
-    {
+    public function __construct($id, $nombre, $raza, $edad, $dni_cliente) {
         $this->id = $id;
         $this->nombre = $nombre;
         $this->raza = $raza;
@@ -20,28 +18,24 @@ class Perro
     }
 
     // Métodos getter para acceder a las propiedades
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
-    public function getNombre()
-    {
+    public function getNombre() {
         return $this->nombre;
     }
 
-    public function getRaza()
-    {
+    public function getRaza() {
         return $this->raza;
     }
 
-    public function getEdad()
-    {
+    public function getEdad() {
         return $this->edad;
     }
 
-    public function getDniCliente()
-    {
+    public function getDniCliente() {
         return $this->dni_cliente;
     }
 }
+?>

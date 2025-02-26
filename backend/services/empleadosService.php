@@ -1,12 +1,14 @@
 <?php
 require_once 'database/models/empleadosModel.php';
 
+
 class EmpleadosService
 {
     private $empleadosModel;
 
     public function __construct()
     {
+
         $this->empleadosModel = new EmpleadosModel();
     }
 
