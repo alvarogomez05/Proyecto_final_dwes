@@ -13,8 +13,9 @@ class PerrosModel extends BD
         $this->conexion = $this->getConexion();
     }
 
-    public function save($Dni_Cliente, $Nombre, $Fecha_Nto, $Raza, $Peso, $Altura, $Observaciones, $Numero_Chip, $Sexo)
+    public function save($perrosCod, $Dni_Cliente, $Nombre, $Fecha_Nto, $Raza, $Peso, $Altura, $Observaciones, $Numero_Chip, $Sexo)
     {
+
         try {
             // Asegurar que Fecha_Nto esté en formato correcto (YYYY-MM-DD)
             $Fecha_Nto = date("Y-m-d", strtotime($Fecha_Nto));
@@ -56,18 +57,20 @@ class PerrosModel extends BD
             $sentencia->execute();
             $row = $sentencia->fetch();
             if ($row) {
-                return new Perro($row['Id'], 
-                $row['Dni_Cliente'], 
-                $row['Nombre'], 
-                $row['Fecha_Nto'], 
-                $row['Raza'], 
-                $row['Peso'],
-                $row['Altura'], 
-                $row['Observaciones'], 
-                $row['Numero_Chip'], 
-                $row['Sexo']);
+                return new Perro(
+                    $row['Id'],
+                    $row['Dni_Cliente'],
+                    $row['Nombre'],
+                    $row['Fecha_Nto'],
+                    $row['Raza'],
+                    $row['Peso'],
+                    $row['Altura'],
+                    $row['Observaciones'],
+                    $row['Numero_Chip'],
+                    $row['Sexo']
+                );
             }
-            return null; 
+            return null;
         } catch (PDOException $e) {
             return "Error al cargar el perro: " . $e->getMessage();
         }
@@ -82,16 +85,18 @@ class PerrosModel extends BD
                 $registros = $statement->fetchAll(PDO::FETCH_ASSOC);
                 $perros = [];
                 foreach ($registros as $row) {
-                    $perros[] = new Perro($row['Id'], 
-                    $row['Dni_Cliente'], 
-                    $row['Nombre'], 
-                    $row['Fecha_Nto'], 
-                    $row['Raza'], 
-                    $row['Peso'], 
-                    $row['Altura'], 
-                    $row['Observaciones'], 
-                    $row['Numero_Chip'], 
-                    $row['Sexo']);
+                    $perros[] = new Perro(
+                        $row['Id'],
+                        $row['Dni_Cliente'],
+                        $row['Nombre'],
+                        $row['Fecha_Nto'],
+                        $row['Raza'],
+                        $row['Peso'],
+                        $row['Altura'],
+                        $row['Observaciones'],
+                        $row['Numero_Chip'],
+                        $row['Sexo']
+                    );
                 }
                 return $perros; // Retorna un array vacío si no hay registros
             } catch (PDOException $e) {
@@ -117,5 +122,3 @@ class PerrosModel extends BD
         }
     }
 }
-?>
-
