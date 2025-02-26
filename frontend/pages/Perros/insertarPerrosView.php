@@ -50,7 +50,7 @@
                 <div class="grid grid-cols-2 gap-4">
                     <div>
                         <label class="block text-gray-700 font-medium">Fecha de Nacimiento</label>
-                        <input type="date" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" name="fecha_nto" required aria-label="Fecha de Nacimiento" />
+                        <input type="date" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" name="FechaNto" required aria-label="Fecha de Nacimiento" />
                     </div>
                     <div>
                         <label class="block text-gray-700 font-medium">Raza</label>

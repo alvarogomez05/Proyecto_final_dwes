@@ -1,64 +1,47 @@
 <?php
-$url = 'http://localhost/Proyecto_final_dwes/backend/?ruta=empleados';
+$url = 'http://localhost/perros/backend/?ruta=perros';
 
 // Recibir datos del formulario
-$dni = $_GET['dni'] ?? '';
-$email = $_GET['email'] ?? '';
-$password = $_GET['password'] ?? '';
-$rol = $_GET['rol'] ?? '';
+$dni_cliente = $_GET['dni_cliente'] ?? '';
 $nombre = $_GET['nombre'] ?? '';
-$apellido1 = $_GET['apellido1'] ?? '';
-$apellido2 = $_GET['apellido2'] ?? '';
-$calle = $_GET['calle'] ?? '';
-$numero = $_GET['numero'] ?? '';
-$cp = $_GET['cp'] ?? '';
-$poblacion = $_GET['poblacion'] ?? '';
-$provincia = $_GET['provincia'] ?? '';
-$tlfno = $_GET['tlfno'] ?? '';
-$profesion= $_GET['profesion'] ?? '';
+$FechaNto = $_GET['FechaNto'] ?? '';
+$raza = $_GET['raza'] ?? '';
+$peso = $_GET['peso'] ?? '';
+$altura = $_GET['altura'] ?? '';
+$observaciones = $_GET['observaciones'] ?? '';
+$numero_chip = $_GET['numero_chip'] ?? '';
+$sexo = $_GET['sexo'] ?? '';
 
 // Construir la URL con los parámetros
-$url .= '&dni=' . urlencode($dni);
-$url .= '&email=' . urlencode($email);
-$url .= '&password=' . urlencode($password);
-$url .= '&rol=' . urlencode($rol);
+$url .= '&dni_cliente=' . urlencode($dni_cliente);
 $url .= '&nombre=' . urlencode($nombre);
-$url .= '&apellido1=' . urlencode($apellido1);
-$url .= '&apellido2=' . urlencode($apellido2);
-$url .= '&calle=' . urlencode($calle);
-$url .= '&numero=' . urlencode($numero);
-$url .= '&cp=' . urlencode($cp);
-$url .='&poblacion='. urlencode($poblacion);
-$url .= '&provincia=' . urlencode($provincia);
-$url .= '&tlfno=' . urlencode($tlfno);
-$url .= '&profesion=' . urlencode($profesion);
+$url .= '&FechaNto=' . urlencode($fecha_nto);
+$url .= '&raza=' . urlencode($raza);
+$url .= '&peso=' . urlencode($peso);
+$url .= '&altura=' . urlencode($altura);
+$url .= '&observaciones=' . urlencode($observaciones);
+$url .= '&numero_chip=' . urlencode($numero_chip);
+$url .= '&sexo=' . urlencode($sexo);
 
-
-// Validamos que los campos estén completos
-if ($dni && $email  &&  $password && $rol && $nombre && $apellido1 && $apellido2 && $calle && $numero && $cp && $poblacion && $provincia && $tlfno  && $profesion) {
-    // Datos nuevos del empleado
-    $newUser = [
-        'dni' => $dni,
-        'email' => $email,
-        'password' => $password, 
-        'rol' => $rol,
+// Validamos que los campos requeridos estén completos
+if ($dni_cliente && $nombre && $FechaNto && $raza && $peso && $altura && $numero_chip && $sexo) {
+    // Datos del nuevo perro
+    $newDog = [
+        'dni_cliente' => $dni_cliente,
         'nombre' => $nombre,
-        'apellido1' => $apellido1,
-        'apellido2' => $apellido2,
-        'calle' => $calle,
-        'numero' => $numero,
-        'cp' => $cp,
-        'poblacion' => $poblacion,
-        'provincia' => $provincia,
-        'tlfno' => $tlfno,
-        'profesion' => $profesion,
-   
+        'FechaNto' => $FechaNto,
+        'raza' => $raza,
+        'peso' => $peso,
+        'altura' => $altura,
+        'observaciones' => $observaciones,
+        'numero_chip' => $numero_chip,
+        'sexo' => $sexo,
     ];
 
     // Convertir los datos a JSON
-    $data = json_encode($newUser);
+    $data = json_encode($newDog);
 
-    // Inicializar curl
+    // Inicializar cURL
     $conexion = curl_init();
     curl_setopt($conexion, CURLOPT_URL, $url);
     curl_setopt($conexion, CURLOPT_HTTPHEADER, [
@@ -74,10 +57,14 @@ if ($dni && $email  &&  $password && $rol && $nombre && $apellido1 && $apellido2
     
     // Verificar si hubo error en la petición
     if (curl_errno($conexion)) {
+        echo "<script>alert('Error en la petición: " . curl_error($conexion) . "'); window.history.back();</script>";
     } else {
+        echo "<script>alert('Registro exitoso. ¡El perro {$nombre} ha sido registrado!'); window.location.href = '../../pages/main.php';</script>";
     }
     
     // Cerrar conexión cURL
     curl_close($conexion);
+} else {
+    echo "<script>alert('Error: Todos los campos requeridos deben estar completos.'); window.history.back();</script>";
 }
 ?>

@@ -16,24 +16,35 @@ class PerrosModel extends BD
     public function save($Dni_Cliente, $Nombre, $Fecha_Nto, $Raza, $Peso, $Altura, $Observaciones, $Numero_Chip, $Sexo)
     {
         try {
-            $sql = "INSERT INTO perros (Dni_Cliente, Nombre, Fecha_Nto, Raza, Peso, Altura, Observaciones, Numero_Chip, Sexo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            $sentencia = $this->conexion->prepare($sql);
-            $sentencia->bindParam(1, $Dni_Cliente);
-            $sentencia->bindParam(2, $Nombre);
-            $sentencia->bindParam(3, $Fecha_Nto); 
-            $sentencia->bindParam(4, $Raza);
-            $sentencia->bindParam(5, $Peso);
-            $sentencia->bindParam(6, $Altura);
-            $sentencia->bindParam(7, $Observaciones);
-            $sentencia->bindParam(8, $Numero_Chip);
-            $sentencia->bindParam(9, $Sexo);
-            $sentencia->execute();
-            return $this->conexion->lastInsertId();
+            // Asegurar que Fecha_Nto esté en formato correcto (YYYY-MM-DD)
+            $Fecha_Nto = date("Y-m-d", strtotime($Fecha_Nto));
+    
+            $sql = "INSERT INTO perros (Dni_Cliente, Nombre, Fecha_Nto, Raza, Peso, Altura, Observaciones, Numero_Chip, Sexo) 
+                    VALUES (:dni, :nombre, :fecha, :raza, :peso, :altura, :obs, :chip, :sexo)";
             
+            $sentencia = $this->conexion->prepare($sql);
+    
+            // Enlace de valores usando bindValue para evitar problemas de referencias
+            $sentencia->bindValue(':dni', $Dni_Cliente, PDO::PARAM_STR);
+            $sentencia->bindValue(':nombre', $Nombre, PDO::PARAM_STR);
+            $sentencia->bindValue(':fecha', $Fecha_Nto, PDO::PARAM_STR);
+            $sentencia->bindValue(':raza', $Raza, PDO::PARAM_STR);
+            $sentencia->bindValue(':peso', $Peso, PDO::PARAM_STR); // Si es float, usar PDO::PARAM_STR o convertirlo
+            $sentencia->bindValue(':altura', $Altura, PDO::PARAM_STR);
+            $sentencia->bindValue(':obs', $Observaciones, PDO::PARAM_STR);
+            $sentencia->bindValue(':chip', $Numero_Chip, PDO::PARAM_STR);
+            $sentencia->bindValue(':sexo', $Sexo, PDO::PARAM_STR);
+            
+            $sentencia->execute();
+    
+            // Obtener el último ID insertado
+            return $this->conexion->lastInsertId();
+    
         } catch (PDOException $e) {
             return "Error al guardar el perro: " . $e->getMessage();
         }
     }
+    
     
 
     public function getPerroById($id)
