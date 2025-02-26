@@ -24,7 +24,7 @@ if (isset($_GET['submit'])) {
     if ($error) {
         echo "<script>alert('Error en la petición: " . curl_error($ch) . "');</script>";
     } else {
-        echo "<script>alert('El servicio ha sido eliminado correctamente.'); window.location.href = './../../pages/Servicios Realizados/select.php';</script>";
+        echo "<script>alert('El servicio ha sido eliminado correctamente.'); window.location.href = './../../pages/Servicios Realizados/ListarServiciosRealizadosView.php';</script>";
     }
 }
 ?>
