@@ -32,7 +32,7 @@
                 </thead>
                 <tbody class="divide-y divide-gray-200">
                     <?php
-                    $url = 'http://localhost/Proyecto%20APIS/backend/?ruta=perros';
+                    $url = 'http://localhost/perros/backend/?ruta=perros';
                     $response = @file_get_contents($url);
                     $dni=$_GET['verPerro'];
                     if ($response === false) {
