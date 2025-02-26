@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 // RELLENAR LOS OPTIONS 
 // servicios
 $url = 'http://localhost/dwes/proyecto%20final/backend/?ruta=servicios';
@@ -114,13 +114,28 @@ if ($codServicio && $idPerro && $fecha && $incidencias && $dni) {
 
         <div class="mb-4">
             <label class="block text-gray-700 font-bold mb-2">DNI</label>
-            <!-- si el rol que se registra es admin sera este -->
-            <select required type="text" name="dni" class="border border-sky-600 px-4 py-2 w-full rounded focus:outline-none focus:ring-2 focus:ring-sky-700">
-                <?php foreach ($empleados as $empleado) {
-                    echo "<option value='" . $empleado['dni'] . "'>" . $empleado['dni'] . ' - ' . $empleado['nombre'] . "</option>";
-                } ?>
-            </select>
-            <!-- si no es admin solo le saldra su dni fijo y fuera -->
+            <?php
+
+            // $_SESSION['rol'] = 'emple';
+            // $_SESSION['dni'] = '77777777Z';
+
+
+            if (isset($_SESSION['rol'])) {
+                //  si el rol que se registra es admin sera este 
+
+                if ($_SESSION['rol'] === 'ADMIN') {
+                    echo '<select required type="text" name="dni" class="border border-sky-600 px-4 py-2 w-full rounded focus:outline-none focus:ring-2 focus:ring-sky-700">';
+                    foreach ($empleados as $empleado) {
+                        echo "<option value='" . $empleado['dni'] . "'>" . $empleado['dni'] . ' - ' . $empleado['nombre'] . "</option>";
+                    }
+                    echo '</select>';
+                } else {
+                    // si no es admin solo le saldra su dni fijo y fuera 
+                    echo '<input required readonly type="string" name="dni" value="' .  $_SESSION['dni']  . '" class="border border-sky-600 px-4 py-2 w-full rounded focus:outline-none focus:ring-2 focus:ring-sky-700">';
+                }
+            }
+
+            ?>
         </div>
 
 
