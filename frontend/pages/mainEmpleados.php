@@ -27,15 +27,23 @@
 </head>
 
 <body class="bg-sky-100 text-white h-screen flex flex-col">
-    <header class="bg-sky-600 p-5 flex items-center justify-between shadow-md">
-        <div class="flex items-center space-x-4">
-            <img src="../assets/img/PRqH.gif" alt="Foto de usuario" class="w-12 h-12 rounded-full border-2 border-white">
-            <div>
-                <h3 class="text-lg font-bold">Nombre Usuario</h3>
-                <p class="text-sm text-gray-300">Profesión</p>
-            </div>
+<header class="bg-sky-600 p-5 flex items-center justify-between shadow-md">
+    <div class="flex items-center space-x-4">
+        <img src="../assets/img/PRqH.gif" alt="Foto de usuario" class="w-12 h-12 rounded-full border-2 border-white">
+        <div>
+            <h3 class="text-lg font-bold">Nombre Usuario</h3>
+            <!-- <?php
+            session_start();
+            $dni = $_SESSION['dni'];
+            echo "<p>$dni</p>";
+            ?> -->
+            <p class="text-sm text-gray-300">Profesión</p>
         </div>
-    </header>
+    </div>
+    <div>
+        <a href="logout.php" class="bg-white text-sky-600 hover:bg-gray-200 px-4 py-2 rounded transition duration-200">Logout</a>
+    </div>
+</header>
     <main class="flex-1 p-10 flex justify-center items-center">
         <div class="grid grid-cols-4 gap-8 w-full max-w-6xl">
             <!-- Botón Servicios -->
