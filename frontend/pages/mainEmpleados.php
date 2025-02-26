@@ -49,12 +49,12 @@
                 <h2 class="text-xl font-bold mt-3">Clientes</h2>
             </a>
             <!-- Botón Perros -->
-            <a href="listar-perros.html" class="flex flex-col items-center box">
+            <a href="./Perros/listarPerrosView.php" class="flex flex-col items-center box">
                 <img src="../assets/img/main4.webp" alt="Perros" class="w-48 h-48 object-cover rounded-lg shadow-md">
                 <h2 class="text-xl font-bold mt-3">Perros</h2>
             </a>
             <!-- Botón Servicios Realizados -->
-            <a href="./Servicios Realizados/select.php" class="flex flex-col items-center box">
+            <a href="./Servicios Realizados/LlistarServiciosRealizadosView.php" class="flex flex-col items-center box">
                 <img src="../assets/img/mainsv.jpg" alt="Servicios Realizados" class="w-48 h-48 object-cover rounded-lg shadow-md">
                 <h2 class="text-xl font-bold mt-3 text-center">Servicios Realizados</h2>
             </a>

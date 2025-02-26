@@ -32,13 +32,7 @@ class PerrosService
         return $this->perrosModel->getPerroById($id);
     }
 
-<<<<<<< HEAD
-
-
-
-=======
    
->>>>>>> 2c4e463398326f892d229fa8128cd3cc67dfc68e
     public function obtenerTodosLosPerros()
     {
         return $this->perrosModel->getAll();

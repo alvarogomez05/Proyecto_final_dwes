@@ -1,3 +1,10 @@
+<?php
+session_start();
+$dni = $_SESSION['dni'];
+$rol = $_SESSION['rol'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -77,9 +84,11 @@
     </a>
 
 
-    <a href="./../main.php" class="fixed right-10 bottom-10 w-36 bg-yellow-500 hover:bg-yellow-700 text-center text-white font-bold py-2 px-4 rounded-lg">
-        Volver
+    <a href="<?php echo ($rol === 'ADMIN') ? './../main.php' : './../mainEmpleados.php'; ?>" 
+   class="fixed right-10 bottom-10 w-36 bg-blue-500 hover:bg-blue-700 text-center text-white font-bold py-2 px-4 rounded-lg">
+    Volver
     </a>
+
 
 </body>
 

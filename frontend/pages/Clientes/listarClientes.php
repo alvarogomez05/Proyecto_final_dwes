@@ -1,4 +1,8 @@
 <?php
+session_start();
+$dni = $_SESSION['dni'];
+$rol = $_SESSION['rol'];
+
 $url = 'http://localhost/perros/backend/?ruta=clientes';
 $response = file_get_contents($url);
 $data = json_decode($response, true);
@@ -61,9 +65,9 @@ $data = json_decode($response, true);
             </table>
         </div>
     </div>
-    <a href="./../main.php"
-        class=" fixed right-10 bottom-10 w-36 bg-yellow-500 hover:bg-yellow-700 text-center text-white font-bold py-2 px-4 rounded-lg">
-        volver
+    <a href="<?php echo ($rol === 'ADMIN') ? './../main.php' : './../mainEmpleados.php'; ?>" 
+   class="fixed right-10 bottom-10 w-36 bg-blue-500 hover:bg-blue-700 text-center text-white font-bold py-2 px-4 rounded-lg">
+    Volver
     </a>
 </body>
 

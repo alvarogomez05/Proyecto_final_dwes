@@ -2,13 +2,8 @@
 
 include_once 'Perro.php';
 
-<<<<<<< HEAD
-class PerrosModel extends BD {
-
-=======
 class PerrosModel extends BD
 {
->>>>>>> 2c4e463398326f892d229fa8128cd3cc67dfc68e
     private $table;
     private $conexion;
 
@@ -17,19 +12,6 @@ class PerrosModel extends BD
         $this->conexion = $this->getConexion();
     }
 
-<<<<<<< HEAD
-    public function save($id, $nombre, $raza, $edad, $dni_cliente) {
-        try {
-            $sql = "INSERT INTO perros (Id, Nombre, Raza, Edad, Dni_Cliente) VALUES (?, ?, ?, ?, ?)";
-            $sentencia = $this->conexion->prepare($sql);
-            $sentencia->bindParam(1, $id);
-            $sentencia->bindParam(2, $nombre);
-            $sentencia->bindParam(3, $raza);
-            $sentencia->bindParam(4, $edad);
-            $sentencia->bindParam(5, $dni_cliente);
-            $num = $sentencia->execute();
-            return $num;
-=======
     public function save($perrosCod, $Dni_Cliente, $Nombre, $Fecha_Nto, $Raza, $Peso, $Altura, $Observaciones, $Numero_Chip, $Sexo)
     {
 
@@ -58,7 +40,6 @@ class PerrosModel extends BD
             // Obtener el último ID insertado
             return $this->conexion->lastInsertId();
     
->>>>>>> 2c4e463398326f892d229fa8128cd3cc67dfc68e
         } catch (PDOException $e) {
             return "Error al guardar el perro: " . $e->getMessage();
         }
@@ -68,20 +49,12 @@ class PerrosModel extends BD
 
     public function getPerroById($id) {
         try {
-<<<<<<< HEAD
-            $sql = "SELECT * FROM perros WHERE Id=?";
-=======
             $sql = "SELECT * FROM perros WHERE Id=? LIMIT 1"; // Agregando LIMIT 1
->>>>>>> 2c4e463398326f892d229fa8128cd3cc67dfc68e
             $sentencia = $this->conexion->prepare($sql);
             $sentencia->bindParam(1, $id);
             $sentencia->execute();
             $row = $sentencia->fetch();
             if ($row) {
-<<<<<<< HEAD
-                $perro = new Perro($row['Id'], $row['Nombre'], $row['Raza'], $row['Edad'], $row['Dni_Cliente']);
-                return $perro;
-=======
                 return new Perro(
                     $row['Id'],
                     $row['Dni_Cliente'],
@@ -94,7 +67,6 @@ class PerrosModel extends BD
                     $row['Numero_Chip'],
                     $row['Sexo']
                 );
->>>>>>> 2c4e463398326f892d229fa8128cd3cc67dfc68e
             }
             return null;
         } catch (PDOException $e) {
@@ -110,9 +82,6 @@ class PerrosModel extends BD
                 $registros = $statement->fetchAll(PDO::FETCH_ASSOC);
                 $perros = [];
                 foreach ($registros as $row) {
-<<<<<<< HEAD
-                    array_push($perros, new Perro($row['Id'], $row['Nombre'], $row['Raza'], $row['Edad'], $row['Dni_Cliente']));
-=======
                     $perros[] = new Perro(
                         $row['Id'],
                         $row['Dni_Cliente'],
@@ -125,7 +94,6 @@ class PerrosModel extends BD
                         $row['Numero_Chip'],
                         $row['Sexo']
                     );
->>>>>>> 2c4e463398326f892d229fa8128cd3cc67dfc68e
                 }
                 return $perros; // Retorna un array vacío si no hay registros
             } catch (PDOException $e) {
