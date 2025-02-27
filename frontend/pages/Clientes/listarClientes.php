@@ -56,13 +56,13 @@ $data = json_decode($response, true);
                             <td class="px-6 py-3 text-center"><?php echo htmlspecialchars($datos['tlfno']); ?></td>
                             <?php if ($rol == "ADMIN") { ?>
                                 <td class="px-6 py-3 text-center">
-                                    <form action='borrarClientes.php' method='GET'>
+                                    <form action='./../../controllers/Clientes/borrarClientes.php 'method='GET'>
                                         <button type='submit' name='borrar' value='<?php echo htmlspecialchars($datos['dni']); ?>' class='p-2 text-white bg-red-500 rounded'>BORRAR</button>
                                     </form>
                                 </td>
                             <?php } ?>
                             <td class="px-6 py-3 text-center">
-                                <form action='verPerroCliente.php' method='GET'>
+                                <form action='./../../controllers/Clientes/verPerroCliente.php' method='GET'>
                                     <button type='submit' name='verPerro' value='<?php echo htmlspecialchars($datos['dni']); ?>' class='p-2 text-white bg-green-500 rounded'>PERROS</button>
                                 </form>
                             </td>

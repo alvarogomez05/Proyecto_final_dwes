@@ -54,7 +54,7 @@
                 </div>
                 <div>
                     <label class="block text-gray-700 font-medium">Direccion</label>
-                    <input type="text" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" placeholder="Apellido 2" name="direccion" />
+                    <input type="text" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" placeholder="Direccion" name="direccion" />
                 </div>
                 <div class="grid grid-cols-5 gap-4">
 
@@ -78,7 +78,7 @@
     </footer>
 
     <?php
-    require_once 'insertarClientes.php';
+    require_once './../../controllers/Clientes/insertarClientes.php';
     ?>
     <a href="./listarClientes.php"
         class=" fixed right-10 bottom-10 w-36 bg-yellow-500 hover:bg-yellow-700 text-center text-white font-bold py-2 px-4 rounded-lg">

@@ -67,7 +67,7 @@
                 </tbody>
             </table>
         </div>
-        <a href="./listarClientes.php" class="fixed right-10 bottom-10 w-36 bg-yellow-500 hover:bg-yellow-700 text-center text-white font-bold py-2 px-4 rounded-lg">
+        <a href="./../../pages/Clientes/listarClientes.php" class="fixed right-10 bottom-10 w-36 bg-yellow-500 hover:bg-yellow-700 text-center text-white font-bold py-2 px-4 rounded-lg">
             Volver
         </a>
 

@@ -1,5 +1,5 @@
 <?php
-$url = 'http://localhost/perros/backend/?ruta=clientes&dni='.$_GET['borrar'];
+$url = 'http://localhost/perros/backend/?ruta=clientes&dni=' . $_GET['borrar'];
 // Inicializar cURL
 $ch = curl_init();
 
@@ -18,5 +18,4 @@ $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 // Cerrar cURL
 curl_close($ch);
 //redirecciono a la view
-header('Location:./../../pages/Clientes/borrarView.php');
-?>
+header('Location:./../../pages/Clientes/listarClientes.php');
