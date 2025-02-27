@@ -67,7 +67,7 @@ if ($codServicio && $idPerro && $fecha && $incidencias && $dni) {
 
     // Cerrar conexión cURL
     curl_close($conexion);
-    echo "<script>alert('Servicio realizado insertado !!!!!!!'); window.location.href='./ListarServiciosRealizadosView.php';</script>";
+    echo "<script>alert('Servicio realizado insertado !!!!!!!'); window.location.href='./LlistarServiciosRealizadosView.php';</script>";
 }
 ?>
 

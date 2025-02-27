@@ -4,7 +4,7 @@ $url = 'http://localhost/perros/backend/?ruta=empleados';
 // Recibir datos del formulario
 $dni = $_GET['dni'] ?? '';
 $email = $_GET['email'] ?? '';
-$password = $_GET['password'] ?? '';
+$password = password_hash($_GET['password'] ?? '', PASSWORD_DEFAULT);
 $rol = $_GET['rol'] ?? '';
 $nombre = $_GET['nombre'] ?? '';
 $apellido1 = $_GET['apellido1'] ?? '';
@@ -40,7 +40,7 @@ if ($dni && $email  &&  $password && $rol && $nombre && $apellido1 && $apellido2
     $newUser = [
         'dni' => $dni,
         'email' => $email,
-        'password' => $password, 
+        'password' => password_hash($password, PASSWORD_DEFAULT),
         'rol' => $rol,
         'nombre' => $nombre,
         'apellido1' => $apellido1,
