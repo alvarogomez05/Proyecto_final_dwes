@@ -35,13 +35,19 @@ $errorMessage = curl_error($conexion);
 // Cerrar conexión cURL
 curl_close($conexion);
 
-// Manejo de errores
-if ($error) {
-    echo "<script>alert('Error en la petición: " . addslashes($errorMessage) . "');</script>";
-} elseif ($httpCode == 200 || $httpCode == 201) {
-    echo "<script>alert('¡Servicio registrado con éxito!'); window.location.href = './../../pages/Servicios/SelectServicios.php';</script>";
-} else {
-    echo "<script>alert('Error al registrar el servicio. Código HTTP: " . $httpCode . " Respuesta: " . addslashes($response) . "');</script>";
-}
+ $httpCode = curl_getinfo($conexion, CURLINFO_HTTP_CODE);
+      // Verificar si hubo error en la petición
+      if ($response === false) {
+        echo "<script>alert('Error en la conexión con el servidor.');</script>";
+    } else {
+        if ($httpCode == 200) {
+            echo "<script>alert('Registro exitoso. ¡Registrado {$nombre} con éxito!'); window.location.href = './../../pages/Clientes/listarClientes.php';</script>";
+        } elseif ($httpCode == 400) {
+            $errorMsg = json_decode($response, true)['error'] ?? 'El cliente ya existe';
+            echo "<script>alert('Registro fallido: {$errorMsg}');</script>";
+        } else {
+            echo "<script>alert('Error inesperado. Código HTTP: {$httpCode}');</script>";
+        }
+    }
 ?>
 

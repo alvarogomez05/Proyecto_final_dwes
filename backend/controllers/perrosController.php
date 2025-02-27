@@ -19,7 +19,7 @@ class PerrosController{
     }
 
     public function borrarPerro($id){
-         return $this->perroService->borrarPerro($id);
+        return $this->perroService->borrarPerro($id);    
     }
 
     public function guardarPerro( $nombre, $raza, $fechaNto, $dni_cliente, $peso, $altura, $observaciones, $numero_chip, $sexo){
@@ -32,8 +32,7 @@ class PerrosController{
         // $perrosCod = $datos['id'] + 1;
 
         // echo 'aaaaaaaaaaaaa';
-
-
+        
         $perrosCod=null;
 
          return $this->perroService->guardarPerro($perrosCod,$nombre, $raza, $fechaNto, $dni_cliente, $peso, $altura, $observaciones, $numero_chip, $sexo);

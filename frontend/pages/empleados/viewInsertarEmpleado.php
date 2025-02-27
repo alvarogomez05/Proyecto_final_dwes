@@ -39,11 +39,11 @@
             <div class="grid grid-cols-2 gap-4">
                 <div>
                     <label class="block text-gray-700 font-medium">DNI</label>
-                    <input type="text" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" placeholder="12345678A" name="dni" required />
+                    <input type="text" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" placeholder="12345678A" name="dni" required pattern="^[0-9]{8}[A-Za-z]$" />
                 </div>
                 <div>
                     <label class="block text-gray-700 font-medium">Email</label>
-                    <input type="email" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" placeholder="correo@example.com" name="email" required />
+                    <input type="email" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" placeholder="correo@example.com" name="email" required pattern="^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$" />
                 </div>
             </div>
 
@@ -80,11 +80,11 @@
                 </div>
                 <div>
                     <label class="block text-gray-700 font-medium">Número</label>
-                    <input type="text" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" placeholder="Número" name="numero" />
+                    <input type="number" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" placeholder="Número" name="numero" />
                 </div>
                 <div>
                     <label class="block text-gray-700 font-medium">Código Postal</label>
-                    <input type="text" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" placeholder="CP" name="cp" />
+                    <input type="number" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" placeholder="CP" name="cp" />
                 </div>
             </div>
 
@@ -101,7 +101,7 @@
 
             <div>
                 <label class="block text-gray-700 font-medium">Teléfono</label>
-                <input type="text" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" placeholder="Teléfono" name="tlfno" />
+                <input type="text" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" placeholder="Teléfono" name="tlfno" required pattern="^[0-9]{9}$" />
             </div>
 
             <div>

@@ -72,12 +72,20 @@ if ($dni && $email  &&  $password && $rol && $nombre && $apellido1 && $apellido2
     // Ejecutar petición y obtener respuesta
     $response = curl_exec($conexion);
     
+    $httpCode = curl_getinfo($conexion, CURLINFO_HTTP_CODE);
     // Verificar si hubo error en la petición
-    if (curl_errno($conexion)) {
-    } else {
-    }
-    
-    // Cerrar conexión cURL
+    if ($response === false) {
+      echo "<script>alert('Error en la conexión con el servidor.');</script>";
+  } else {
+      if ($httpCode == 200) {
+          echo "<script>alert('Registro exitoso. ¡Registrado {$nombre} con éxito!'); window.location.href = './../../pages/empleados/viewListarEmpleado.php';</script>";
+      } elseif ($httpCode == 400) {
+          $errorMsg = json_decode($response, true)['error'] ?? 'El cliente ya existe';
+          echo "<script>alert('Registro fallido: {$errorMsg}');</script>";
+      } else {
+          echo "<script>alert('Error inesperado. Código HTTP: {$httpCode}');</script>";
+      }
+  }
     
     curl_close($conexion);
     header('Location:./../../pages/Empleados/viewListarEmpleado.php');

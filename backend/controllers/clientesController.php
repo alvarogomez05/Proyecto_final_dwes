@@ -36,7 +36,8 @@ class ClientesController
         foreach ($data as $clientes) {
             if ($clientes['dni'] == $dni) {
                 http_response_code(400);
-                return;
+                return json_encode(["error" => "El DNI ya existe"]);
+                
             }
         }
 
@@ -45,9 +46,14 @@ class ClientesController
     //Funcion para borrar los clientes por DNI
     public function borrarCliente($dni){
 
-    
-    
+       
 
-        return $this->userService->borrarCliente($dni);
+
+       
+            return $this->userService->borrarCliente($dni);
+       
+    
+        
+
     }
 }

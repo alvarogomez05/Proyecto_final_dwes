@@ -32,7 +32,7 @@
                 <div class="grid grid-cols-2 gap-4">
                     <div>
                         <label class="block text-gray-700 font-medium">DNI</label>
-                        <input type="text" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" placeholder="12345678A" name="dni" required />
+                        <input type="text" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" placeholder="12345678A" name="dni" required pattern="^[0-9]{8}[A-Za-z]$"/>
                     </div>
 
                 </div>
@@ -56,13 +56,14 @@
                     <label class="block text-gray-700 font-medium">Direccion</label>
                     <input type="text" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" placeholder="Direccion" name="direccion" />
                 </div>
-                <div class="grid grid-cols-5 gap-4">
+               
 
                     <div>
                         <label class="block text-gray-700 font-medium">Teléfono</label>
-                        <input type="text" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" placeholder="Teléfono" name="tlfno" required />
+                        <input type="text" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" placeholder="Teléfono" name="tlfno" required pattern="^[0-9]{9}$" />
                     </div>
-                    <button class="w-full bg-sky-700 text-white py-3 rounded-lg mt-6 font-semibold hover:bg-sky-800 transition duration-300">Crear</button>
+                 
+                  <button class="w-full bg-sky-700 text-white py-3 rounded-lg mt-6 font-semibold hover:bg-sky-800 transition duration-300">Crear</button>
             </form>
         </div>
     </main>

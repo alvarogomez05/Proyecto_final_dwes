@@ -47,18 +47,22 @@ if ($dni  && $nombre && $apellido1 && $apellido2   && $tlfno) {
     curl_setopt($conexion, CURLOPT_POST, true);
     curl_setopt($conexion, CURLOPT_POSTFIELDS, $data);
     curl_setopt($conexion, CURLOPT_RETURNTRANSFER, true);
-
     // Ejecutar petición y obtener respuesta
     $response = curl_exec($conexion);
-
-    // Verificar si hubo error en la petición
-    if (curl_errno($conexion)) {
-        echo "<script>alert('Registro fallido el cliente ya existe); ";
-    
-    } else { 
-        echo "<script>alert('Registro exitoso. ¡Registrado {$nombre} con éxito!'); window.location.href = './../../pages/Clientes/listarClientes.php';</script>";
+    $httpCode = curl_getinfo($conexion, CURLINFO_HTTP_CODE);
+      // Verificar si hubo error en la petición
+      if ($response === false) {
+        echo "<script>alert('Error en la conexión con el servidor.');</script>";
+    } else {
+        if ($httpCode == 200) {
+            echo "<script>alert('Registro exitoso. ¡Registrado {$nombre} con éxito!'); window.location.href = './../../pages/Clientes/listarClientes.php';</script>";
+        } elseif ($httpCode == 400) {
+            $errorMsg = json_decode($response, true)['error'] ?? 'El cliente ya existe';
+            echo "<script>alert('Registro fallido: {$errorMsg}');</script>";
+        } else {
+            echo "<script>alert('Error inesperado. Código HTTP: {$httpCode}');</script>";
+        }
     }
-
     // Cerrar conexión cURL
     curl_close($conexion);
    

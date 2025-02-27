@@ -57,13 +57,20 @@
         // Ejecutar petición y obtener respuesta
         $response = curl_exec($conexion);
 
+        $httpCode = curl_getinfo($conexion, CURLINFO_HTTP_CODE);
         // Verificar si hubo error en la petición
-        if (curl_errno($conexion)) {
-            echo "<script>alert('Error en la petición: " . curl_error($conexion) . "'); </script>";
-        } else {
-            echo "<script>alert('Registro exitoso. ¡El perro {$nombre} ha sido registrado!'); window.location.href = '../../pages/Perros/listarPerrosView.php';</script>";
-        }
-
+        if ($response === false) {
+          echo "<script>alert('Error en la conexión con el servidor.');</script>";
+      } else {
+          if ($httpCode == 201) {
+              echo "<script>alert('Registro exitoso. ¡Registrado {$nombre} con éxito!'); window.location.href = './../../pages/Perros/listarPerrosView.php';</script>";
+          } elseif ($httpCode == 400) {
+              $errorMsg = json_decode($response, true)['error'] ?? 'El perro ya existe';
+              echo "<script>alert('Registro fallido: {$errorMsg}');</script>";
+          } else {
+              echo "<script>alert('Error inesperado. Código HTTP: {$httpCode}');</script>";
+          }
+      }
         // Cerrar conexión cURL
         curl_close($conexion);
     } else {
