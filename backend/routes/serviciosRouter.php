@@ -12,21 +12,21 @@ function servicioRouter($method)
 
     switch ($method) {
         case 'GET':
-            if (isset($_GET['id'])) {
-                echo json_encode($ServiciosController->getServicioId($_GET['id']));
+            if (isset($_GET['codigo'])) {
+                echo json_encode($ServiciosController->getServicioId($_GET['codigo']));
             } else {
                 echo json_encode($ServiciosController->getServicios());
             }
             break;
         case 'POST':
             // $id,$nombre,$precio
-            $ServiciosController->guardarServicio($_GET['id'],$_GET['nombre'],$_GET['precio'],$_GET['desc']);
+            $ServiciosController->guardarServicio($_GET['codigo'],$_GET['nombre'],$_GET['precio'],$_GET['desc']);
             break;
         case 'PUT':
-            $ServiciosController->actualizarServicio($_GET['id'], $_GET['precio']);
+            $ServiciosController->actualizarServicio($_GET['codigo'], $_GET['precio']);
             break;
         case 'DELETE':
-            $ServiciosController->borrarServicio($_GET['id']);
+            $ServiciosController->borrarServicio($_GET['codigo']);
             break;
         default:
             echo 'Método no permitido';

@@ -27,7 +27,7 @@ $data = json_decode($response, true);
         ?>
             <div class='flex justify-left gap-8 mt-8 m-5'>
                 <a href='./PostServicios.php' class='w-36 bg-blue-500 hover:bg-blue-700 text-center text-white font-bold py-2 px-4 rounded-lg'>
-                    Insertar un servicio
+                    INSERTAR UN SERVICIO
                 </a>
             </div>
         <?php endif; ?>
@@ -54,10 +54,10 @@ $data = json_decode($response, true);
                         echo "<td class='px-8 py-3 text-center'>" . htmlspecialchars($datos['descripcion']) . "</td>";
                         if ($rol === 'ADMIN') {
                             echo "<td class='px-6 py-3 text-center flex flex-col items-center gap-2'>";
-                            echo "<a href='./UpdateServicios.php?codigo=" . htmlspecialchars($datos['codigo']) . "' class='p-2 text-white bg-green-500 rounded w-24 text-center'>Modificar</a>";
+                            echo "<a href='./UpdateServicios.php?codigo=" . htmlspecialchars($datos['codigo']) . "' class='p-2 text-white bg-green-500 rounded w-24 text-center'>MODIFICAR</a>";
                             echo "<form method='GET' action='./../../controllers/Servicios/DeleteServicios.php' class='w-full flex justify-center'>";
                             echo "<input type='hidden' name='codigo' value='" . htmlspecialchars($datos['codigo']) . "'>";
-                            echo "<button type='submit' class='p-2 text-white bg-red-500 rounded w-24 text-center'>Eliminar</button>";
+                            echo "<button type='submit' class='p-2 text-white bg-red-500 rounded w-24 text-center'>ELIMINAR</button>";
                             echo "</form>";
                             echo "</td>";
                         }

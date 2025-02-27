@@ -1,8 +1,6 @@
 <?php
-      require_once './../../controllers/Empleados/insertarEmpleado.php';
-?>
-
-
+      require_once './../../controllers/Empleados/eliminarEmpleado.php';
+    ?>
 
 
 <!DOCTYPE html>
@@ -11,124 +9,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PetVet - Registro</title>
+    <title>Empleados</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="shortcut icon" href="./assets/img/favi.jpg" type="image/x-icon">
 </head>
 
-<body class="flex flex-col min-h-screen bg-gray-100 bg-[url('../assets/img/bg2.jpg')] bg-blend-overlay bg-cover bg-center">
-    <!-- Header -->
-    <header class="bg-sky-700 text-white p-4 shadow-lg">
-        <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-3xl font-extrabold">PetVet</h1>
-            <nav>
-                <ul class="flex space-x-6 text-lg">
-                    <li><a href="#" class="hover:underline">Inicio</a></li>
-                    <li><a href="#" class="hover:underline">Servicios</a></li>
-                    <li><a href="#" class="hover:underline">Contacto</a></li>
-                </ul>
-            </nav>
+<body class="bg-gray-100 p-10 bg-cover bg-center bg-blend-overlay" style="background-image: url('./../../assets/img/bg2.jpg');">
+
+    <div class="container mx-auto">
+        <h1 class="text-3xl font-bold text-center text-sky-700 mb-6">Borrar Empleados</h1>
+
+        <div class="overflow-x-auto">
+            <table class=" text-sm pb-8 bg-white border border-gray-300 shadow-md rounded-lg">
+                <thead class="bg-sky-700 text-white">
+                    <tr>
+                      <th class="py-1 px-2 text-left">DNI</th>
+                      <th class="py-1 px-2 text-left">Nombre</th>
+                      <th class="py-1 px-2 text-left">Apellido1</th>
+                      <th class="py-1 px-2 text-left">Apellido2</th>  
+                      <th class="py-1 px-2 text-left">Rol</th>
+                      <th class="py-1 px-2 text-left">Profesión</th>
+                      <th class="py-1 px-2 text-left">Calle</th>
+                      <th class="py-1 px-2 text-left">Número</th>
+                      <th class="py-1 px-2 text-left">Código Postal</th>
+                      <th class="py-1 px-2 text-left">Población</th>
+                      <th class="py-1 px-2 text-left">Provincia</th>
+                      <th class="py-1 px-2 text-left">Teléfono</th>
+                        <th class="py-1 px-2 text-left">Borrar</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    <?php
+                    $url = 'http://localhost/perros/backend/?ruta=empleados';
+                    $response = file_get_contents($url);
+                    $data = json_decode($response, true);
+                    if (!empty($data)) {
+                        foreach ($data as $empleados) {
+                            echo "<tr class='hover:bg-gray-100'>";
+                            echo "<td class='py-1 px-2 border'>{$empleados['dni']}</td>";
+                            echo "<td class='py-1 px-2 border'>{$empleados['nombre']}</td>";
+                            echo "<td class='py-1 px-2 border'>{$empleados['apellido1']}</td>";
+                            echo "<td class='py-1 px-2 border'>{$empleados['apellido2']}</td>";
+                            echo "<td class='py-1 px-2 border'>{$empleados['rol']}</td>";
+                            echo "<td class='py-1 px-2 border'>{$empleados['profesion']}</td>";
+                            echo "<td class='py-1 px-2 border'>{$empleados['calle']}</td>";
+                            echo "<td class='py-1 px-2 border'>{$empleados['numero']}</td>";
+                            echo "<td class='py-1 px-2 border'>{$empleados['cp']}</td>";
+                            echo "<td class='py-1 px-2 border'>{$empleados['poblacion']}</td>";
+                            echo "<td class='py-1 px-2 border'>{$empleados['provincia']}</td>";
+                            echo "<td class='py-1 px-2 border'>{$empleados['tlfno']}</td>";
+                            echo "<td class='py-1 px-2 border'>
+                                    <form action='viewEliminarEmpleado.php'>
+                                        <button type='text' name='dni' value='{$empleados['dni']}' class='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'>
+                                            Borrar
+                                        </button>
+                                    </form>
+                                  </td>";
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='4' class='text-center py-4 text-red-500 font-bold'>No hay datos disponibles</td></tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
+            <div class="mt-8">
+                    <p class="text-white">.</p>
+            </div>
         </div>
-    </header>
-
-   <!-- Main Content -->
-<main class="flex flex-1 items-center justify-center p-6">
-    <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-4xl">
-        <h2 class="text-3xl font-bold text-center text-sky-700 mb-6">Insertar Cliente</h2>
-        <form method="GET" action="" class="space-y-4">
-            <div class="grid grid-cols-2 gap-4">
-                <div>
-                    <label class="block text-gray-700 font-medium">DNI</label>
-                    <input type="text" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" placeholder="12345678A" name="dni" required />
-                </div>
-                <div>
-                    <label class="block text-gray-700 font-medium">Email</label>
-                    <input type="email" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" placeholder="correo@example.com" name="email" required />
-                </div>
-            </div>
-
-            <div class="grid grid-cols-2 gap-4">
-                <div>
-                    <label class="block text-gray-700 font-medium">Contraseña</label>
-                    <input type="password" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" placeholder="********" name="password" required />
-                </div>
-                <div>
-                    <label class="block text-gray-700 font-medium">Rol</label>
-                    <input type="text" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" placeholder="rol" name="rol" />
-                </div>
-            </div>
-
-            <div class="grid grid-cols-3 gap-4">
-                <div>
-                    <label class="block text-gray-700 font-medium">Nombre</label>
-                    <input type="text" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" placeholder="Nombre" name="nombre" required />
-                </div>
-                <div>
-                    <label class="block text-gray-700 font-medium">Apellido 1</label>
-                    <input type="text" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" placeholder="Apellido 1" name="apellido1" required />
-                </div>
-                <div>
-                    <label class="block text-gray-700 font-medium">Apellido 2</label>
-                    <input type="text" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" placeholder="Apellido 2" name="apellido2" />
-                </div>
-            </div>
-
-            <div class="grid grid-cols-3 gap-4">
-                <div>
-                    <label class="block text-gray-700 font-medium">Calle</label>
-                    <input type="text" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" placeholder="Calle" name="calle" />
-                </div>
-                <div>
-                    <label class="block text-gray-700 font-medium">Número</label>
-                    <input type="text" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" placeholder="Número" name="numero" />
-                </div>
-                <div>
-                    <label class="block text-gray-700 font-medium">Código Postal</label>
-                    <input type="text" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" placeholder="CP" name="cp" />
-                </div>
-            </div>
-
-            <div class="grid grid-cols-2 gap-4">
-                <div>
-                    <label class="block text-gray-700 font-medium">Población</label>
-                    <input type="text" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" placeholder="Población" name="poblacion" />
-                </div>
-                <div>
-                    <label class="block text-gray-700 font-medium">Provincia</label>
-                    <input type="text" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" placeholder="Provincia" name="provincia" />
-                </div>
-            </div>
-
-            <div>
-                <label class="block text-gray-700 font-medium">Teléfono</label>
-                <input type="text" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" placeholder="Teléfono" name="tlfno" />
-            </div>
-
-            <div>
-                <label class="block text-gray-700 font-medium">Profesión</label>
-                <input type="text" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sky-500" placeholder="Profesión" name="profesion" />
-            </div>
-
-            <button type="submit" class="w-full bg-sky-700 text-white py-3 rounded-lg mt-6 font-semibold hover:bg-sky-800 transition duration-300">
-                Crear Cliente
-            </button>
-        </form>
     </div>
     <a href="./viewListarEmpleado.php"
         class=" fixed right-10 bottom-10 w-36 bg-yellow-500 hover:bg-yellow-700 text-center text-white font-bold py-2 px-4 rounded-lg">
         volver
     </a>
-</main>
-
-    <!-- Footer -->
-    <footer class="bg-sky-700 text-white text-center p-6 mt-8 rounded-t-lg">
-        <p>&copy; 2025 PetVet - Todos los derechos reservados.</p>
-        <nav class="mt-3">
-            <a href="#" class="mx-3 hover:underline">Aviso Legal</a>
-            <a href="#" class="mx-3 hover:underline">Política de Privacidad</a>
-            <a href="#" class="mx-3 hover:underline">Términos y Condiciones</a>
-        </nav>
-    </footer>
+    
 </body>
 
 </html>

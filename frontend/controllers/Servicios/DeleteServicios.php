@@ -3,7 +3,7 @@ session_start();
 
 if (isset($_GET['codigo'])) {
 
-    $url = 'http://localhost/perros/backend/?ruta=servicios&id=' . $_GET['codigo'];
+    $url = 'http://localhost/perros/backend/?ruta=servicios&codigo=' . $_GET['codigo'];
 
     // Inicializar cURL
     $ch = curl_init();

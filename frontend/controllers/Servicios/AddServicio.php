@@ -15,7 +15,7 @@ $desc = $_GET['desc'];
 
 // Construir la URL con los parámetros
 $url = 'http://localhost/perros/backend/?ruta=servicios'
-    . '&id=' . urlencode($codigo)
+    . '&codigo=' . urlencode($codigo)
     . '&nombre=' . urlencode($nombre)
     . '&precio=' . urlencode($precio)
     . '&desc=' . urlencode($desc);

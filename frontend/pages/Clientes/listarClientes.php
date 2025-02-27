@@ -6,7 +6,6 @@ $rol = $_SESSION['rol'];
 $url = 'http://localhost/perros/backend/?ruta=clientes';
 $response = file_get_contents($url);
 $data = json_decode($response, true);
-
 ?>
 
 <!DOCTYPE html>
@@ -15,74 +14,71 @@ $data = json_decode($response, true);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servicios</title>
+    <title>Lista de Clientes</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-gray-100 p-10 bg-cover bg-center bg-blend-overlay" style="background-image: url('./../../assets/img/bg2.jpg');">
-
-    <div class="container mx-auto">
-       <?php
-       if($rol=="ADMIN"){
-        echo ' <a href="insertarClienteView.php"
-        class="  w-36 bg-yellow-500 hover:bg-yellow-700 text-center text-white font-bold py-2 px-4 rounded-lg">
-        Insertar  </a>';
-       }
-   
-       ?>
-        <h1 class="text-3xl font-bold text-center text-sky-700 mb-6">Lista de Clientes</h1>
-
-        <div class="overflow-x-auto">
-            <table class="min-w-full bg-white border border-gray-300 shadow-md rounded-lg">
-                <thead class="bg-sky-700 text-white">
+<body class="bg-blue-50 text-gray-900">
+    <div class="container mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
+        <h1 class="text-2xl font-bold text-blue-700 mb-4 text-center">Lista de Clientes</h1>
+        
+        <?php if ($rol == "ADMIN") { ?>
+            <div class='flex justify-left gap-8 mt-8 m-5'>
+                <a href='insertarClienteView.php' class='w-36 bg-blue-500 hover:bg-blue-700 text-center text-white font-bold py-2 px-4 rounded-lg'>
+                    INSERTAR CLIENTE
+                </a>
+            </div>
+        <?php } ?>
+        
+        <table class="w-full border-collapse bg-white shadow-md rounded-lg overflow-hidden">
+            <thead>
+                <tr class="bg-blue-500 text-white">
+                    <th class="px-6 py-3 text-center">DNI</th>
+                    <th class="px-6 py-3 text-center">Nombre</th>
+                    <th class="px-6 py-3 text-center">Apellido1</th>
+                    <th class="px-6 py-3 text-center">Apellido2</th>
+                    <th class="px-6 py-3 text-center">Dirección</th>
+                    <th class="px-6 py-3 text-center">Teléfono</th>
+                    <?php if ($rol == 'ADMIN') echo '<th class="px-6 py-3 text-center">EDITAR</th>'; ?>
+                    <th class="px-6 py-3 text-center">VER PERRO</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                if (!empty($data)) {
+                    foreach ($data as $datos) { ?>
+                        <tr class="border-b hover:bg-blue-100">
+                            <td class="px-6 py-3 text-center"><?php echo htmlspecialchars($datos['dni']); ?></td>
+                            <td class="px-6 py-3 text-center"><?php echo htmlspecialchars($datos['nombre']); ?></td>
+                            <td class="px-6 py-3 text-center"><?php echo htmlspecialchars($datos['apellido1']); ?></td>
+                            <td class="px-6 py-3 text-center"><?php echo htmlspecialchars($datos['apellido2']); ?></td>
+                            <td class="px-6 py-3 text-center"><?php echo htmlspecialchars($datos['direccion']); ?></td>
+                            <td class="px-6 py-3 text-center"><?php echo htmlspecialchars($datos['tlfno']); ?></td>
+                            <?php if ($rol == "ADMIN") { ?>
+                                <td class="px-6 py-3 text-center">
+                                    <form action='borrarClientes.php' method='GET'>
+                                        <button type='submit' name='borrar' value='<?php echo htmlspecialchars($datos['dni']); ?>' class='p-2 text-white bg-red-500 rounded'>BORRAR</button>
+                                    </form>
+                                </td>
+                            <?php } ?>
+                            <td class="px-6 py-3 text-center">
+                                <form action='verPerroCliente.php' method='GET'>
+                                    <button type='submit' name='verPerro' value='<?php echo htmlspecialchars($datos['dni']); ?>' class='p-2 text-white bg-green-500 rounded'>PERROS</button>
+                                </form>
+                            </td>
+                        </tr>
+                <?php } } else { ?>
                     <tr>
-                        <th class="py-3 px-6 text-left">Dni</th>
-                        <th class="py-3 px-6 text-left">Nombre</th>
-                        <th class="py-3 px-6 text-left">Apellido1</th>
-                        <th class="py-3 px-6 text-left">Apellido2</th>
-                        <th class="py-3 px-6 text-left">Direccion</th>
-                        <th class="py-3 px-6 text-left">Teléfono</th>
-                       <?php
-                            if($rol=='ADMIN'){
-                                echo ' <th class="py-3 px-6 text-left">Borrar</th>';
-                            }
-                       ?>
-                        <th class="py-3 px-6 text-left">Ver Perro</th>
+                        <td colspan='7' class='text-center py-4 text-red-500 font-bold'>No hay datos disponibles</td>
                     </tr>
-                </thead>
-                <tbody class="divide-y divide-gray-200">
-                    <?php
-                    if (!empty($data)) {
-                       
-                            foreach ($data as $datos) {
-                                echo "<tr class='hover:bg-gray-100'>";
-                                echo "<td class='py-4 px-6 border'>{$datos['dni']}</td>";
-                                echo "<td class='py-4 px-6 border'>{$datos['nombre']}</td>";
-                                echo "<td class='py-4 px-6 border'>{$datos['apellido1']}</td>";
-                                echo "<td class='py-4 px-6 border'>{$datos['apellido2']}</td>";
-                                echo "<td class='py-4 px-6 border'>{$datos['direccion']}</td>";
-                                echo "<td class='py-4 px-6 border'>{$datos['tlfno']}</td>";
-                                if($rol=="ADMIN"){
-                                    echo "<td><form class='py-4 px-6 border' action='borrarClientes.php'><button type='text' name='borrar' value='{$datos['dni']}'>Borrar</button></form></td> ";
-                                }
-                                echo "<td><form class='py-4 px-6 border' action='verPerroCliente.php'><button type='text' name='verPerro' value='{$datos['dni']}'>Ver Perro</button></form></td> ";
-                               
-                                echo "</tr>";
-                            }
-                        
-                      
-                    } else {
-                        echo "<tr><td colspan='4' class='text-center py-4 text-red-500 font-bold'>No hay datos disponibles</td></tr>";
-                    }
-                    ?>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <a href="<?php echo ($rol === 'ADMIN') ? './../main.php' : './../mainEmpleados.php'; ?>" 
-   class="fixed right-10 bottom-10 w-36 bg-blue-500 hover:bg-blue-700 text-center text-white font-bold py-2 px-4 rounded-lg">
-    Volver
-    </a>
-</body>
+                <?php } ?>
+            </tbody>
+        </table>
 
+        <a href="<?php echo ($rol === 'ADMIN') ? './../main.php' : './../mainEmpleados.php'; ?>" 
+           class="fixed right-10 bottom-10 w-36 bg-blue-500 hover:bg-blue-700 text-center text-white font-bold py-2 px-4 rounded-lg">
+            VOLVER
+        </a>
+    </div>
+</body>
 </html>
