@@ -1,4 +1,5 @@
 <?php
+
 // session_start();
 if (isset($_POST['submit'])) {
     $url = 'http://localhost/perros/backend/?ruta=empleados';
@@ -46,7 +47,8 @@ if (isset($_POST['submit'])) {
                 header("Location: ./pages/mainEmpleados.php");
             }
         } else {
-            echo "Error: Contraseña incorrecta.";
+       
+            echo "<script>alert('Credenciales Erróneas'); window.location.href = './../frontend/index.php';</script>";
         }
     } else {
         echo "Error: Usuario no encontrado.";

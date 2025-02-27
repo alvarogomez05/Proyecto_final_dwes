@@ -15,7 +15,7 @@ $rol = $_SESSION['rol'];
 </head>
 
 <body class="bg-blue-50 text-gray-900">
-<div class="container mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
+<div class="p-6">
     <h1 class="text-2xl font-bold text-blue-700 mb-4 text-center">Lista de Perros</h1>
 
     <?php if ($rol === 'ADMIN') { ?>

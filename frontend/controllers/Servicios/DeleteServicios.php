@@ -22,9 +22,10 @@ if (isset($_GET['codigo'])) {
 
     // Cerrar cURL
     curl_close($ch);
+    echo "<script>alert('Servicio eliminado !!!!!!!'); window.location.href='./../../pages/Servicios/SelectServicios.php';</script>";
 }
 
-header('location: ./../../pages/Servicios/SelectServicios.php')
+
 
 ?>
 

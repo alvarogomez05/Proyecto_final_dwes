@@ -7,7 +7,7 @@ $nombre = $_GET['nombre'] ?? '';
 $apellido1 = $_GET['apellido1'] ?? '';
 $apellido2 = $_GET['apellido2'] ?? '';
 $tlfno = $_GET['tlfno'] ?? '';
-$direccion = $_GET['tlfno'] ?? '';
+$direccion = $_GET['direccion'] ?? '';
 // Construir la URL con los parámetros
 $url .= '&dni=' . urlencode($dni);
 
@@ -23,15 +23,11 @@ if ($dni  && $nombre && $apellido1 && $apellido2   && $tlfno) {
     // Datos del nuevo empleado
     $newUser = [
         'dni' => $dni,
-
-
-
         'nombre' => $nombre,
         'apellido1' => $apellido1,
         'apellido2' => $apellido2,
-
+        'direccion' => $direccion,
         'tlfno' => $tlfno,
-
     ];
 
     // Convertir los datos a JSON

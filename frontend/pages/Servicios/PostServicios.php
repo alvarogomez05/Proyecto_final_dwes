@@ -11,7 +11,7 @@ $precio = $_GET['precio'] ?? '';
 $desc = $_GET['desc'] ?? '';
 
 // Construir la URL con los parámetros
-$url .= '&id=' . urlencode($codigo);
+$url .= '&codigo=' . urlencode($codigo);
 $url .= '&nombre=' . urlencode($nombre);
 $url .= '&precio=' . urlencode($precio);
 $url .= '&desc=' . urlencode($desc);
@@ -20,7 +20,7 @@ $url .= '&desc=' . urlencode($desc);
 if ($codigo && $nombre && $precio && $desc ) {
     // Datos del nuevo empleado
     $newUser = [
-        'id' => $codigo,
+        'codigo' => $codigo,
         'nombre' => $nombre,
         'precio' => $precio,
         'desc' => $desc,
@@ -42,19 +42,24 @@ if ($codigo && $nombre && $precio && $desc ) {
 
     // Ejecutar petición y obtener respuesta
     $response = curl_exec($conexion);
-    
+    $httpCode = curl_getinfo($conexion, CURLINFO_HTTP_CODE);
     // Verificar si hubo error en la petición
-    if (curl_errno($conexion)) {
-        // $feedback = '¡EL REGISTRO NO SE HA PODIDO REALIZAR!';
-        // $color =  'text-red-500';
+    if ($response === false) {
+        echo "<script>alert('Error en la conexión con el servidor.');</script>";
     } else {
-        // echo "Registro exitoso. ¡Bienvenido, $codigo!";
-        // $feedback = '¡REGISTRO REALIZADO CON EXISTO!';
-        // $color = 'text-green-500';
+        if ($httpCode == 200) {
+            echo "<script>alert('Servicio insertado con éxito !!!!!!!'); window.location.href = './SelectServicios.php';</script>";
+        } elseif ($httpCode == 400) {
+            $errorMsg = json_decode($response, true)['error'] ?? 'El servicio ya existe';
+            echo "<script>alert('Registro fallido: {$errorMsg}');</script>";
+        } else {
+            echo "<script>alert('Error inesperado. Código HTTP: {$httpCode}');</script>";
+        }
     }
     
     // Cerrar conexión cURL
     curl_close($conexion);
+    
 }
 ?>
 

@@ -38,6 +38,11 @@
                     <input type="password" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none" placeholder="********" name="password" required />
                 </div>
                 <button class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-300" name="submit">Entrar</button>
+              <!--   <?php
+                    if($error){
+                        echo " <a >Usuario Mal</a>";
+                    }
+                ?> -->
                 <div class="text-center mt-4">
                     <a href="#" class="text-blue-600 hover:underline text-sm">¿Olvidaste tu contraseña?</a>
                 </div>

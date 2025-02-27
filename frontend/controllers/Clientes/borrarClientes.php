@@ -18,4 +18,5 @@ $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 // Cerrar cURL
 curl_close($ch);
 //redirecciono a la view
-header('Location:./../../pages/Clientes/listarClientes.php');
+echo "<script>alert('Cliente eliminado !!!!!!!'); window.location.href='./../../pages/Clientes/listarClientes.php';</script>";
+

@@ -6,13 +6,13 @@ $url = 'http://localhost/perros/backend/?ruta=servicios';
 $codigo = $_GET['codigo'] ?? '';
 $precio = $_GET['precio'] ?? '';
 
-$url .= '&id=' . urlencode($codigo);
+$url .= '&codigo=' . urlencode($codigo);
 $url .= '&precio=' . urlencode($precio);
 
 if( $codigo && $precio){
 
     $data = [
-        'id' => $codigo,
+        'codigo' => $codigo,
         'precio' => $precio,
     ];
 
@@ -34,6 +34,7 @@ if( $codigo && $precio){
     $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);
 
+    echo "<script>alert('Servicio modificado con éxito !!!!!!!'); window.location.href = './SelectServicios.php';</script>";
 }
 ?>
 
