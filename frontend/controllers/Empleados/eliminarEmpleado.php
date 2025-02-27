@@ -1,6 +1,6 @@
 <?php
 if (isset($_GET['dni'])) {
-    $url = 'http://localhost/perros/backend/?ruta=empleados&dni=' .$_GET['dni'];
+    $url = 'http://localhost/perros/backend/?ruta=empleados&dni=' . $_GET['dni'];
 
     // Inicializar curl
     $ch = curl_init();
@@ -20,7 +20,17 @@ if (isset($_GET['dni'])) {
     // Cerrar curl
     curl_close($ch);
 
+    // Verificar si la eliminación fue exitosa
+    if ($httpCode == 200) {
+        echo "<script>
+                alert('Empleado eliminado correctamente.');
+                window.location.href = './../../pages/empleados/viewListarEmpleado.php';
+              </script>";
+    } else {
+        echo "<script>
+                alert('Error al eliminar el empleado.');
+                window.location.href = './../../pages/empleados/viewListarEmpleado.php';
+              </script>";
+    }
 }
-
-
 ?>

@@ -1,3 +1,10 @@
+<?php
+session_start();
+$user = $_SESSION['user'];
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -31,13 +38,7 @@
     <div class="flex items-center space-x-4">
         <img src="../assets/img/PRqH.gif" alt="Foto de usuario" class="w-12 h-12 rounded-full border-2 border-white">
         <div>
-            <h3 class="text-lg font-bold">Nombre Usuario</h3>
-            <!-- <?php
-            session_start();
-            $dni = $_SESSION['dni'];
-            echo "<p>$dni</p>";
-            ?> -->
-            <p class="text-sm text-gray-300">Profesión</p>
+            <h3 class="text-lg font-bold"> <?php   echo $user         ?> </h3>
         </div>
     </div>
     <div>

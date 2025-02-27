@@ -49,7 +49,7 @@ $data = json_decode($response, true);
                     <td class="px-2 py-2 text-center"><?php echo htmlspecialchars($fila["ID_Perro"]); ?></td>
                     <td class="px-8 py-3 text-center"><?php echo htmlspecialchars($fila["Fecha"]); ?></td>
                     <td class="px-6 py-3 "><?php echo htmlspecialchars($fila["Incidencias"]); ?></td>
-                    <td class="px-6 py-3 text-center"><?php echo htmlspecialchars($fila["Precio_Final"]); ?></td>
+                    <td class="px-6 py-3 text-center font-bold text-green-600">$<?php echo htmlspecialchars($fila["Precio_Final"]); ?></td>
                     <td class="px-6 py-3 text-center"><?php echo htmlspecialchars($fila["Dni"]); ?></td>
                     <?php if ($rol === 'ADMIN') { ?>
                         <td class="px-6 py-3 text-center">

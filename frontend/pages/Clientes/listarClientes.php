@@ -52,7 +52,7 @@ $data = json_decode($response, true);
                             <td class="px-6 py-3 text-center"><?php echo htmlspecialchars($datos['nombre']); ?></td>
                             <td class="px-6 py-3 text-center"><?php echo htmlspecialchars($datos['apellido1']); ?></td>
                             <td class="px-6 py-3 text-center"><?php echo htmlspecialchars($datos['apellido2']); ?></td>
-                            <td class="px-6 py-3 text-center"><?php echo htmlspecialchars($datos['direccion']); ?></td>
+                            <td class="px-6 py-3 "><?php echo htmlspecialchars($datos['direccion']); ?></td>
                             <td class="px-6 py-3 text-center"><?php echo htmlspecialchars($datos['tlfno']); ?></td>
                             <?php if ($rol == "ADMIN") { ?>
                                 <td class="px-6 py-3 text-center">

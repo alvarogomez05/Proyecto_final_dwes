@@ -78,6 +78,9 @@ if ($dni && $email  &&  $password && $rol && $nombre && $apellido1 && $apellido2
     }
     
     // Cerrar conexión cURL
+    
     curl_close($conexion);
+    header('Location:./../../pages/Empleados/viewListarEmpleado.php');
+
 }
 ?>

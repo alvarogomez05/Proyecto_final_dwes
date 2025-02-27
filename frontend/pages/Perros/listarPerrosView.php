@@ -2,7 +2,6 @@
 session_start();
 $dni = $_SESSION['dni'];
 $rol = $_SESSION['rol'];
-
 ?>
 
 <!DOCTYPE html>
@@ -11,33 +10,39 @@ $rol = $_SESSION['rol'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servicios</title>
+    <title>Lista de Perros</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-gray-100 p-10 bg-cover bg-center bg-blend-overlay">
+<body class="bg-blue-50 text-gray-900">
+<div class="container mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
+    <h1 class="text-2xl font-bold text-blue-700 mb-4 text-center">Lista de Perros</h1>
 
-    <div class="container mx-auto">
-        <h1 class="text-3xl font-bold text-center text-sky-700 mb-6">Listar Perros</h1>
+    <?php if ($rol === 'ADMIN') { ?>
+    <div class='flex justify-left gap-8 mt-8 m-5'>
+        <a href='./insertarPerrosView.php' class='w-36 bg-blue-500 hover:bg-blue-700 text-center text-white font-bold py-2 px-4 rounded-lg'>
+            INSERTAR PERRO
+        </a>
+    </div>
+    <?php } ?>
 
-        <div class="overflow-x-auto">
-    <table class="min-w-full bg-white border border-gray-300 shadow-md rounded-lg">
-        <thead class="bg-sky-700 text-white">
-            <tr>
-                <th class="py-3 px-6 text-left">ID</th>
-                <th class="py-3 px-6 text-left">Nombre</th>
-                <th class="py-3 px-6 text-left">Raza</th>
-                <th class="py-3 px-6 text-left">Fecha de Nacimiento</th>
-                <th class="py-3 px-6 text-left">DNI Cliente</th>
-                <th class="py-3 px-6 text-left">Peso (kg)</th>
-                <th class="py-3 px-6 text-left">Altura (cm)</th>
-                <th class="py-3 px-6 text-left">Observaciones</th>
-                <th class="py-3 px-6 text-left">Número de Chip</th>
-                <th class="py-3 px-6 text-left">Sexo</th>
-                <th class="py-3 px-6 text-left">Acción</th>
+    <table class="w-full border-collapse bg-white shadow-md rounded-lg overflow-hidden">
+        <thead>
+            <tr class="bg-blue-500 text-white">
+                <th class="px-2 py-2 text-center">ID</th>
+                <th class="px-6 py-3 text-center">Nombre</th>
+                <th class="px-6 py-3 text-center">Raza</th>
+                <th class="px-6 py-3 text-center">Fecha de Nacimiento</th>
+                <th class="px-6 py-3 text-center">DNI Cliente</th>
+                <th class="px-6 py-3 text-center">Peso (kg)</th>
+                <th class="px-6 py-3 text-center">Altura (cm)</th>
+                <th class="px-6 py-3 text-center">Observaciones</th>
+                <th class="px-6 py-3 text-center">Número de Chip</th>
+                <th class="px-6 py-3 text-center">Sexo</th>
+                <?php if ($rol === 'ADMIN') echo '<th class="px-6 py-3 text-center">Acciones</th>'; ?>
             </tr>
         </thead>
-        <tbody class="divide-y divide-gray-200">
+        <tbody>
             <?php
             $url = 'http://localhost/perros/backend/?ruta=perros';
             $response = @file_get_contents($url);
@@ -49,25 +54,26 @@ $rol = $_SESSION['rol'];
 
                 if (!empty($data)) {
                     foreach ($data as $datos) {
-                        echo "<tr class='hover:bg-gray-100'>";
-                        echo "<td class='py-4 px-6 border'>{$datos['id']}</td>";
-                        echo "<td class='py-4 px-6 border'>{$datos['Nombre']}</td>";
-                        echo "<td class='py-4 px-6 border'>{$datos['Raza']}</td>";
-                        echo "<td class='py-4 px-6 border'>{$datos['Fecha_Nto']}</td>"; 
-                        echo "<td class='py-4 px-6 border'>{$datos['Dni_Cliente']}</td>";
-                        echo "<td class='py-4 px-6 border'>{$datos['Peso']}</td>"; 
-                        echo "<td class='py-4 px-6 border'>{$datos['Altura']}</td>"; 
-                        echo "<td class='py-4 px-6 border'>{$datos['Observaciones']}</td>"; 
-                        echo "<td class='py-4 px-6 border'>{$datos['Numero_Chip']}</td>"; 
-                        echo "<td class='py-4 px-6 border'>{$datos['Sexo']}</td>"; 
-                        echo "<td class='py-4 px-6 border'>
-                                <form action='./../../controllers/Perros/deletePerrosController.php' method='POST'>
-                                    <input type='hidden' name='id' value='{$datos['id']}'>
-                                    <button type='submit' class='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'>
-                                        Borrar
-                                    </button>
-                                </form>
-                            </td>";
+                        echo "<tr class='border-b hover:bg-blue-100'>";
+                        echo "<td class='px-2 py-2 text-center'>{$datos['id']}</td>";
+                        echo "<td class='px-6 py-3 text-center'>{$datos['Nombre']}</td>";
+                        echo "<td class='px-6 py-3 text-center'>{$datos['Raza']}</td>";
+                        echo "<td class='px-6 py-3 text-center'>{$datos['Fecha_Nto']}</td>";
+                        echo "<td class='px-6 py-3 text-center'>{$datos['Dni_Cliente']}</td>";
+                        echo "<td class='px-6 py-3 text-center'>{$datos['Peso']}</td>";
+                        echo "<td class='px-6 py-3 text-center'>{$datos['Altura']}</td>";
+                        echo "<td class='px-6 py-3 text-center'>{$datos['Observaciones']}</td>";
+                        echo "<td class='px-6 py-3 text-center'>{$datos['Numero_Chip']}</td>";
+                        echo "<td class='px-6 py-3 text-center'>{$datos['Sexo']}</td>";
+
+                        if ($rol === 'ADMIN') {
+                            echo "<td class='px-6 py-3 text-center'>
+                                    <form action='./../../controllers/Perros/deletePerrosController.php' method='POST'>
+                                        <input type='hidden' name='id' value='{$datos['id']}'>
+                                        <button type='submit' class='p-2 text-white bg-red-500 hover:bg-red-700 rounded'>BORRAR</button>
+                                    </form>
+                                  </td>";
+                        }
                         echo "</tr>";
                     }
                 } else {
@@ -77,19 +83,13 @@ $rol = $_SESSION['rol'];
             ?>
         </tbody>
     </table>
+
 </div>
 
-<a href="./insertarPerrosView.php" class="fixed left-10 bottom-10 w-36 bg-purple-500 hover:bg-purple-600 text-center text-white font-bold py-2 px-4 rounded-lg shadow-md transition">
-        Insertar Perro
-    </a>
-
-
     <a href="<?php echo ($rol === 'ADMIN') ? './../main.php' : './../mainEmpleados.php'; ?>" 
-   class="fixed right-10 bottom-10 w-36 bg-blue-500 hover:bg-blue-700 text-center text-white font-bold py-2 px-4 rounded-lg">
-    Volver
+       class="fixed right-10 bottom-10 w-36 bg-blue-500 hover:bg-blue-700 text-center text-white font-bold py-2 px-4 rounded-lg">
+        Volver
     </a>
-
-
 </body>
-
 </html>
+
